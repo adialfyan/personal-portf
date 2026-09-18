@@ -10,6 +10,9 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Contact",
   description: "Start a conversation — project inquiries and collaboration.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default async function ContactPage() {

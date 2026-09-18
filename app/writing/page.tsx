@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Writing — Essays, Papers & Architecture Notes",
   description:
     "Technical whitepapers, systems engineering monographs, and essays on durable software architecture.",
+  alternates: {
+    canonical: "/writing",
+  },
   openGraph: {
     title: "Writing — Essays, Papers & Architecture Notes",
     description:

@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Full-stack Developer — Portfolio",
   description:
     "Selected work, background, and contact of a full-stack developer building thoughtful web products.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 interface CapabilityItem {

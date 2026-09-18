@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Newsreader } from "next/font/google";
 import { SmoothScroll } from "@/components/public/smooth-scroll";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,8 +20,7 @@ const newsreader = Newsreader({
   preload: true,
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   },
   description:
     "Software developer portfolio — selected work, about, and contact.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     siteName: "Adi Alfian Hafis",

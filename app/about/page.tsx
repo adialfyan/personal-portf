@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Background, capabilities, and current focus of a full-stack developer.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const CAPABILITIES = [

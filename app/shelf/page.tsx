@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Shelf — Cinema, Records & Literature",
   description:
     "A personal ledger of films, sound recordings, and foundational books shaping craft and perspective.",
+  alternates: {
+    canonical: "/shelf",
+  },
   openGraph: {
     title: "Shelf — Cinema, Records & Literature",
     description:
