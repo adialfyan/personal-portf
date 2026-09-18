@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BouncyLine } from "@/components/public/bouncy-line";
-import { GlideCarousel } from "@/components/public/glide-carousel";
+import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
+import { EditorialProjectIndex } from "@/components/public/editorial-project-index";
 import { MorphText } from "@/components/public/morph-text";
 import { Reveal } from "@/components/public/reveal";
 import { SakuraCornerBranch } from "@/components/public/sakura-corner-branch";
@@ -25,13 +26,50 @@ export const metadata: Metadata = {
     "Selected work, background, and contact of a full-stack developer building thoughtful web products.",
 };
 
-const CAPABILITIES = [
-  "Product Development",
-  "Frontend Engineering",
-  "Backend Systems",
-  "Database Design",
-  "Interface Implementation",
-  "Deployment & Maintenance",
+interface CapabilityItem {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+}
+
+const CAPABILITIES: CapabilityItem[] = [
+  {
+    id: "product-dev",
+    number: "01",
+    title: "Product Development",
+    description: "End-to-end execution from technical specifications to production-ready architecture.",
+  },
+  {
+    id: "frontend-eng",
+    number: "02",
+    title: "Frontend Engineering",
+    description: "Fluid tactile interactions, robust component systems, and modern Next.js foundations.",
+  },
+  {
+    id: "backend-systems",
+    number: "03",
+    title: "Backend Systems",
+    description: "Deterministic business logic, transactional data pipelines, and high-concurrency APIs.",
+  },
+  {
+    id: "database-design",
+    number: "04",
+    title: "Database Design",
+    description: "Normalized relational schemas, ACID integrity guarantees, and optimized query plans.",
+  },
+  {
+    id: "interface-impl",
+    number: "05",
+    title: "Interface Implementation",
+    description: "Editorial typographic hierarchy, precision micro-details, and seamless accessibility.",
+  },
+  {
+    id: "deployment-maintenance",
+    number: "06",
+    title: "Deployment & Maintenance",
+    description: "Continuous integration pipelines, automated environment hygiene, and deep telemetry.",
+  },
 ];
 
 export default async function Home() {
@@ -93,7 +131,7 @@ export default async function Home() {
                     className="text-xs font-medium tracking-[0.2em] uppercase text-muted mb-6"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    About
+                    Introduction &bull; Bio
                   </p>
                   <div className="space-y-6 text-lg sm:text-xl md:text-2xl font-normal leading-relaxed text-foreground/90 max-w-2xl">
                     <p>{bio}</p>
@@ -281,7 +319,74 @@ export default async function Home() {
             </div>
             <BouncyLine className="mb-10" />
 
-            <GlideCarousel projects={projects} />
+            <EditorialProjectIndex projects={projects} />
+          </div>
+        </section>
+        <BouncyLine className="w-full" />
+
+        {/* ——— Practice & Capabilities ——— */}
+        <section id="capabilities" className="scroll-mt-20">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-4 gap-8 px-6 py-16 md:grid-cols-12 md:px-10 md:py-24">
+            <div className="col-span-4 md:col-span-3">
+              <p
+                className="text-xs font-medium tracking-[0.2em] uppercase text-muted"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Practice &bull; Capabilities
+              </p>
+            </div>
+            <div className="col-span-4 md:col-span-9">
+              <Reveal>
+                <p
+                  className="max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight font-normal text-foreground"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  I build web experiences that balance clarity, character, and
+                  systems.
+                </p>
+              </Reveal>
+
+              {/* Editorial Ledger Grid for 6 Capabilities */}
+              <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+                {CAPABILITIES.map((c) => (
+                  <div key={c.id} className="group flex flex-col justify-between">
+                    <div>
+                      <BouncyLine className="mb-4" />
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span
+                          className="text-xs text-muted/70 font-normal"
+                          style={{ fontFamily: "var(--font-display)" }}
+                        >
+                          {c.number}
+                        </span>
+                        <span className="text-[11px] font-medium tracking-[0.16em] uppercase text-foreground">
+                          {c.title}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted leading-relaxed font-normal">
+                        {c.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.2em] uppercase underline underline-offset-8 hover:text-muted transition-colors"
+                >
+                  <span>Full Biography & Background</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+                <span
+                  className="text-xs text-muted/60 font-normal"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  06 Areas of Discipline
+                </span>
+              </div>
+            </div>
           </div>
         </section>
         <BouncyLine className="w-full" />
@@ -373,87 +478,12 @@ export default async function Home() {
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
-            <BouncyLine className="mb-6" />
+            <BouncyLine className="mb-10" />
 
-            <div>
-              {favoriteShelf.slice(0, 4).map((shelfItem, index) => (
-                <div key={shelfItem.id}>
-                  <div className="py-5 flex flex-col md:flex-row md:items-baseline justify-between gap-3 text-sm">
-                    <div className="flex items-baseline gap-4">
-                      <span
-                        className="text-xs text-muted/70 font-normal w-6"
-                        style={{ fontFamily: "var(--font-display)" }}
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className="text-xl text-foreground font-normal"
-                        style={{ fontFamily: "var(--font-display)" }}
-                      >
-                        {shelfItem.title}
-                      </span>
-                      <span className="text-xs text-muted tracking-wider uppercase">
-                        &bull; {shelfItem.creator} {shelfItem.year ? `(${shelfItem.year})` : ""}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-6 pl-10 md:pl-0">
-                      <span className="text-xs font-medium tracking-[0.18em] uppercase text-muted">
-                        {shelfItem.media_type}
-                      </span>
-                      {shelfItem.external_url && (
-                        <a
-                          href={shelfItem.external_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-medium tracking-[0.18em] uppercase text-foreground hover:underline inline-flex items-center gap-1"
-                        >
-                          <span>Source</span>
-                          <span aria-hidden="true">↗</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <BouncyLine />
-                </div>
-              ))}
-            </div>
+            <CulturalShelfShowcase items={favoriteShelf.slice(0, 4)} />
           </div>
         </section>
         <BouncyLine className="w-full" />
-
-        {/* ——— About teaser ——— */}
-        <section>
-          <div className="mx-auto grid max-w-[1440px] grid-cols-4 gap-6 px-6 py-16 md:grid-cols-12 md:px-10 md:py-24">
-            <p className="col-span-4 text-xs font-medium tracking-[0.2em] uppercase text-muted md:col-span-3">
-              About
-            </p>
-            <div className="col-span-4 md:col-span-9">
-              <Reveal>
-                <p
-                  className="max-w-4xl text-4xl leading-tight tracking-tight md:text-6xl"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  I build web experiences that balance clarity, character, and
-                  systems.
-                </p>
-              </Reveal>
-              <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 text-xs font-medium tracking-[0.2em] uppercase md:grid-cols-3">
-                {CAPABILITIES.map((c) => (
-                  <div key={c} className="pt-2">
-                    <BouncyLine className="mb-3" />
-                    <span>{c}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/about"
-                className="mt-10 inline-block text-xs font-medium tracking-[0.2em] uppercase underline underline-offset-8 hover:text-muted transition-colors"
-              >
-                More about me ↗
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* ——— Contact CTA (inversion) ——— */}
         <section className="bg-dark text-ivory">

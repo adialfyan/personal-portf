@@ -2,12 +2,14 @@
 
 import { useState, useMemo } from "react";
 import type { ShelfItem, ShelfMediaType } from "@/lib/queries/types";
+import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
 
 interface ShelfGridProps {
   items: ShelfItem[];
 }
 
 type FilterOption = "all" | ShelfMediaType;
+type ViewMode = "gallery" | "table";
 
 const MEDIA_LABELS: Record<ShelfMediaType, string> = {
   film: "Film",
@@ -18,6 +20,7 @@ const MEDIA_LABELS: Record<ShelfMediaType, string> = {
 
 export function ShelfGrid({ items }: ShelfGridProps) {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("all");
+  const [viewMode, setViewMode] = useState<ViewMode>("gallery");
 
   const counts = useMemo(() => {
     return {
@@ -51,27 +54,60 @@ export function ShelfGrid({ items }: ShelfGridProps) {
 
   return (
     <div>
-      {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-b border-border pb-6 mb-10">
-        {filters.map((filter) => {
-          const isActive = activeFilter === filter.key;
-          return (
-            <button
-              key={filter.key}
-              type="button"
-              onClick={() => setActiveFilter(filter.key)}
-              className={`inline-flex items-center justify-center px-4 py-2.5 min-h-[44px] text-xs font-medium tracking-[0.18em] uppercase transition-colors rounded-none cursor-pointer select-none ${
-                isActive
-                  ? "bg-dark text-ivory"
-                  : "bg-surface text-muted hover:text-foreground hover:bg-neutral-200"
-              }`}
-            >
-              {filter.label}{" "}
-              <span className="opacity-70 ml-1.5">({filter.count})</span>
-            </button>
-          );
-        })}
+      {/* Filter Tabs & View Mode Toggle */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6 mb-10">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {filters.map((filter) => {
+            const isActive = activeFilter === filter.key;
+            return (
+              <button
+                key={filter.key}
+                type="button"
+                onClick={() => setActiveFilter(filter.key)}
+                className={`inline-flex items-center justify-center px-4 py-2 min-h-[40px] text-xs font-medium tracking-[0.18em] uppercase transition-colors rounded-none cursor-pointer select-none ${
+                  isActive
+                    ? "bg-dark text-ivory"
+                    : "bg-surface text-muted hover:text-foreground hover:bg-neutral-200"
+                }`}
+              >
+                {filter.label}{" "}
+                <span className="opacity-70 ml-1.5">({filter.count})</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* View Mode Toggle */}
+        <div className="flex items-center gap-1 border border-border p-1 bg-surface self-start sm:self-auto">
+          <button
+            type="button"
+            onClick={() => setViewMode("gallery")}
+            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors ${
+              viewMode === "gallery"
+                ? "bg-dark text-ivory"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            Physical Gallery
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("table")}
+            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors ${
+              viewMode === "table"
+                ? "bg-dark text-ivory"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            Ledger Index
+          </button>
+        </div>
       </div>
+
+      {viewMode === "gallery" ? (
+        <CulturalShelfShowcase items={filteredItems} />
+      ) : (
+        <>
 
       {/* Ledger Header */}
       <div className="hidden md:grid grid-cols-12 gap-6 pb-4 border-b border-border text-xs font-medium tracking-[0.2em] uppercase text-muted">
@@ -183,6 +219,8 @@ export function ShelfGrid({ items }: ShelfGridProps) {
           </div>
         )}
       </div>
+      </>
+      )}
     </div>
   );
 }
