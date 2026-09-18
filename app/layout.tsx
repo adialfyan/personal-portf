@@ -15,7 +15,7 @@ const newsreader = Newsreader({
   variable: "--font-display",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "600"],
   display: "swap",
   preload: true,
 });

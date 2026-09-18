@@ -108,7 +108,7 @@ export const CURATED_SHELF: ShelfItem[] = [
     year: "2017",
     notes: "The definitive text on distributed storage, replication consensus, and relational truth.",
     rating: 5,
-    cover_image_path: "/shelf/data-intensive.png",
+    cover_image_path: "/shelf/data-intensive.jpg",
     external_url: "https://dataintensive.net/",
     is_favorite: true,
     sort_order: 7,

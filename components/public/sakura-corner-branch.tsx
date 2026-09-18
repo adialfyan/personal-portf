@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
@@ -17,42 +18,42 @@ interface BloomClusterDef {
 
 const BLOOM_CLUSTERS: BloomClusterDef[] = [
   {
-    src: "/sakura-bloom-1.png?v=4",
+    src: "/sakura-bloom-1.png",
     name: "Trunk Buds & Twin Blossoms",
     originX: "89.3%",
     originY: "41.8%",
     delay: 0.00,
   },
   {
-    src: "/sakura-bloom-2.png?v=4",
+    src: "/sakura-bloom-2.png",
     name: "Upper Twig Blossoms",
     originX: "81.6%",
     originY: "20.1%",
     delay: 0.12,
   },
   {
-    src: "/sakura-bloom-3.png?v=4",
+    src: "/sakura-bloom-3.png",
     name: "Upper Grand Blossom",
     originX: "58.5%",
     originY: "37.4%",
     delay: 0.24,
   },
   {
-    src: "/sakura-bloom-4.png?v=4",
+    src: "/sakura-bloom-4.png",
     name: "Mid-Right Hanging Blossoms",
     originX: "86.5%",
     originY: "58.9%",
     delay: 0.36,
   },
   {
-    src: "/sakura-bloom-5.png?v=4",
+    src: "/sakura-bloom-5.png",
     name: "Center Blossom Cluster",
     originX: "63.1%",
     originY: "64.1%",
     delay: 0.48,
   },
   {
-    src: "/sakura-bloom-6.png?v=4",
+    src: "/sakura-bloom-6.png",
     name: "Terminal Tip Blossoms",
     originX: "26.7%",
     originY: "69.9%",
@@ -73,7 +74,7 @@ interface PetalDef {
 
 const PETAL_DEFINITIONS: PetalDef[] = [
   {
-    src: "/sakura-petal-1.png?v=4",
+    src: "/sakura-petal-1.png",
     pctX: 68,
     pctY: 38,
     size: 20,
@@ -83,7 +84,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
     duration: 3.2,
   },
   {
-    src: "/sakura-petal-2.png?v=4",
+    src: "/sakura-petal-2.png",
     pctX: 62,
     pctY: 62,
     size: 16,
@@ -93,7 +94,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
     duration: 3.4,
   },
   {
-    src: "/sakura-petal-3.png?v=4",
+    src: "/sakura-petal-3.png",
     pctX: 52,
     pctY: 53,
     size: 18,
@@ -103,7 +104,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
     duration: 3.0,
   },
   {
-    src: "/sakura-petal-4.png?v=4",
+    src: "/sakura-petal-4.png",
     pctX: 20,
     pctY: 70,
     size: 19,
@@ -113,7 +114,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
     duration: 3.3,
   },
   {
-    src: "/sakura-petal-5.png?v=4",
+    src: "/sakura-petal-5.png",
     pctX: 80,
     pctY: 20,
     size: 17,
@@ -123,7 +124,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
     duration: 3.5,
   },
   {
-    src: "/sakura-petal-1.png?v=4",
+    src: "/sakura-petal-1.png",
     pctX: 65,
     pctY: 42,
     size: 15,
@@ -133,7 +134,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
     duration: 3.1,
   },
   {
-    src: "/sakura-petal-2.png?v=4",
+    src: "/sakura-petal-2.png",
     pctX: 58,
     pctY: 65,
     size: 18,
@@ -588,11 +589,14 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
         className="relative w-full h-full pointer-events-none will-change-transform"
         style={{ transformOrigin: "98% 28%" }}
       >
-        <img
-          src="/sakura-bare-branch.png?v=4"
+        <Image
+          src="/sakura-bare-branch.png"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-contain pointer-events-none select-none"
+          fill
+          priority
+          sizes="490px"
+          className="object-contain pointer-events-none select-none"
         />
       </div>
 
@@ -612,11 +616,13 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
               transformOrigin: `${cluster.originX} ${cluster.originY}`,
             }}
           >
-            <img
+            <Image
               src={cluster.src}
               alt=""
               aria-hidden="true"
-              className="w-full h-full object-contain pointer-events-none select-none"
+              fill
+              sizes="490px"
+              className="object-contain pointer-events-none select-none"
               style={{ imageRendering: "pixelated" }}
             />
           </div>
@@ -640,11 +646,13 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
               height: Math.round(petal.size * 1.3),
             }}
           >
-            <img
+            <Image
               src={petal.src}
               alt=""
               aria-hidden="true"
-              className="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(219,39,119,0.12)]"
+              width={petal.size}
+              height={Math.round(petal.size * 1.3)}
+              className="object-contain drop-shadow-[0_2px_4px_rgba(219,39,119,0.12)]"
               style={{ imageRendering: "pixelated" }}
             />
           </div>

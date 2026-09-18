@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   images: {
+    minimumCacheTTL: 86400,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
