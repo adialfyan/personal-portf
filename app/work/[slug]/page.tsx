@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/public/json-ld";
 import { Reveal } from "@/components/public/reveal";
 import { SiteFooter } from "@/components/public/site-footer";
 import { SiteHeader } from "@/components/public/site-header";
@@ -12,6 +13,7 @@ import {
   getSiteProfile,
   getVisibleSocialLinks,
 } from "@/lib/queries/public";
+import { getSiteUrl } from "@/lib/site";
 import { getMediaUrl } from "@/lib/supabase/storage";
 
 export const revalidate = 60;
@@ -73,8 +75,49 @@ export default async function ProjectPage({
   const coverUrl = getMediaUrl(project.cover_image_path);
   const sections = SECTIONS.filter((s) => project[s.key]);
 
+  const siteUrl = getSiteUrl();
+
   return (
     <div className="flex min-h-full flex-1 flex-col">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: project.title,
+            description:
+              project.summary ??
+              project.overview ??
+              "Selected software engineering case study.",
+            url: `${siteUrl}/work/${slug}`,
+            author: { "@type": "Person", name },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: siteUrl,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Work",
+                item: `${siteUrl}/#work`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: project.title,
+                item: `${siteUrl}/work/${slug}`,
+              },
+            ],
+          },
+        ]}
+      />
       <SiteHeader name={name} />
 
       <main className="flex-1">

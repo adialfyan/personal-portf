@@ -3,13 +3,15 @@
 ## Scroll Strategy
 
 ```text
-Native browser scroll
+Lenis (fine-pointer devices only)
 + GSAP
 + ScrollTrigger
 ```
 
-No Lenis in the MVP. Native scroll is lighter, more accessible, and works well on
-mobile. Add smooth-scroll only if prototyping later shows it is truly needed.
+Lenis is initialized only on fine-pointer devices and skipped entirely under
+`prefers-reduced-motion` (`components/public/smooth-scroll.tsx`). Touch
+devices use the native compositor scroll. Anchor links (`/#work`) scroll via
+Lenis with a native `scrollIntoView` fallback.
 
 ### GSAP used for
 
@@ -61,11 +63,16 @@ Page transition     600–900ms
 
 ## Signature Interactions
 
-1. **Dither portrait** — ordered/Bayer dither portrait; pointer or scroll changes
-   threshold subtly.
-2. **Editorial project reveal** — asymmetric grid reveals through masking; hover turns
-   dither into the original (or high-contrast monochrome).
-3. **Section inversion** — ivory to black footer changes solidly, not via gradient.
+1. **Sakura corner branch** — sumi-e branch that grows and sequentially blooms
+   on hover, with falling petals
+   (`components/public/sakura-corner-branch.tsx`).
+2. **Bouncy lines** — GSAP physics dividers that pluck like a guitar string on
+   cursor proximity (`components/public/bouncy-line.tsx`). SSR-safe via
+   `useSyncExternalStore`, sleeps off-screen via `IntersectionObserver`.
+3. **Editorial project reveal** — ledger rows reveal through masking.
+4. **Section inversion** — white to black footer changes solidly, not via gradient.
+5. **Dither images** — canvas dither available for portrait/covers
+   (`components/public/dither-image.tsx`), used on the about page.
 
 ## Dither Implementation
 

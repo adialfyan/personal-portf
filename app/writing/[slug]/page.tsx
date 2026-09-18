@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/public/json-ld";
 import { MarkdownRenderer } from "@/components/public/markdown-renderer";
 import { ReadingProgress } from "@/components/public/reading-progress";
 import { SiteHeader } from "@/components/public/site-header";
@@ -11,6 +12,7 @@ import {
   getVisibleSocialLinks,
   getWritingBySlug,
 } from "@/lib/queries/public";
+import { getSiteUrl } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -82,8 +84,52 @@ export default async function WritingDetailPage({ params }: PageProps) {
   const categoryLabel =
     CATEGORY_LABELS[writing.category] ?? writing.category;
 
+  const siteUrl = getSiteUrl();
+
   return (
     <div className="flex min-h-full flex-1 flex-col" suppressHydrationWarning>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: writing.title,
+            description:
+              writing.summary ??
+              writing.subtitle ??
+              "Technical whitepaper & systems monograph.",
+            url: `${siteUrl}/writing/${slug}`,
+            author: { "@type": "Person", name },
+            ...(writing.published_at
+              ? { datePublished: writing.published_at }
+              : {}),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: siteUrl,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Writing",
+                item: `${siteUrl}/writing`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: writing.title,
+                item: `${siteUrl}/writing/${slug}`,
+              },
+            ],
+          },
+        ]}
+      />
       <ReadingProgress />
       <SiteHeader name={name} />
 

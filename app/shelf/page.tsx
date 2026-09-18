@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/public/json-ld";
 import { SiteHeader } from "@/components/public/site-header";
 import { SiteFooter } from "@/components/public/site-footer";
 import { ShelfGrid } from "@/components/public/shelf-grid";
@@ -7,6 +8,7 @@ import {
   getSiteProfile,
   getVisibleSocialLinks,
 } from "@/lib/queries/public";
+import { getSiteUrl } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -38,8 +40,20 @@ export default async function ShelfPage() {
 
   const name = profile?.full_name || "Adi Alfian Hafis";
 
+  const siteUrl = getSiteUrl();
+
   return (
     <div className="flex min-h-full flex-1 flex-col" suppressHydrationWarning>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Shelf — Cinema, Records & Literature",
+          description:
+            "A personal ledger of films, sound recordings, and foundational books shaping craft and perspective.",
+          url: `${siteUrl}/shelf`,
+        }}
+      />
       <SiteHeader name={name} />
 
       <main className="flex-1">

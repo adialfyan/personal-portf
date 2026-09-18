@@ -38,7 +38,7 @@ Add your auth user id to `admin_users` to unlock the dashboard (Phase 3).
 ## Design Principles
 
 - Editorial-tech art direction, not SaaS-generic.
-- Warm ivory, signal orange, Instrument Serif + Geist Sans + Geist Mono.
-- Native scroll with selective GSAP ScrollTrigger.
-- Interactive dither portrait as the signature interaction.
+- Pure white (`#ffffff`), crisp black (`#0a0a0a`); two fonts only — Newsreader (display serif) + Geist Sans (body/UI).
+- Lenis smooth scroll on fine-pointer devices, GSAP for physics dividers and reveals.
+- Sumi-e sakura branch + bouncy lines as the signature interaction.
 - No AI-slop: no gradients, pulse dots, glass cards, floating orbs, or generic bento grids.

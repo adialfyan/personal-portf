@@ -5,7 +5,8 @@
 > **Editorial Tech** — inspired by Studio Freight, but not a clone.
 
 A developer portfolio with an editorial/creative edge: oversized serif display,
-technical mono metadata, asymmetric work grid, and an interactive dither portrait.
+uppercase tracked metadata, an editorial project index, and a sumi-e sakura
+branch with bouncy-line dividers as the signature interaction.
 
 ## Reference Composition
 
@@ -19,34 +20,30 @@ technical mono metadata, asymmetric work grid, and an interactive dither portrai
 ## Color Palette
 
 ```css
---background: #eee9df;   /* warm ivory */
---surface:    #e5dfd3;
---foreground: #171714;
---muted:      #77736a;
---border:     #aaa499;
---accent:     #ff4f00;   /* signal orange */
---dark:       #11110f;
+--background: #ffffff;   /* pure white */
+--surface:    #f5f5f5;
+--foreground: #0a0a0a;
+--muted:      #737373;
+--border:     #e5e5e5;
+--accent:     #000000;
+--dark:       #0a0a0a;
+--ivory:      #ffffff;
 ```
 
-Signal orange appears only on status, hover, focus, and select interactive elements.
-One accent only.
+Pure white background with crisp black typography. No signal orange — the
+contact CTA inverts to a dark section instead. See `app/globals.css`.
 
 ## Typography
 
 | Role | Font |
 |---|---|
-| Display | Instrument Serif |
-| Body | Geist Sans |
-| Utility/mono | Geist Mono |
+| Display | Newsreader (serif, normal + italic) |
+| Body/UI | Geist Sans |
 
-```text
-INSTRUMENT SERIF     — hero, section titles, large CTAs
-GEIST SANS           — descriptions, case studies, forms
-GEIST MONO           — nav, project numbers, years, status, stack
-```
-
-All fonts are free and loaded via `next/font`. Serif is used selectively so the site
-keeps a "tech" feel.
+Strict two-font system — no third mono font. Small uppercase labels use Geist
+Sans with wide tracking (`tracking-[0.2em]`); headlines, section titles, and
+large CTAs use Newsreader. All fonts are free and loaded via `next/font`
+(see `app/layout.tsx`).
 
 ## Layout System
 
@@ -61,41 +58,32 @@ keeps a "tech" feel.
 
 ### Header
 
-```text
-[YOUR NAME]                 WORK / ABOUT / CONTACT
-INDEPENDENT DEVELOPER       LOCAL TIME 14:32
-```
-
-Sticky without a boxed navbar. Hairline border, mono name, local time detail.
-Mobile uses a `MENU` button.
+Right-aligned uppercase nav: Work, Writing, Shelf, About, Contact. Sticky
+without a boxed navbar, hairline bouncy-line divider at the bottom
+(`components/public/site-header.tsx`).
 
 ### Hero
 
-Headline in Instrument Serif at large size, dither portrait overlapping the text.
-Pointer reveals original color in a small radius. Mobile simplifies to headline,
-intro, then full portrait.
+Clean editorial statement in Newsreader at large size with morphing adjectives,
+plus a sakura corner branch (grows and blooms on hover) and a Table of Contents
+directory linking to Selected Work, Writing, Cultural Shelf, and Contact.
+No portrait, no year labels, no location labels.
 
 ### Selected Work
 
-Asymmetric editorial grid (not a uniform card grid):
+Editorial project index (`components/public/editorial-project-index.tsx`):
+numbered ledger rows with role, stack, and year. Uppercase sans for metadata,
+Newsreader serif for the title. No rounded cards or shadows.
 
-```text
-01  PROJECT A  [landscape]
-02  PROJECT B  [portrait]
-03  PROJECT C  [wide]
-```
+### Practice & Capabilities
 
-Each item shows number, title, role, stack, and year. Mono for metadata, serif for
-the title. No rounded cards or shadows.
-
-### About Teaser
-
-Two-column: small label left, large statement right. A dither texture or scan as a
-small accent. No skill bars or moving logo walls.
+Two-column: small label left, large statement right, followed by a 6-item
+ledger grid (Product Development through Deployment & Maintenance) and a link
+to the full biography. No skill bars or moving logo walls.
 
 ### Contact Footer
 
-Inverted to dark background with warm ivory text and a large serif CTA.
+Inverted to dark background with ivory text and a large Newsreader CTA.
 
 ## Project Detail Page
 
@@ -119,11 +107,11 @@ on cover or separators.
 
 ## Navigation & Micro-Detail
 
-- Hairline borders and crop marks.
+- Bouncy-line physics dividers between sections.
 - Index numbers `01`, `02`, `03`.
-- Static metadata like coordinates or location.
 - Captions on imagery.
 - Typographic arrow `↗`.
+- No fake coordinates, no decorative slashes or brackets in labels.
 
 ## UX Guardrails
 

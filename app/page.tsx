@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BouncyLine } from "@/components/public/bouncy-line";
 import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
 import { EditorialProjectIndex } from "@/components/public/editorial-project-index";
+import { JsonLd } from "@/components/public/json-ld";
 import { MorphText } from "@/components/public/morph-text";
 import { Reveal } from "@/components/public/reveal";
 import { SakuraCornerBranch } from "@/components/public/sakura-corner-branch";
@@ -16,6 +17,7 @@ import {
   getSiteProfile,
   getVisibleSocialLinks,
 } from "@/lib/queries/public";
+import { getSiteUrl } from "@/lib/site";
 import { getMediaUrl } from "@/lib/supabase/storage";
 
 export const revalidate = 60;
@@ -91,8 +93,24 @@ export default async function Home() {
   const availability =
     profile?.availability_text || (profile?.available_for_work ? "Available for work" : null);
 
+  const siteUrl = getSiteUrl();
+
   return (
     <div className="flex min-h-full flex-1 flex-col" suppressHydrationWarning>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name,
+          jobTitle: title,
+          description: bio,
+          url: siteUrl,
+          ...(profile?.email ? { email: `mailto:${profile.email}` } : {}),
+          ...(socialLinks.length > 0
+            ? { sameAs: socialLinks.map((link) => link.url) }
+            : {}),
+        }}
+      />
       <SiteHeader name={name} />
 
       <main className="flex-1">
