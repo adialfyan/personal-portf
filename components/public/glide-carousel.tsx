@@ -429,10 +429,13 @@ export function GlideCarousel({ projects }: GlideCarouselProps) {
   };
 
   // Step button handlers
-  const glideStep = (direction: -1 | 1) => {
-    const currentIndex = Math.round(targetScrollXRef.current / spacing);
-    targetScrollXRef.current = (currentIndex + direction) * spacing;
-  };
+  const glideStep = useCallback(
+    (direction: -1 | 1) => {
+      const currentIndex = Math.round(targetScrollXRef.current / spacing);
+      targetScrollXRef.current = (currentIndex + direction) * spacing;
+    },
+    [spacing],
+  );
 
   // Jump to specific project index
   const jumpToIndex = (targetOrigIdx: number) => {
@@ -473,7 +476,7 @@ export function GlideCarousel({ projects }: GlideCarouselProps) {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [spacing]);
+  }, [spacing, glideStep]);
 
   if (projects.length === 0) {
     return null;

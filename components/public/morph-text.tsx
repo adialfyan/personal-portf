@@ -1,6 +1,12 @@
 "use client";
 
-import { useId, useLayoutEffect, useRef, type ReactNode } from "react";
+import {
+  useCallback,
+  useId,
+  useLayoutEffect,
+  useRef,
+  type ReactNode,
+} from "react";
 import gsap from "gsap";
 
 export interface MorphTextProps {
@@ -97,7 +103,7 @@ export function MorphText({
     );
   };
 
-  const startLoop = () => {
+  const startLoop = useCallback(() => {
     if (rafIdRef.current) return;
     const tick = () => {
       updateFilterDOM();
@@ -120,7 +126,7 @@ export function MorphText({
       }
     };
     rafIdRef.current = requestAnimationFrame(tick);
-  };
+  }, []);
 
   useLayoutEffect(() => {
     if (!words || words.length <= 1) return;
@@ -245,7 +251,7 @@ export function MorphText({
       clearInterval(timer);
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     };
-  }, [words, interval, intensity]);
+  }, [words, interval, intensity, startLoop]);
 
   // Interactive hover handlers
   const handleMouseEnter = () => {

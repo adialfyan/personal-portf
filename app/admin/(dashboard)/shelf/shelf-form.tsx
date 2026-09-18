@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState } from "react";
 import type { ShelfItem } from "@/lib/queries/types";
 import { getMediaUrl } from "@/lib/supabase/storage";
 import { saveShelfItem, type ShelfFormState } from "./actions";

@@ -36,9 +36,9 @@ export default async function AboutPage() {
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="mx-auto max-w-[1440px] px-6 pt-14 pb-16 md:px-10 md:pt-20 md:pb-24">
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-muted">
             About
@@ -188,7 +188,6 @@ export default async function AboutPage() {
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

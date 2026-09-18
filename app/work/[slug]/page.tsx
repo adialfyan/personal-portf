@@ -118,9 +118,9 @@ export default async function ProjectPage({
           },
         ]}
       />
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="mx-auto max-w-[1440px] px-6 pt-14 pb-12 md:px-10 md:pt-20">
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-muted">
             <Link href="/#work" className="hover:text-foreground transition-colors">
@@ -326,7 +326,6 @@ export default async function ProjectPage({
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

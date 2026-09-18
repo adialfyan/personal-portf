@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { BouncyLine } from "@/components/public/bouncy-line";
 import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
@@ -18,7 +17,6 @@ import {
   getVisibleSocialLinks,
 } from "@/lib/queries/public";
 import { getSiteUrl } from "@/lib/site";
-import { getMediaUrl } from "@/lib/supabase/storage";
 
 export const revalidate = 60;
 
@@ -90,8 +88,6 @@ export default async function Home() {
   const bio =
     profile?.short_intro ||
     "Building web applications, enterprise systems, and digital tools with a focus on clean architecture and reliable engineering.";
-  const availability =
-    profile?.availability_text || (profile?.available_for_work ? "Available for work" : null);
 
   const siteUrl = getSiteUrl();
 
@@ -111,9 +107,9 @@ export default async function Home() {
             : {}),
         }}
       />
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* ——— Hero (Clean Editorial Statement — No Redundant TOC) ——— */}
         <section className="relative bg-background pt-14 pb-20 md:pt-20 md:pb-28 overflow-hidden">
           {/* Japanese Sumi-e Sakura Branch (Grows and Blooms from Top-Right on Hover) */}
@@ -549,7 +545,6 @@ export default async function Home() {
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

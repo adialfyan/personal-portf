@@ -19,13 +19,11 @@ export default async function ContactPage() {
   const profile = await getSiteProfile();
   const socialLinks = await getVisibleSocialLinks(profile?.id ?? null);
 
-  const name = profile?.full_name || "Adi Alfian Hafis";
-
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="bg-dark text-ivory">
           <div className="mx-auto max-w-[1440px] px-6 pt-14 pb-16 md:px-10 md:pt-20 md:pb-24">
             <Reveal>
@@ -103,7 +101,6 @@ export default async function ContactPage() {
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

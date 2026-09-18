@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ProjectCard } from "@/lib/queries/types";
@@ -19,7 +19,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   const dragStartRef = useRef({ x: 0, scrollLeft: 0 });
   const hasDraggedRef = useRef(false);
 
-  const updateScrollState = () => {
+  const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
     const { scrollLeft, scrollWidth, clientWidth } = el;
@@ -31,7 +31,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
     const gap = 24;
     const index = Math.round(scrollLeft / (cardWidth + gap));
     setActiveIndex(Math.min(projects.length - 1, Math.max(0, index)));
-  };
+  }, [projects.length]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -43,7 +43,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       el.removeEventListener("scroll", updateScrollState);
       window.removeEventListener("resize", updateScrollState);
     };
-  }, [projects.length]);
+  }, [updateScrollState]);
 
   const scrollToCard = (index: number) => {
     const el = scrollRef.current;

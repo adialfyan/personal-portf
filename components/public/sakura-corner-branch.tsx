@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 export interface SakuraCornerBranchProps {
@@ -173,7 +173,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
   const blurRef = useRef<SVGFEGaussianBlurElement | null>(null);
   const colorMatrixRef = useRef<SVGFEColorMatrixElement | null>(null);
 
-  const [isHovered, setIsHovered] = useState(false);
   const isHoveredRef = useRef(false);
   const isMorphingRef = useRef(false);
 
@@ -288,11 +287,13 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       ease: "sine.inOut",
     });
 
+    const clusters = clusterTweens.current;
+    const petals = petalTweens.current;
     return () => {
       if (ambientTweenRef.current) ambientTweenRef.current.kill();
       if (morphProgressTween.current) morphProgressTween.current.kill();
-      clusterTweens.current.forEach((t) => t?.kill());
-      petalTweens.current.forEach((t) => t?.kill());
+      clusters.forEach((t) => t?.kill());
+      petals.forEach((t) => t?.kill());
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     };
   }, []);
@@ -381,7 +382,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
   const handleMouseEnter = () => {
     isHoveredRef.current = true;
     isMorphingRef.current = true;
-    setIsHovered(true);
     startLoop();
 
     if (ambientTweenRef.current) {
@@ -461,7 +461,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
   const handleMouseLeave = () => {
     isHoveredRef.current = false;
     isMorphingRef.current = true;
-    setIsHovered(false);
     startLoop();
 
     const branch = branchWrapperRef.current;

@@ -113,7 +113,7 @@ export function BouncyLine({
     const mappedSnapDist = (sensitivity / 100) * 145 + 5;
     const maxDisplacement = mappedSnapDist * 2.2;
 
-    const release = (initialVelocityY?: number) => {
+    const release = () => {
       isHoveringRef.current = false;
       const w = widthRef.current;
       if (w <= 0) return;
@@ -228,8 +228,9 @@ export function BouncyLine({
     window.addEventListener("blur", () => release());
     document.addEventListener("mouseleave", () => release());
 
+    const points = pointsRef.current;
     return () => {
-      gsap.killTweensOf(pointsRef.current);
+      gsap.killTweensOf(points);
       observer.disconnect();
       resizeObserver.disconnect();
       window.removeEventListener("mousemove", onMouseMove);

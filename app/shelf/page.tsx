@@ -38,8 +38,6 @@ export default async function ShelfPage() {
   const socialLinks = await getVisibleSocialLinks(profile?.id ?? null);
   const items = await getShelfItems();
 
-  const name = profile?.full_name || "Adi Alfian Hafis";
-
   const siteUrl = getSiteUrl();
 
   return (
@@ -54,9 +52,9 @@ export default async function ShelfPage() {
           url: `${siteUrl}/shelf`,
         }}
       />
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* ——— Masthead ——— */}
         <section className="border-b border-border bg-background pt-12 pb-16 md:pt-20 md:pb-24">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
@@ -89,7 +87,6 @@ export default async function ShelfPage() {
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

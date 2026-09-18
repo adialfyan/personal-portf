@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { BouncyLine } from "@/components/public/bouncy-line";
 
-interface SiteHeaderProps {
-  name?: string;
-}
-
-export function SiteHeader({ name }: SiteHeaderProps) {
+export function SiteHeader() {
   return (
     <header
       suppressHydrationWarning

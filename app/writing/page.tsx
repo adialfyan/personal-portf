@@ -43,13 +43,11 @@ export default async function WritingPage() {
   const socialLinks = await getVisibleSocialLinks(profile?.id ?? null);
   const writings = await getAllPublishedWritings();
 
-  const name = profile?.full_name || "Adi Alfian Hafis";
-
   return (
     <div className="flex min-h-full flex-1 flex-col" suppressHydrationWarning>
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* ——— Header ——— */}
         <section className="border-b border-border bg-background pt-12 pb-16 md:pt-20 md:pb-24">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
@@ -149,7 +147,6 @@ export default async function WritingPage() {
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

@@ -5,10 +5,9 @@ import type { SocialLink } from "@/lib/queries/types";
 interface SiteFooterProps {
   email: string | null;
   socialLinks: SocialLink[];
-  location: string | null;
 }
 
-export function SiteFooter({ email, socialLinks, location }: SiteFooterProps) {
+export function SiteFooter({ email, socialLinks }: SiteFooterProps) {
   return (
     <footer className="relative w-full">
       <BouncyLine />

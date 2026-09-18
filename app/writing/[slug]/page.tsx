@@ -131,9 +131,9 @@ export default async function WritingDetailPage({ params }: PageProps) {
         ]}
       />
       <ReadingProgress />
-      <SiteHeader name={name} />
+      <SiteHeader />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <article className="mx-auto max-w-[1440px] px-6 pt-12 pb-24 md:px-10 md:pt-20 md:pb-32">
           
           {/* Breadcrumb & Metadata Header */}
@@ -204,7 +204,6 @@ export default async function WritingDetailPage({ params }: PageProps) {
       <SiteFooter
         email={profile?.email ?? null}
         socialLinks={socialLinks}
-        location={profile?.location ?? null}
       />
     </div>
   );

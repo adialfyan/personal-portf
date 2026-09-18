@@ -46,7 +46,7 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="border border-border p-8">
+      <div role="status" aria-live="polite" className="border border-border p-8">
         <p
           className="text-3xl tracking-tight"
           style={{ fontFamily: "var(--font-display)" }}
@@ -64,7 +64,11 @@ export function ContactForm() {
     "w-full border border-border bg-transparent px-4 py-3 leading-relaxed outline-none placeholder:text-muted focus:border-accent";
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate={false}>
+    <form
+      onSubmit={onSubmit}
+      className="space-y-5"
+      aria-busy={status === "sending"}
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-xs font-medium tracking-[0.2em] uppercase text-muted">
