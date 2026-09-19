@@ -27,6 +27,27 @@ function serviceClient() {
   return createClient(url, secret);
 }
 
+async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  // Not configured → skip verification, keep honeypot + rate limit.
+  if (!secret) return true;
+  if (!token) return false;
+  try {
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret, response: token, remoteip: ip }),
+      },
+    );
+    const data = (await res.json()) as { success?: boolean };
+    return data.success === true;
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: Request) {
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -56,6 +77,13 @@ export async function POST(request: Request) {
   // Honeypot filled → act like it worked, drop silently.
   if (parsed.data.website) {
     return NextResponse.json({ ok: true });
+  }
+
+  if (!(await verifyTurnstile(parsed.data.turnstileToken, ip))) {
+    return NextResponse.json(
+      { error: "Please complete the verification and try again." },
+      { status: 403 },
+    );
   }
 
   const supabase = serviceClient();

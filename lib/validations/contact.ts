@@ -7,6 +7,8 @@ export const contactSchema = z.object({
   message: z.string().min(10).max(5000),
   // Honeypot — must stay empty.
   website: z.string().max(0).optional().default(""),
+  // Cloudflare Turnstile token — verified only when the server secret is set.
+  turnstileToken: z.string().max(2048).optional().default(""),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

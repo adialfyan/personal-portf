@@ -1,12 +1,67 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          sitekey: string;
+          callback?: (token: string) => void;
+          "expired-callback"?: () => void;
+          "error-callback"?: () => void;
+        },
+      ) => string;
+      reset?: (widgetId?: string) => void;
+    };
+    onTurnstileLoad?: () => void;
+  }
+}
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const widgetRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY || !widgetRef.current) return;
+    const container = widgetRef.current;
+
+    const renderWidget = () => {
+      if (!window.turnstile || !container.isConnected) return;
+      if (container.dataset.rendered === "1") return;
+      container.dataset.rendered = "1";
+      window.turnstile.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => setTurnstileToken(token),
+        "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken(""),
+      });
+    };
+
+    if (window.turnstile) {
+      renderWidget();
+      return;
+    }
+    window.onTurnstileLoad = renderWidget;
+    const script = document.createElement("script");
+    script.src =
+      "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    return () => {
+      delete window.onTurnstileLoad;
+      script.remove();
+    };
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -22,6 +77,7 @@ export function ContactForm() {
       message: (form.elements.namedItem("message") as HTMLTextAreaElement)
         .value,
       website: (form.elements.namedItem("website") as HTMLInputElement).value,
+      turnstileToken,
     };
 
     try {
@@ -133,6 +189,7 @@ export function ContactForm() {
         aria-hidden="true"
         className="hidden"
       />
+      {TURNSTILE_SITE_KEY && <div ref={widgetRef} className="pt-1" />}
       {status === "error" && error && (
         <p role="alert" className="text-sm text-accent">
           {error}

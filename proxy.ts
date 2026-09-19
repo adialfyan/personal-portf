@@ -6,12 +6,26 @@ import { NextResponse, type NextRequest } from "next/server";
  * Next 16 file convention: `proxy.ts` (formerly middleware).
  */
 export async function proxy(request: NextRequest) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const { pathname } = request.nextUrl;
+  const isLogin = pathname === "/admin/login";
+
+  // Auth backend not configured → public pages pass through,
+  // /admin routes fall back to the login page instead of crashing.
+  if (!supabaseUrl || !supabaseAnonKey) {
+    if (pathname.startsWith("/admin") && !isLogin) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/login";
+      url.searchParams.set("error", "not_configured");
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next({ request });
+  }
+
   let response = NextResponse.next({ request });
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll();
@@ -32,9 +46,6 @@ export async function proxy(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  const { pathname } = request.nextUrl;
-  const isLogin = pathname === "/admin/login";
 
   if (pathname.startsWith("/admin") && !isLogin && !user) {
     const url = request.nextUrl.clone();
