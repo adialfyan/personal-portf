@@ -264,13 +264,32 @@ html.lenis body {
     pointer-events: none;
   }
 
-  @media (max-width: 768px) {
+  /*
+    Portrait sprite (17 frames of 22 x 52 cells), sized by viewport width so the
+    dither cells stay square on any portrait screen. The landscape sprite had to
+    be either stretched or tiled here, and tiling repeated the noise into
+    vertical streaks. Extra rows are cropped on shorter screens.
+  */
+  @media (max-aspect-ratio: 1 / 1) {
+    ::view-transition-image-pair(root) {
+      mask-image: url("/segue-noise-portrait.svg"), url("/segue-noise-portrait.svg"), linear-gradient(#000 0 0);
+      mask-size: 1700vw calc(100vw * 52 / 22), 1700vw calc(100vw * 52 / 22), 100% 100%;
+      mask-position: calc(var(--segue-trail-frame) * 22 / 352 * 100%) 0, calc(var(--segue-lead-frame) * 22 / 352 * 100%) 0, 0 0;
+    }
+    ::view-transition-old(root) {
+      mask-image: url("/segue-noise-portrait.svg"), linear-gradient(#000 0 0);
+      mask-size: 1700vw calc(100vw * 52 / 22), 100% 100%;
+      mask-position: calc(var(--segue-trail-frame) * 22 / 352 * 100%) 0, 0 0;
+    }
+    ::view-transition-new(root) {
+      mask-image: url("/segue-noise-portrait.svg");
+      mask-size: 1700vw calc(100vw * 52 / 22);
+      mask-position: calc(var(--segue-page-frame) * 22 / 352 * 100%) 0;
+    }
     ::view-transition-image-pair(root),
     ::view-transition-old(root),
     ::view-transition-new(root) {
-      mask-size: 1700vw calc(100vw * 12 / 26);
-      mask-repeat: repeat-y;
-      will-change: mask-position, -webkit-mask-position;
+      will-change: mask-position;
     }
   }
 }
@@ -336,13 +355,21 @@ html.lenis body {
   animation: segue-trail-frame var(--segue-duration) var(--segue-ease) var(--segue-gap) forwards;
 }
 
-/* Mobile square-pixel ratio locks: keeps dither cells crisp and square without stretching on portrait viewports */
-@media (max-width: 768px) {
+/* Portrait viewports: swap to the portrait sprite so the curtain dissolves with square cells */
+@media (max-aspect-ratio: 1 / 1) {
   .segue-entrance-lead,
   .segue-entrance-trail {
-    -webkit-mask-size: 1700vw calc(100vw * 12 / 26), 100% 100%;
-    mask-size: 1700vw calc(100vw * 12 / 26), 100% 100%;
-    -webkit-mask-repeat: repeat-y;
-    mask-repeat: repeat-y;
+    -webkit-mask-image: url("/segue-noise-portrait.svg"), linear-gradient(#000 0 0);
+    mask-image: url("/segue-noise-portrait.svg"), linear-gradient(#000 0 0);
+    -webkit-mask-size: 1700vw calc(100vw * 52 / 22), 100% 100%;
+    mask-size: 1700vw calc(100vw * 52 / 22), 100% 100%;
+    -webkit-mask-position: calc(var(--segue-lead-frame) * 22 / 352 * 100%) 0, 0 0;
+    mask-position: calc(var(--segue-lead-frame) * 22 / 352 * 100%) 0, 0 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  .segue-entrance-trail {
+    -webkit-mask-position: calc(var(--segue-trail-frame) * 22 / 352 * 100%) 0, 0 0;
+    mask-position: calc(var(--segue-trail-frame) * 22 / 352 * 100%) 0, 0 0;
   }
 }

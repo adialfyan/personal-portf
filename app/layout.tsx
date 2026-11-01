@@ -54,6 +54,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-background text-foreground"
       >
+        {/* Portrait dither sprite for the mobile page transition; preloaded so the entrance curtain never paints unmasked */}
+        <link
+          rel="preload"
+          as="image"
+          href="/segue-noise-portrait.svg"
+          media="(max-aspect-ratio: 1 / 1)"
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-dark focus:px-4 focus:py-2 focus:text-xs focus:font-medium focus:tracking-[0.2em] focus:text-ivory focus:uppercase"
