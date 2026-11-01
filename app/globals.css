@@ -270,7 +270,15 @@ html.lenis body {
     ::view-transition-new(root) {
       mask-size: 1700vw calc(100vw * 12 / 26);
       mask-repeat: repeat-y;
+      will-change: mask-position, -webkit-mask-position;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --segue-duration: 0.38s;
+    --segue-gap: 0.02s;
   }
 }
 

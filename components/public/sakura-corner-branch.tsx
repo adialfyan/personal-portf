@@ -316,6 +316,10 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
   };
 
   const startLoop = () => {
+    // On mobile screens, omit continuous 60fps SVG filter attribute mutation to keep CPU at 0%
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      return;
+    }
     if (rafIdRef.current) return;
     const tick = () => {
       updateFilterDOM();

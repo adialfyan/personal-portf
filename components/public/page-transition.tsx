@@ -13,9 +13,11 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const [curtainActive, setCurtainActive] = useState(true);
 
   useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const duration = isMobile ? 420 : 700;
     const timer = setTimeout(() => {
       setCurtainActive(false);
-    }, 750);
+    }, duration);
     return () => clearTimeout(timer);
   }, []);
 
