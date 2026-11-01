@@ -1,8 +1,4 @@
-interface ContributionDay {
-  date: string;
-  count: number;
-  level: number;
-}
+import { ContributionMatrixClient, type ContributionDay } from "./contribution-matrix-client";
 
 interface CommitSummary {
   sha: string;
@@ -93,22 +89,6 @@ export async function GitHubActivityLedger() {
   // Pick last 38 weeks for optimal responsive horizontal spread without vertical bloat
   const displayWeeks = weeks.length > 38 ? weeks.slice(-38) : weeks;
 
-  // Strict Sumi-e Monochrome Ink scale for heatmap cells
-  const getCellShade = (level: number) => {
-    switch (level) {
-      case 1:
-        return "bg-neutral-200 border-neutral-300";
-      case 2:
-        return "bg-neutral-400 border-neutral-500";
-      case 3:
-        return "bg-neutral-700 border-neutral-800";
-      case 4:
-        return "bg-[#0a0a0a] border-black";
-      default:
-        return "bg-neutral-100/70 border-neutral-200/50";
-    }
-  };
-
   return (
     <section className="py-16 md:py-24 border-b border-border bg-background text-foreground">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
@@ -145,39 +125,11 @@ export async function GitHubActivityLedger() {
           </div>
         </div>
 
-        {/* Sumi-e Monochromatic Activity Matrix */}
-        <div className="border border-border bg-white p-5 sm:p-6 mb-10 overflow-x-auto">
-          <div className="min-w-[680px]">
-            <div className="flex items-center justify-between text-[10px] font-mono tracking-widest text-muted uppercase pb-3 border-b border-border/60 mb-3">
-              <span>CONTRIBUTION MATRIX &bull; 38-WEEK LOG</span>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[9px]">LESS</span>
-                <span className="inline-block w-2.5 h-2.5 bg-neutral-100/70 border border-neutral-200/50" />
-                <span className="inline-block w-2.5 h-2.5 bg-neutral-200 border border-neutral-300" />
-                <span className="inline-block w-2.5 h-2.5 bg-neutral-400 border border-neutral-500" />
-                <span className="inline-block w-2.5 h-2.5 bg-neutral-700 border border-neutral-800" />
-                <span className="inline-block w-2.5 h-2.5 bg-[#0a0a0a] border-black" />
-                <span className="text-[9px]">MORE</span>
-              </div>
-            </div>
-
-            <div className="flex gap-[3px] py-1">
-              {displayWeeks.map((week, wIdx) => (
-                <div key={wIdx} className="flex flex-col gap-[3px]">
-                  {week.map((day, dIdx) => (
-                    <div
-                      key={dIdx}
-                      title={`${day.date}: ${day.count} contributions`}
-                      className={`w-[11px] h-[11px] border transition-transform duration-150 hover:scale-125 ${getCellShade(
-                        day.level
-                      )}`}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Artsy Editorial Contribution Matrix */}
+        <ContributionMatrixClient
+          weeks={displayWeeks}
+          totalContributions={totalContributions}
+        />
 
         {/* Recent Public Engineering Commits */}
         <div>
