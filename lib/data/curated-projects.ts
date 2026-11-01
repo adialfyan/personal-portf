@@ -6,7 +6,7 @@ export const CURATED_PROJECTS: ProjectDetail[] = [
     title: "SIMMAN E-Budgeting",
     slug: "simman-e-budgeting",
     summary:
-      "Institution-grade financial ERP with real-time Host-to-Host banking clearing, automated reconciliation, and strict division RKA expenditure enforcement.",
+      "Institution-grade financial ERP with real-time Host-to-Host (H2H) Virtual Account banking clearing, automated student syahriyah reconciliation, and strict division RKA expenditure enforcement.",
     project_type: "Enterprise Financial ERP",
     role: "Lead Full-Stack Engineer & ERP Architect",
     client: "MAN 1 Kota Semarang",
@@ -19,16 +19,16 @@ export const CURATED_PROJECTS: ProjectDetail[] = [
     live_url: null,
     repository_url: "https://github.com/adialfyan/keuanganman",
     overview:
-      "SIMMAN E-Budgeting is a centralized financial operating system engineered for MAN 1 Kota Semarang. It unifies high-throughput student education fee transactions, automated Host-to-Host (H2H) banking reconciliation, and rigorous division-level budget allocations under a single real-time general ledger.",
+      "SIMMAN E-Budgeting is a centralized financial operating system engineered for MAN 1 Kota Semarang. It unifies high-throughput student education fee transactions, automated Host-to-Host (H2H) banking Virtual Account reconciliation, and rigorous division-level budget allocations under a single real-time general ledger.",
     problem:
       "Managing institutional cash flow across thousands of students carries severe administrative overhead. The legacy workflow relied on manual bank statement verifications for education fees, paper-based budget requests by Vice Principals, and error-prone end-of-month reconciliations. The institution required an absolute, automated ledger system to prevent financial anomalies and eliminate human error.",
     approach:
-      "We architected an enterprise-grade financial core handling everything from department-level RKA (Work Plan & Budget) ceiling locks to real-time clearance of student education fees via direct Host-to-Host bank webhooks with strict transactional atomicity.",
+      "We architected an enterprise-grade financial core handling everything from department-level RKA (Work Plan & Budget) ceiling locks to real-time clearance of student syahriyah fees via direct Host-to-Host (H2H) bank Virtual Account webhooks with strict transactional atomicity.",
     technical_decisions:
       `01 — Key Engineering Highlights:
 
-01. Host-to-Host (H2H) Banking Integration
-Direct webhook synchronization communicating with core banking partner systems. Each student is assigned a static Virtual Account. Transactions clear invoices and update the immutable general ledger in milliseconds without human intervention.
+01. Host-to-Host (H2H) Virtual Account Banking Integration
+Direct webhook synchronization communicating with core banking partner systems. Each student is assigned a static Virtual Account (VA). When parents pay via ATM, Mobile Banking, or e-Wallet, transactions clear invoices instantly and update the immutable general ledger in milliseconds without human intervention.
 
 02. Strict RKA Budgeting Engine
 Total digitization of the institution's Work Plan and Budget. The system hard-locks operational expenditures for each Vice Principal division, programmatically rejecting disbursements that exceed approved ceilings.
@@ -64,16 +64,23 @@ Code pushes pass through automated linting, test suites, and Dockerized build ru
       {
         id: "media-simman-01",
         project_id: "proj-01-simman",
-        image_path: "/projects/simman.jpg",
-        caption: "Centralized financial operations dashboard with real-time clearance streams and budget telemetry.",
+        image_path: "/projects/simman-landing.jpg",
+        caption: "Official institutional portal for student syahriyah and tuition fee verification.",
         sort_order: 1,
       },
       {
         id: "media-simman-02",
         project_id: "proj-01-simman",
-        image_path: "/projects/simman-landing.jpg",
-        caption: "Official institutional portal for student syahriyah and tuition fee verification.",
+        image_path: "/projects/simman.jpg",
+        caption: "Centralized financial operations dashboard with real-time clearance streams, student billing ledger, and budget telemetry.",
         sort_order: 2,
+      },
+      {
+        id: "media-simman-03",
+        project_id: "proj-01-simman",
+        image_path: "/projects/simman-va-portal.jpg",
+        caption: "Integrated student syahriyah portal with direct Host-to-Host (H2H) Virtual Account clearing.",
+        sort_order: 3,
       },
     ],
   },
