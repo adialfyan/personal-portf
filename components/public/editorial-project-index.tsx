@@ -24,6 +24,7 @@ const BESPOKE_SECONDARY_TEXTS: Record<string, string> = {
 
 export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [mobileExpandedIndex, setMobileExpandedIndex] = useState<number | null>(null);
 
   // Single shared lightweight SVG filter refs for optimal GPU performance
   const displacementRef = useRef<SVGFEDisplacementMapElement | null>(null);
@@ -338,78 +339,140 @@ export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) 
             project.year?.replace(/[^0-9]/g, "").slice(0, 4) ||
             (project.published_at ? project.published_at.slice(0, 4) : "2026");
 
+          const isMobileExpanded = mobileExpandedIndex === idx;
+
+          const handleRowClick = (e: React.MouseEvent) => {
+            if (typeof window !== "undefined" && window.innerWidth < 768) {
+              e.preventDefault();
+              setMobileExpandedIndex((prev) => (prev === idx ? null : idx));
+            }
+          };
+
           return (
-            <Link
-              key={project.id || project.slug}
-              href={`/work/${project.slug}`}
-              onMouseEnter={() => handleRowEnter(idx)}
-              onMouseLeave={() => handleRowLeave(idx)}
-              onFocus={() => handleRowEnter(idx)}
-              onBlur={() => handleRowLeave(idx)}
-              className="group relative flex w-full items-center py-4 sm:py-5 md:py-6 transition-opacity duration-300"
-              style={{
-                opacity: isDimmed ? 0.32 : 1,
-              }}
-            >
-              {/* Left Column: Scope / Category */}
-              <div className="w-24 sm:w-36 md:w-48 shrink-0 text-left">
-                <span className="block text-[11px] sm:text-xs font-medium tracking-[0.2em] uppercase transition-colors duration-200 text-muted group-hover:text-foreground">
-                  {category}
-                </span>
-              </div>
+            <div key={project.id || project.slug} className="flex flex-col w-full">
+              <Link
+                href={`/work/${project.slug}`}
+                onClick={handleRowClick}
+                onMouseEnter={() => handleRowEnter(idx)}
+                onMouseLeave={() => handleRowLeave(idx)}
+                onFocus={() => handleRowEnter(idx)}
+                onBlur={() => handleRowLeave(idx)}
+                className="group relative flex w-full items-center py-4 sm:py-5 md:py-6 transition-opacity duration-300"
+                style={{
+                  opacity: isDimmed ? 0.32 : 1,
+                }}
+              >
+                {/* Desktop 5-column layout with liquid morph */}
+                <div className="hidden md:flex w-full items-center">
+                  {/* Left Column: Scope / Category */}
+                  <div className="w-48 shrink-0 text-left">
+                    <span className="block text-xs font-medium tracking-[0.2em] uppercase transition-colors duration-200 text-muted group-hover:text-foreground">
+                      {category}
+                    </span>
+                  </div>
 
-              {/* Left Solid Hairline Rule */}
-              <div className="flex-1 mx-3 sm:mx-6 md:mx-8 border-b border-solid transition-colors duration-200 border-border group-hover:border-foreground/50" />
+                  {/* Left Solid Hairline Rule */}
+                  <div className="flex-1 mx-8 border-b border-solid transition-colors duration-200 border-border group-hover:border-foreground/50" />
 
-              {/* Center Column: Liquid Gooey Morphing Title in Newsreader Serif */}
-              <div className="shrink-0 px-2 sm:px-4 text-center">
-                <span
-                  ref={(el) => {
-                    containerRefs.current[idx] = el;
-                  }}
-                  className="relative inline-grid place-items-center"
-                  style={{ willChange: "transform" }}
-                >
-                  {/* Layer 1: Active visible text (Only text in initial SSR/rest) */}
+                  {/* Center Column: Liquid Gooey Morphing Title in Newsreader Serif */}
+                  <div className="shrink-0 px-4 text-center">
+                    <span
+                      ref={(el) => {
+                        containerRefs.current[idx] = el;
+                      }}
+                      className="relative inline-grid place-items-center"
+                      style={{ willChange: "transform" }}
+                    >
+                      {/* Layer 1: Active visible text */}
+                      <span
+                        ref={(el) => {
+                          text1Refs.current[idx] = el;
+                        }}
+                        className="whitespace-nowrap text-center text-5xl lg:text-6xl font-normal tracking-tight text-foreground transition-transform duration-300 group-hover:scale-[1.01]"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          gridArea: "1 / 1",
+                        }}
+                      >
+                        {project.title}
+                      </span>
+
+                      {/* Layer 2: Incoming morph text */}
+                      <span
+                        ref={(el) => {
+                          text2Refs.current[idx] = el;
+                        }}
+                        aria-hidden="true"
+                        className="whitespace-nowrap text-center italic text-5xl lg:text-6xl font-normal tracking-tight text-foreground pointer-events-none"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          gridArea: "1 / 1",
+                          opacity: 0,
+                        }}
+                      />
+                    </span>
+                  </div>
+
+                  {/* Right Solid Hairline Rule */}
+                  <div className="flex-1 mx-8 border-b border-solid transition-colors duration-200 border-border group-hover:border-foreground/50" />
+
+                  {/* Right Column: Year */}
+                  <div className="w-28 shrink-0 text-right">
+                    <span className="block text-xs font-medium tracking-[0.2em] uppercase transition-colors duration-200 text-muted group-hover:text-foreground">
+                      {year}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Mobile clean editorial layout (Tap to expand) */}
+                <div className="flex md:hidden w-full items-baseline justify-between gap-4 py-1 border-b border-border/40">
                   <span
-                    ref={(el) => {
-                      text1Refs.current[idx] = el;
-                    }}
-                    className="whitespace-nowrap text-center text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground transition-transform duration-300 group-hover:scale-[1.01]"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      gridArea: "1 / 1",
-                    }}
+                    className="text-xl sm:text-2xl font-normal tracking-tight text-foreground"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {project.title}
                   </span>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-muted">
+                      {year}
+                    </span>
+                    <span className="text-xs text-muted font-mono">
+                      {isMobileExpanded ? "−" : "+"}
+                    </span>
+                  </div>
+                </div>
+              </Link>
 
-                  {/* Layer 2: Incoming morph text (Empty string at rest, zero text collision) */}
-                  <span
-                    ref={(el) => {
-                      text2Refs.current[idx] = el;
-                    }}
-                    aria-hidden="true"
-                    className="whitespace-nowrap text-center italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground pointer-events-none"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      gridArea: "1 / 1",
-                      opacity: 0,
-                    }}
-                  />
-                </span>
-              </div>
-
-              {/* Right Solid Hairline Rule */}
-              <div className="flex-1 mx-3 sm:mx-6 md:mx-8 border-b border-solid transition-colors duration-200 border-border group-hover:border-foreground/50" />
-
-              {/* Right Column: Year */}
-              <div className="w-16 sm:w-20 md:w-28 shrink-0 text-right">
-                <span className="block text-[11px] sm:text-xs font-medium tracking-[0.2em] uppercase transition-colors duration-200 text-muted group-hover:text-foreground">
-                  {year}
-                </span>
-              </div>
-            </Link>
+              {/* Mobile Tap-to-Reveal Accordion Panel */}
+              {isMobileExpanded && (
+                <div className="md:hidden pb-6 pt-1 animate-in fade-in duration-200">
+                  <div className="border border-border bg-background p-4">
+                    {project.cover_image_path && (
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface mb-3 border border-border/50">
+                        <Image
+                          src={project.cover_image_path}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 400px"
+                          className="object-cover filter grayscale contrast-125"
+                        />
+                      </div>
+                    )}
+                    <div className="flex items-center justify-between gap-3 pt-1">
+                      <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted">
+                        {category} &bull; {year}
+                      </span>
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="text-xs font-medium tracking-[0.2em] uppercase text-foreground hover:text-muted transition-colors underline underline-offset-4"
+                      >
+                        View Project &rarr;
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           );
         })}
       </div>

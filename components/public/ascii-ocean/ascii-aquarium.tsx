@@ -168,7 +168,7 @@ export function AsciiAquarium() {
         {/* Organic Oval Zen Pond with Smooth Radial Gradient Blend (Zero harsh box borders) */}
         <div className="relative mx-auto w-full max-w-5xl flex items-center justify-center my-4">
           <div
-            className="relative w-full aspect-[2/1] min-h-[380px] max-h-[500px] overflow-hidden transition-all duration-500"
+            className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] min-h-[260px] sm:min-h-[340px] md:min-h-[380px] max-h-[500px] overflow-hidden transition-all duration-500"
             style={{
               maskImage: POND_MASKS[theme],
               WebkitMaskImage: POND_MASKS[theme],

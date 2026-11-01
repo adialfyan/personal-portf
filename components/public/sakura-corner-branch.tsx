@@ -612,7 +612,9 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       ref={containerRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`absolute top-0 right-0 z-20 pointer-events-auto cursor-pointer select-none overflow-visible w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[490px] lg:h-[490px] ${className}`}
+      className={`absolute top-0 right-0 z-20 select-none overflow-visible w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[490px] lg:h-[490px] ${
+        className.includes("pointer-events-") ? "" : "pointer-events-auto cursor-pointer"
+      } ${className}`}
     >
       {/* Liquid Gooey Morph Filter for Flowers (MorphText Architecture) */}
       <svg

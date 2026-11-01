@@ -270,11 +270,21 @@ html.lenis body {
   Plays the identical 2-tone Sprite Noise dissolve (lead + trail curtain) on first load / refresh,
   matching the site's cross-page transition.
 */
+@keyframes segue-curtain-fade {
+  0%, 82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 .segue-entrance-curtain {
   position: fixed;
   inset: 0;
   z-index: 99999;
   pointer-events: none;
+  animation: segue-curtain-fade var(--segue-duration) ease-out forwards;
 }
 .segue-entrance-lead {
   position: absolute;
@@ -282,10 +292,10 @@ html.lenis body {
   background: var(--segue-lead-color);
   -webkit-mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
   mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
-  -webkit-mask-size: 1841.667% 100%, 100% 100%;
-  mask-size: 1841.667% 100%, 100% 100%;
-  -webkit-mask-position: calc((var(--segue-lead-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
-  mask-position: calc((var(--segue-lead-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
+  -webkit-mask-size: 1700% 100%, 100% 100%;
+  mask-size: 1700% 100%, 100% 100%;
+  -webkit-mask-position: calc(var(--segue-lead-frame) * 26 / 416 * 100%) 0, 0 0;
+  mask-position: calc(var(--segue-lead-frame) * 26 / 416 * 100%) 0, 0 0;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-composite: destination-out;
@@ -298,10 +308,10 @@ html.lenis body {
   background: var(--segue-trail-color);
   -webkit-mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
   mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
-  -webkit-mask-size: 1841.667% 100%, 100% 100%;
-  mask-size: 1841.667% 100%, 100% 100%;
-  -webkit-mask-position: calc((var(--segue-trail-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
-  mask-position: calc((var(--segue-trail-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
+  -webkit-mask-size: 1700% 100%, 100% 100%;
+  mask-size: 1700% 100%, 100% 100%;
+  -webkit-mask-position: calc(var(--segue-trail-frame) * 26 / 416 * 100%) 0, 0 0;
+  mask-position: calc(var(--segue-trail-frame) * 26 / 416 * 100%) 0, 0 0;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-composite: destination-out;

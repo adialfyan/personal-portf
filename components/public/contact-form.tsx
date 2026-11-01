@@ -117,7 +117,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full border border-border bg-transparent px-4 py-3 leading-relaxed outline-none placeholder:text-muted focus:border-accent";
+    "w-full border border-border bg-transparent px-4 py-3 text-base leading-relaxed outline-none placeholder:text-muted focus:border-accent";
 
   return (
     <form

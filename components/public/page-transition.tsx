@@ -10,16 +10,9 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
-  const [curtainActive, setCurtainActive] = useState(false);
+  const [curtainActive, setCurtainActive] = useState(true);
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-    setCurtainActive(true);
     const timer = setTimeout(() => {
       setCurtainActive(false);
     }, 750);

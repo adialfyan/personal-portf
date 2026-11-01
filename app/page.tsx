@@ -112,8 +112,8 @@ export default async function Home() {
       <main id="main-content" className="flex-1">
         {/* ——— Hero (Clean Editorial Statement — No Redundant TOC) ——— */}
         <section className="relative bg-background pt-14 pb-20 md:pt-20 md:pb-28 overflow-hidden">
-          {/* Japanese Sumi-e Sakura Branch (Grows and Blooms from Top-Right on Hover) */}
-          <SakuraCornerBranch />
+          {/* Japanese Sumi-e Sakura Branch (Hidden on mobile, blooms in desktop hero & in mobile drawer) */}
+          <SakuraCornerBranch className="hidden md:block" />
 
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 relative z-10">
             {/* Primary Headline (Newsreader Serif) */}

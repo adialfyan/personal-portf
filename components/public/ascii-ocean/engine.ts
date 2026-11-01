@@ -34,6 +34,8 @@ export class OceanEngine {
     this.reducedMotion.addEventListener("change", this.onMotionPreference);
     canvas.addEventListener("pointermove", this.onPointerMove, { passive: true });
     canvas.addEventListener("pointerdown", this.onPointerDown, { passive: true });
+    canvas.addEventListener("pointerup", this.onPointerLeave);
+    canvas.addEventListener("pointercancel", this.onPointerLeave);
     canvas.addEventListener("pointerleave", this.onPointerLeave);
 
     this.resize();
@@ -82,6 +84,8 @@ export class OceanEngine {
     this.reducedMotion.removeEventListener("change", this.onMotionPreference);
     this.canvas.removeEventListener("pointermove", this.onPointerMove);
     this.canvas.removeEventListener("pointerdown", this.onPointerDown);
+    this.canvas.removeEventListener("pointerup", this.onPointerLeave);
+    this.canvas.removeEventListener("pointercancel", this.onPointerLeave);
     this.canvas.removeEventListener("pointerleave", this.onPointerLeave);
   }
 
@@ -146,7 +150,7 @@ export class OceanEngine {
     const p = this.world.pointer;
     p.x = x;
     p.y = y;
-    p.active = inside && e.pointerType !== "touch";
+    p.active = inside;
   };
 
   private onPointerDown = (e: PointerEvent) => {
