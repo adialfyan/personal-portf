@@ -51,7 +51,7 @@ const projectCardSelect = `
   )
 `;
 
-import { DEFAULT_PROFILE } from "@/lib/data/profile-data";
+import { DEFAULT_PROFILE, DEFAULT_SOCIAL_LINKS } from "@/lib/data/profile-data";
 
 export async function getSiteProfile(): Promise<Profile | null> {
   const supabase = getDb();
@@ -76,20 +76,23 @@ export async function getSiteProfile(): Promise<Profile | null> {
 export async function getVisibleSocialLinks(
   profileId: string | null,
 ): Promise<SocialLink[]> {
-  if (!profileId || profileId === "00000000-0000-0000-0000-000000000000") return [];
   const supabase = getDb();
-  if (!supabase) return [];
-  const { data, error } = await supabase
-    .from("social_links")
-    .select("*")
-    .eq("profile_id", profileId)
-    .eq("is_visible", true)
-    .order("sort_order", { ascending: true });
-  if (error) {
-    console.error("getVisibleSocialLinks:", error.message);
-    return [];
+  if (supabase && profileId && profileId !== "00000000-0000-0000-0000-000000000000") {
+    try {
+      const { data, error } = await supabase
+        .from("social_links")
+        .select("*")
+        .eq("profile_id", profileId)
+        .eq("is_visible", true)
+        .order("sort_order", { ascending: true });
+      if (!error && data && data.length > 0) {
+        return data as SocialLink[];
+      }
+    } catch (e) {
+      console.warn("getVisibleSocialLinks fallback:", e);
+    }
   }
-  return (data as SocialLink[]) ?? [];
+  return DEFAULT_SOCIAL_LINKS;
 }
 
 import { CURATED_PROJECTS } from "@/lib/data/curated-projects";
