@@ -110,18 +110,80 @@ export class World {
   ) {}
 
   setVariety(kind: KoiKind | "all") {
-    if (kind === "all") {
-      this.koiSpecs = DEFAULT_KOIS;
-    } else {
-      this.koiSpecs = [
-        { kind, size: 1.05 },
-        { kind, size: 0.96 },
-        { kind, size: 0.88 },
-        { kind, size: 0.82 },
-        { kind, size: 0.76 },
-        { kind, size: 0.7 },
-      ];
+    const targetSpecs: KoiSpec[] =
+      kind === "all"
+        ? DEFAULT_KOIS
+        : [
+            { kind, size: 1.05 },
+            { kind, size: 0.96 },
+            { kind, size: 0.88 },
+            { kind, size: 0.82 },
+            { kind, size: 0.76 },
+            { kind, size: 0.7 },
+          ];
+
+    this.koiSpecs = targetSpecs;
+
+    // Smooth inline transition: keep existing koi positions, headings, and boids intact!
+    // No hard seed(), no fish respawn jump, no canvas flicker.
+    if (this.koi.length > 0 && this.width > 0 && this.height > 0) {
+      const minSide = Math.min(this.width, this.height);
+      const baseLength = this.width < 500 ? clamp(minSide * 0.28, 65, 115) : clamp(minSide * 0.34, 130, 220);
+
+      // Morph existing koi species and target lengths fluidly
+      const count = Math.min(this.koi.length, targetSpecs.length);
+      for (let i = 0; i < count; i++) {
+        const spec = targetSpecs[i];
+        this.koi[i].kind = spec.kind;
+        this.koi[i].length = baseLength * spec.size;
+        this.koi[i].depth = spec.size;
+      }
+
+      // If target has fewer koi, trim gracefully
+      if (this.koi.length > targetSpecs.length) {
+        this.koi.length = targetSpecs.length;
+      }
+
+      // If target has more koi, spawn additions without touching existing koi
+      while (this.koi.length < targetSpecs.length) {
+        const i = this.koi.length;
+        const spec = targetSpecs[i];
+        const length = baseLength * spec.size;
+        const ring = (i * 0.618) % 1;
+        const orbitRadius = this.ringRadius(ring, length);
+        const a = (i / targetSpecs.length) * TAU + rand(-0.2, 0.2);
+        const orbitDir: 1 | -1 = 1;
+        const x = this.width / 2 + Math.cos(a) * orbitRadius * (this.width / minSide) * 0.9;
+        const y = this.height / 2 + Math.sin(a) * orbitRadius;
+        const heading = a + (orbitDir * Math.PI) / 2;
+        const nodes = new Float32Array(KOI_NODES * 2);
+        const seg = length / (KOI_NODES - 1);
+        for (let n = 0; n < KOI_NODES; n++) {
+          nodes[n * 2] = x - Math.cos(heading) * seg * n;
+          nodes[n * 2 + 1] = y - Math.sin(heading) * seg * n;
+        }
+        this.koi.push({
+          id: i + 1,
+          kind: spec.kind,
+          length,
+          nodes,
+          heading,
+          speed: 30,
+          phase: rand(0, TAU),
+          turn: 0,
+          hunger: rand(0.25, 0.75),
+          wander: 0,
+          orbitDir,
+          orbitRadius,
+          ring,
+          target: null,
+          retargetAt: 0,
+          depth: spec.size,
+        });
+      }
+      return;
     }
+
     this.seed();
   }
 

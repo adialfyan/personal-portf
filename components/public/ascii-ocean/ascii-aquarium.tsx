@@ -117,10 +117,10 @@ export function AsciiAquarium() {
                   key={opt.id}
                   type="button"
                   onClick={() => handleSelectVariety(opt.id)}
-                  className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-all cursor-pointer rounded-sm ${
+                  className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ease-out cursor-pointer rounded-sm ${
                     isSelected
-                      ? "bg-foreground text-background shadow-xs"
-                      : "border border-border bg-background text-muted hover:text-foreground hover:border-foreground/40"
+                      ? "bg-foreground text-background shadow-xs scale-[1.02]"
+                      : "border border-border bg-background text-muted hover:text-foreground hover:border-foreground/40 hover:bg-surface/50"
                   }`}
                 >
                   {opt.label}
@@ -158,7 +158,7 @@ export function AsciiAquarium() {
         </div>
 
         {/* Quiet Editorial Caption (No telemetry clutter) */}
-        <div className="mt-4 text-center text-xs font-medium tracking-[0.2em] uppercase text-muted">
+        <div className="mt-4 text-center text-xs font-medium tracking-[0.2em] uppercase text-muted transition-opacity duration-300">
           <span className="text-foreground">{currentOption?.label}</span>
           <span className="mx-2.5">&bull;</span>
           <span>{currentOption?.desc}</span>
