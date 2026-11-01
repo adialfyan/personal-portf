@@ -260,7 +260,8 @@ export class AsciiRenderer {
     this.width = width;
     this.height = height;
     this.dpr = dpr;
-    this.cw = clamp(Math.round(width / 136), 8, 12);
+    // On mobile screens, scale cell width down so the pond retains a fine, detailed ASCII grid
+    this.cw = width < 500 ? clamp(Math.round(width / 68), 5, 8) : clamp(Math.round(width / 136), 8, 12);
     this.ch = Math.round(this.cw * 1.45);
     this.cols = Math.ceil(width / this.cw);
     this.rows = Math.ceil(height / this.ch);

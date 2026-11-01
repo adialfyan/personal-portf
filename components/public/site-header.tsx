@@ -38,6 +38,18 @@ export function SiteHeader() {
 
   const closeMenu = () => setIsOpen(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    closeMenu();
+    if (href.startsWith("/#") && typeof window !== "undefined" && window.location.pathname === "/") {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <>
       <header
@@ -72,14 +84,14 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with smooth state toggle */}
           <button
             type="button"
             onClick={() => setIsOpen((prev) => !prev)}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation-drawer"
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="md:hidden text-xs font-medium tracking-[0.2em] uppercase text-foreground hover:text-muted transition-colors py-1.5 px-3 border border-border bg-background"
+            className="md:hidden text-xs font-medium tracking-[0.2em] uppercase text-foreground hover:text-muted transition-colors py-1.5 px-3 border border-border bg-background cursor-pointer"
           >
             {isOpen ? "Close" : "Menu"}
           </button>
@@ -87,71 +99,73 @@ export function SiteHeader() {
         <BouncyLine className="absolute bottom-0 left-0 right-0" />
       </header>
 
-      {/* Mobile Editorial Navigation Drawer with Living Sakura Bloom */}
-      {isOpen && (
-        <div
-          id="mobile-navigation-drawer"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Site navigation"
-          className="fixed inset-0 z-50 flex flex-col justify-between bg-background p-6 sm:p-10 md:hidden overflow-hidden"
-        >
-          {/* Top-Right Sakura Branch Blooming Inside Mobile Drawer */}
-          <div className="absolute top-0 right-0 pointer-events-none overflow-visible z-0">
-            <SakuraCornerBranch className="pointer-events-none w-[180px] h-[180px] sm:w-[240px] sm:h-[240px]" />
-          </div>
-
-          {/* Drawer Header Bar */}
-          <div className="relative z-30 flex items-center justify-between">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="text-xs font-medium tracking-[0.2em] uppercase text-foreground"
-            >
-              Adi Alfian Hafis
-            </Link>
-            <button
-              type="button"
-              onClick={closeMenu}
-              aria-label="Close menu"
-              className="text-xs font-medium tracking-[0.2em] uppercase text-foreground py-1.5 px-3 border border-border bg-background hover:bg-surface transition-colors cursor-pointer"
-            >
-              Close
-            </button>
-          </div>
-
-          {/* Main Navigation Links */}
-          <nav
-            aria-label="Mobile Navigation"
-            className="relative z-10 my-auto py-8 flex flex-col gap-5 sm:gap-6"
-          >
-            {NAV_LINKS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeMenu}
-                className="group flex items-baseline justify-between border-b border-border/50 pb-3"
-              >
-                <span
-                  className="text-3xl sm:text-4xl font-normal tracking-tight text-foreground group-hover:text-muted transition-colors"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {item.label}
-                </span>
-                <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-muted group-hover:text-foreground transition-colors">
-                  {item.number}
-                </span>
-              </Link>
-            ))}
-          </nav>
-
-          {/* Drawer Footer Metadata */}
-          <div className="relative z-10 pt-4 border-t border-border flex items-center justify-between text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
-            <span>Full-Stack Developer</span>
-            <span>Portfolio</span>
-          </div>
+      {/* Mobile Editorial Navigation Drawer with Smooth Opening Transition & Sakura Bloom */}
+      <div
+        id="mobile-navigation-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+        className={`fixed inset-0 z-50 flex flex-col justify-between bg-background p-6 sm:p-10 md:hidden overflow-hidden transition-all duration-300 ease-out ${
+          isOpen
+            ? "opacity-100 pointer-events-auto translate-y-0"
+            : "opacity-0 pointer-events-none -translate-y-4"
+        }`}
+      >
+        {/* Top-Right Sakura Branch Blooming Inside Mobile Drawer */}
+        <div className="absolute top-0 right-0 pointer-events-none overflow-visible z-0">
+          <SakuraCornerBranch className="pointer-events-none w-[180px] h-[180px] sm:w-[240px] sm:h-[240px]" />
         </div>
-      )}
+
+        {/* Drawer Header Bar */}
+        <div className="relative z-30 flex items-center justify-between">
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className="text-xs font-medium tracking-[0.2em] uppercase text-foreground"
+          >
+            Adi Alfian Hafis
+          </Link>
+          <button
+            type="button"
+            onClick={closeMenu}
+            aria-label="Close menu"
+            className="text-xs font-medium tracking-[0.2em] uppercase text-foreground py-1.5 px-3 border border-border bg-background hover:bg-surface transition-colors cursor-pointer"
+          >
+            Close
+          </button>
+        </div>
+
+        {/* Main Navigation Links with Sequential Staggered Styling */}
+        <nav
+          aria-label="Mobile Navigation"
+          className="relative z-10 my-auto py-8 flex flex-col gap-5 sm:gap-6"
+        >
+          {NAV_LINKS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="group flex items-baseline justify-between border-b border-border/50 pb-3"
+            >
+              <span
+                className="text-3xl sm:text-4xl font-normal tracking-tight text-foreground group-hover:text-muted transition-colors"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {item.label}
+              </span>
+              <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-muted group-hover:text-foreground transition-colors">
+                {item.number}
+              </span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Drawer Footer Metadata */}
+        <div className="relative z-10 pt-4 pb-6 sm:pb-4 border-t border-border flex items-center justify-between text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
+          <span>Full-Stack Developer</span>
+          <span>Portfolio</span>
+        </div>
+      </div>
     </>
   );
 }

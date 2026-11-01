@@ -143,19 +143,27 @@ export class World {
   generateLilyPads() {
     const { width: W, height: H } = this;
     if (W === 0 || H === 0) return;
-    this.lilyPads = [
-      { x: W * 0.18, y: H * 0.25, radius: Math.min(W, H) * 0.08, notchAngle: 0.8, hasFlower: true },
-      { x: W * 0.82, y: H * 0.28, radius: Math.min(W, H) * 0.09, notchAngle: 2.4, hasFlower: true },
-      { x: W * 0.35, y: H * 0.72, radius: Math.min(W, H) * 0.085, notchAngle: -1.2, hasFlower: false },
-      { x: W * 0.75, y: H * 0.68, radius: Math.min(W, H) * 0.075, notchAngle: 3.1, hasFlower: true },
-    ];
+    const isMobile = W < 500;
+    const padScale = isMobile ? 0.065 : 0.085;
+    this.lilyPads = isMobile
+      ? [
+          { x: W * 0.22, y: H * 0.26, radius: Math.min(W, H) * padScale, notchAngle: 0.8, hasFlower: true },
+          { x: W * 0.78, y: H * 0.74, radius: Math.min(W, H) * padScale * 1.1, notchAngle: 2.4, hasFlower: true },
+        ]
+      : [
+          { x: W * 0.18, y: H * 0.25, radius: Math.min(W, H) * 0.08, notchAngle: 0.8, hasFlower: true },
+          { x: W * 0.82, y: H * 0.28, radius: Math.min(W, H) * 0.09, notchAngle: 2.4, hasFlower: true },
+          { x: W * 0.35, y: H * 0.72, radius: Math.min(W, H) * 0.085, notchAngle: -1.2, hasFlower: false },
+          { x: W * 0.75, y: H * 0.68, radius: Math.min(W, H) * 0.075, notchAngle: 3.1, hasFlower: true },
+        ];
   }
 
   seed() {
     const { width: W, height: H } = this;
     if (W === 0 || H === 0) return;
     const minSide = Math.min(W, H);
-    const baseLength = clamp(minSide * 0.34, 130, 220);
+    // Graceful proportional scaling on mobile screens
+    const baseLength = W < 500 ? clamp(minSide * 0.28, 65, 115) : clamp(minSide * 0.34, 130, 220);
     const koiCount = this.koiSpecs.length;
 
     this.koi = [];

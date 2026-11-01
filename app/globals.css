@@ -263,6 +263,15 @@ html.lenis body {
   ::view-transition {
     pointer-events: none;
   }
+
+  @media (max-width: 768px) {
+    ::view-transition-image-pair(root),
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      mask-size: 1700vw calc(100vw * 12 / 26);
+      mask-repeat: repeat-y;
+    }
+  }
 }
 
 /*
@@ -317,4 +326,15 @@ html.lenis body {
   -webkit-mask-composite: destination-out;
   mask-composite: exclude, add;
   animation: segue-trail-frame var(--segue-duration) var(--segue-ease) var(--segue-gap) forwards;
+}
+
+/* Mobile square-pixel ratio locks: keeps dither cells crisp and square without stretching on portrait viewports */
+@media (max-width: 768px) {
+  .segue-entrance-lead,
+  .segue-entrance-trail {
+    -webkit-mask-size: 1700vw calc(100vw * 12 / 26), 100% 100%;
+    mask-size: 1700vw calc(100vw * 12 / 26), 100% 100%;
+    -webkit-mask-repeat: repeat-y;
+    mask-repeat: repeat-y;
+  }
 }
