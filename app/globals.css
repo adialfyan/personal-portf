@@ -264,26 +264,3 @@ html.lenis body {
     pointer-events: none;
   }
 }
-
-/*
-  Sakura entrance: reuses the segue sprite, stepped frame 0 -> 16 so the
-  branch dissolves in as chunky printed pixels before the flowers bloom.
-  The class is removed after the animation so petals can fall outside the box.
-*/
-@property --sakura-frame {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 0;
-}
-@keyframes sakura-dissolve-in {
-  to { --sakura-frame: 16; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .sakura-dissolve {
-    mask-image: var(--segue-sprite);
-    mask-size: 1841.667% 100%;
-    mask-position: calc((var(--sakura-frame) * 26 + 1) / 418 * 100%) 0;
-    mask-repeat: no-repeat;
-    animation: sakura-dissolve-in 0.9s var(--segue-ease) both;
-  }
-}
