@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { OceanEngine } from "./engine";
 import type { KoiKind } from "./world";
-import type { Theme } from "./renderer";
 
 const VARIETY_OPTIONS: { id: KoiKind | "all"; label: string; desc: string }[] = [
   { id: "all", label: "Mixed Pond", desc: "Nishikigoi School • Kohaku, Tancho & Butterfly" },
@@ -14,24 +13,18 @@ const VARIETY_OPTIONS: { id: KoiKind | "all"; label: string; desc: string }[] = 
   { id: "benigoi", label: "Benigoi", desc: "紅鯉 • Deep solid crimson red body" },
 ];
 
-const POND_MASKS: Record<Theme, string> = {
-  dark: "radial-gradient(ellipse 50% 48% at 50% 50%, #000000 0%, #000000 28%, rgba(0,0,0,0.96) 40%, rgba(0,0,0,0.85) 52%, rgba(0,0,0,0.65) 66%, rgba(0,0,0,0.42) 78%, rgba(0,0,0,0.2) 88%, rgba(0,0,0,0.06) 95%, transparent 100%)",
-  light: "radial-gradient(ellipse 50% 48% at 50% 50%, #000000 0%, #000000 26%, rgba(0,0,0,0.95) 38%, rgba(0,0,0,0.82) 50%, rgba(0,0,0,0.62) 64%, rgba(0,0,0,0.38) 76%, rgba(0,0,0,0.18) 88%, rgba(0,0,0,0.04) 96%, transparent 100%)",
-};
-
 export function AsciiAquarium() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const engineRef = useRef<OceanEngine | null>(null);
 
   const [activeVariety, setActiveVariety] = useState<KoiKind | "all">("all");
-  const [theme, setTheme] = useState<Theme>("dark");
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const engine = new OceanEngine(canvas, undefined, "dark");
+    const engine = new OceanEngine(canvas);
     engineRef.current = engine;
 
     return () => {
@@ -44,13 +37,6 @@ export function AsciiAquarium() {
     setActiveVariety(kind);
     if (engineRef.current) {
       engineRef.current.setVariety(kind);
-    }
-  };
-
-  const handleToggleTheme = (newTheme: Theme) => {
-    setTheme(newTheme);
-    if (engineRef.current) {
-      engineRef.current.setTheme(newTheme);
     }
   };
 
@@ -70,7 +56,10 @@ export function AsciiAquarium() {
   const currentOption = VARIETY_OPTIONS.find((s) => s.id === activeVariety);
 
   return (
-    <section className="relative w-full py-16 md:py-24 border-t border-border bg-background text-foreground overflow-hidden">
+    <section
+      id="ascii-aquarium"
+      className="relative w-full py-16 md:py-24 border-t border-border bg-background text-foreground overflow-hidden"
+    >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10">
         {/* Header Editorial Intro */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
@@ -92,34 +81,8 @@ export function AsciiAquarium() {
             </p>
           </div>
 
-          {/* Action Tools & Theme Selector */}
+          {/* Action Tools */}
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            {/* Theme Toggle (Washi vs Midnight) */}
-            <div className="flex items-center border border-border p-0.5 rounded-sm bg-surface">
-              <button
-                type="button"
-                onClick={() => handleToggleTheme("light")}
-                className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-colors cursor-pointer ${
-                  theme === "light"
-                    ? "bg-background text-foreground shadow-sm"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                Washi Paper
-              </button>
-              <button
-                type="button"
-                onClick={() => handleToggleTheme("dark")}
-                className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-colors cursor-pointer ${
-                  theme === "dark"
-                    ? "bg-foreground text-background shadow-sm"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                Midnight Ink
-              </button>
-            </div>
-
             <button
               type="button"
               onClick={handleManualSplash}
@@ -142,42 +105,54 @@ export function AsciiAquarium() {
         </div>
 
         {/* Variety Selector Bar */}
-        <div className="flex flex-wrap items-center gap-2 mb-6">
-          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-muted mr-2">
+        <div className="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
+          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-muted mr-1 sm:mr-2 shrink-0">
             Nishikigoi Variety:
           </span>
-          {VARIETY_OPTIONS.map((opt) => {
-            const isSelected = activeVariety === opt.id;
-            return (
-              <button
-                key={opt.id}
-                type="button"
-                onClick={() => handleSelectVariety(opt.id)}
-                className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-all cursor-pointer ${
-                  isSelected
-                    ? "bg-foreground text-background"
-                    : "border border-border bg-background text-muted hover:text-foreground hover:border-foreground/40"
-                }`}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {VARIETY_OPTIONS.map((opt) => {
+              const isSelected = activeVariety === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => handleSelectVariety(opt.id)}
+                  className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-all cursor-pointer rounded-sm ${
+                    isSelected
+                      ? "bg-foreground text-background shadow-xs"
+                      : "border border-border bg-background text-muted hover:text-foreground hover:border-foreground/40"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Organic Oval Zen Pond with Smooth Radial Gradient Blend (Zero harsh box borders) */}
-        <div className="relative mx-auto w-full max-w-5xl flex items-center justify-center my-4">
-          <div
-            className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2/1] min-h-[220px] sm:min-h-[320px] md:min-h-[380px] max-h-[500px] overflow-hidden transition-all duration-500"
-            style={{
-              maskImage: POND_MASKS[theme],
-              WebkitMaskImage: POND_MASKS[theme],
-            }}
-          >
+        {/* Full Wide Zen Pond with Ultra-Smooth Perimeter Dissolve (No oval fog, no sharp borders) */}
+        <div className="relative mx-auto w-full max-w-[1360px] flex items-center justify-center my-6 sm:my-8">
+          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2.2/1] min-h-[240px] sm:min-h-[340px] md:min-h-[420px] max-h-[560px] transition-all duration-500">
             <canvas
               ref={canvasRef}
               className="block w-full h-full cursor-crosshair touch-none select-none"
               aria-label="Interactive ASCII Nishikigoi Pond canvas"
+            />
+            {/* Eased Multi-Stop Perimeter Fade: ultra-soft watercolor dissipation into #ffffff with zero oval halo */}
+            <div
+              className="pointer-events-none absolute -inset-[2px] z-10"
+              style={{
+                background: [
+                  "linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.96) clamp(8px, 1.8vw, 14px), rgba(255,255,255,0.84) clamp(18px, 3.8vw, 30px), rgba(255,255,255,0.66) clamp(30px, 6vw, 48px), rgba(255,255,255,0.45) clamp(44px, 8.5vw, 68px), rgba(255,255,255,0.25) clamp(58px, 11vw, 88px), rgba(255,255,255,0.1) clamp(72px, 13.5vw, 108px), rgba(255,255,255,0.02) clamp(86px, 16vw, 124px), transparent clamp(98px, 18vw, 138px))",
+                  "linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.96) clamp(8px, 1.8vw, 14px), rgba(255,255,255,0.84) clamp(18px, 3.8vw, 30px), rgba(255,255,255,0.66) clamp(30px, 6vw, 48px), rgba(255,255,255,0.45) clamp(44px, 8.5vw, 68px), rgba(255,255,255,0.25) clamp(58px, 11vw, 88px), rgba(255,255,255,0.1) clamp(72px, 13.5vw, 108px), rgba(255,255,255,0.02) clamp(86px, 16vw, 124px), transparent clamp(98px, 18vw, 138px))",
+                  "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.96) clamp(8px, 1.8vw, 14px), rgba(255,255,255,0.84) clamp(18px, 3.8vw, 30px), rgba(255,255,255,0.66) clamp(30px, 6vw, 48px), rgba(255,255,255,0.45) clamp(44px, 8.5vw, 68px), rgba(255,255,255,0.25) clamp(58px, 11vw, 88px), rgba(255,255,255,0.1) clamp(72px, 13.5vw, 108px), rgba(255,255,255,0.02) clamp(86px, 16vw, 124px), transparent clamp(98px, 18vw, 138px))",
+                  "linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0.96) clamp(8px, 1.8vw, 14px), rgba(255,255,255,0.84) clamp(18px, 3.8vw, 30px), rgba(255,255,255,0.66) clamp(30px, 6vw, 48px), rgba(255,255,255,0.45) clamp(44px, 8.5vw, 68px), rgba(255,255,255,0.25) clamp(58px, 11vw, 88px), rgba(255,255,255,0.1) clamp(72px, 13.5vw, 108px), rgba(255,255,255,0.02) clamp(86px, 16vw, 124px), transparent clamp(98px, 18vw, 138px))",
+                  "radial-gradient(circle clamp(75px, 14vw, 130px) at 0% 0%, #ffffff 0%, rgba(255,255,255,0.82) 30%, rgba(255,255,255,0.45) 58%, rgba(255,255,255,0.15) 80%, transparent 100%)",
+                  "radial-gradient(circle clamp(75px, 14vw, 130px) at 100% 0%, #ffffff 0%, rgba(255,255,255,0.82) 30%, rgba(255,255,255,0.45) 58%, rgba(255,255,255,0.15) 80%, transparent 100%)",
+                  "radial-gradient(circle clamp(75px, 14vw, 130px) at 0% 100%, #ffffff 0%, rgba(255,255,255,0.82) 30%, rgba(255,255,255,0.45) 58%, rgba(255,255,255,0.15) 80%, transparent 100%)",
+                  "radial-gradient(circle clamp(75px, 14vw, 130px) at 100% 100%, #ffffff 0%, rgba(255,255,255,0.82) 30%, rgba(255,255,255,0.45) 58%, rgba(255,255,255,0.15) 80%, transparent 100%)",
+                ].join(", "),
+              }}
             />
           </div>
         </div>

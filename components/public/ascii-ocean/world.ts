@@ -8,11 +8,14 @@ export type KoiKind = "kohaku" | "orange" | "benigoi" | "tancho" | "butterfly";
 export type KoiSpec = { kind: KoiKind; size: number };
 
 const DEFAULT_KOIS: KoiSpec[] = [
-  { kind: "kohaku", size: 1 },
-  { kind: "orange", size: 0.92 },
-  { kind: "tancho", size: 0.85 },
-  { kind: "butterfly", size: 0.88 },
-  { kind: "kohaku", size: 0.74 },
+  { kind: "kohaku", size: 1.05 },
+  { kind: "orange", size: 0.96 },
+  { kind: "tancho", size: 0.9 },
+  { kind: "butterfly", size: 0.94 },
+  { kind: "benigoi", size: 0.88 },
+  { kind: "kohaku", size: 0.8 },
+  { kind: "orange", size: 0.76 },
+  { kind: "butterfly", size: 0.72 },
 ];
 
 export interface Fish {
@@ -111,9 +114,12 @@ export class World {
       this.koiSpecs = DEFAULT_KOIS;
     } else {
       this.koiSpecs = [
-        { kind, size: 1 },
+        { kind, size: 1.05 },
+        { kind, size: 0.96 },
         { kind, size: 0.88 },
+        { kind, size: 0.82 },
         { kind, size: 0.76 },
+        { kind, size: 0.7 },
       ];
     }
     this.seed();

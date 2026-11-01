@@ -3,8 +3,6 @@ import { KOI_NODES, type Koi, type KoiKind, type LilyPad, type World } from "./w
 
 type RGB = [number, number, number];
 
-export type Theme = "light" | "dark";
-
 interface Palette {
   bg: string;
   bgRgb: RGB;
@@ -14,37 +12,31 @@ interface Palette {
   haze: number;
 }
 
-const PALETTES: Record<Theme, Palette> = {
-  light: {
-    bg: "#edeae3",
-    bgRgb: [237, 234, 227],
-    grid: "rgba(35, 48, 62, 0.075)",
-    fish: [36, 40, 48],
-    wake: [55, 120, 145],
-    haze: 0.18,
-  },
-  dark: {
-    bg: "#08090c",
-    bgRgb: [8, 9, 12],
-    grid: "rgba(255,255,255,0.055)",
-    fish: [230, 238, 255],
-    wake: [110, 230, 255],
-    haze: 0.3,
-  },
+// Deep Zen Indigo pond: dark mineral-blue water for maximum koi contrast
+const PALETTE: Palette = {
+  bg: "#16324a",
+  bgRgb: [22, 50, 74],
+  grid: "rgba(170, 220, 255, 0.06)",
+  fish: [235, 244, 255],
+  wake: [120, 205, 250],
+  haze: 0.3,
 };
 
 const ALPHA_LEVELS = 6;
 const FISH_ALPHAS = [0.28, 0.42, 0.58, 0.74, 0.9];
 const GLINTS = ["#fffaf0", "#ffe7b8", "#ffd27a", "#fff3e2"];
 
-const SKIN_RAMP = ":;t%SX8#@";
+const SKIN_RAMP = ".:;=+*%#@";
 const FIN_GLYPHS = ":;'.:";
+const RAY_GLYPHS = ["", "-", "\\", "|", "/"];
 const EDGE_HEAVY = ":;";
 const EDGE_LIGHT = ".',`";
 const FLAG_BODY = 1;
 const FLAG_EDGE = 2;
 const FLAG_FIN = 3;
 const FLAG_EYE = 4;
+const FLAG_BARBEL = 5;
+const FLAG_FIN_RAY = 6;
 
 const WHITE = 0;
 const RED = 1;
@@ -52,10 +44,10 @@ const ORANGE = 2;
 const SUMI = 3;
 
 const TONES: [RGB, RGB, RGB][] = [
-  [[218, 222, 230], [248, 250, 254], [255, 255, 255]], // Lustrous White
-  [[185, 30, 26],   [236, 52, 42],   [255, 110, 90]],   // Radiant Kohaku Vermilion Red
-  [[210, 90, 18],   [248, 140, 30],  [255, 200, 100]],  // Warm Ogon Amber Orange
-  [[14, 16, 22],    [32, 38, 48],    [68, 76, 92]],     // Deep Japanese Sumi Black
+  [[128, 136, 150], [226, 230, 236], [255, 255, 255]], // Gofun Pearl White (blue-grey flank shadow)
+  [[120, 18, 16],   [214, 44, 34],   [255, 112, 88]],   // Shu Vermilion Red
+  [[150, 58, 12],   [234, 118, 30],  [255, 192, 108]],  // Yamabuki Amber Orange
+  [[26, 30, 40],    [54, 60, 74],    [104, 112, 130]],  // Glossy Sumi Charcoal
 ];
 
 function mix(a: RGB, b: RGB, t: number): RGB {
@@ -77,7 +69,8 @@ function koiBody(s: number, end: number) {
   const x = s / k;
   let w: number;
   if (x < 0.1) {
-    w = 0.125 * Math.pow(Math.sin(((x / 0.1) * Math.PI) / 2), 0.55);
+    // Blunt rounded snout instead of a pointed nose
+    w = 0.05 + 0.075 * Math.pow(Math.sin(((x / 0.1) * Math.PI) / 2), 0.7);
   } else if (x < 0.32) {
     w = 0.125 + 0.045 * smoothstep(0.1, 0.32, x);
   } else if (x < 0.72) {
@@ -100,9 +93,9 @@ interface KoiShape {
 
 const STANDARD: KoiShape = {
   halfWidth: (s) => koiBody(s, 0.72),
-  pectoral: [0.16, 0.22, 0.27, 0.25],
-  pelvic: [0.44, 0.49, 0.53, 0.12],
-  tail: [0.70, 0.21, 0.035],
+  pectoral: [0.16, 0.22, 0.29, 0.28],
+  pelvic: [0.44, 0.49, 0.54, 0.13],
+  tail: [0.68, 0.27, 0.05],
   finBreadth: 0.85,
   dorsal: [0.14, 0.65],
   eyes: [0.065, 0.11],
@@ -110,9 +103,9 @@ const STANDARD: KoiShape = {
 
 const BUTTERFLY: KoiShape = {
   halfWidth: (s) => koiBody(s, 0.62),
-  pectoral: [0.12, 0.19, 0.28, 0.29],
-  pelvic: [0.36, 0.41, 0.47, 0.14],
-  tail: [0.60, 0.24, 0.045],
+  pectoral: [0.12, 0.19, 0.3, 0.32],
+  pelvic: [0.36, 0.41, 0.48, 0.15],
+  tail: [0.58, 0.31, 0.06],
   finBreadth: 0.75,
   dorsal: [0.11, 0.55],
   eyes: [0.06, 0.1],
@@ -223,13 +216,19 @@ export class AsciiRenderer {
   private fishStyles: string[] = [];
   private ripples: RippleRing[] = [];
 
-  constructor(private canvas: HTMLCanvasElement, theme: Theme = "light") {
+  constructor(private canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) throw new Error("2D canvas unavailable");
     this.ctx = ctx;
     this.bg = document.createElement("canvas");
-    this.palette = PALETTES[theme];
-    this.setTheme(theme);
+    this.palette = PALETTE;
+    const [fr, fg, fb] = PALETTE.fish;
+    this.fishStyles = FISH_ALPHAS.map((a) => `rgba(${fr},${fg},${fb},${a})`);
+    const [wr, wg, wb] = PALETTE.wake;
+    this.wakeStyles = [];
+    for (let l = 0; l < ALPHA_LEVELS; l++) {
+      this.wakeStyles.push(`rgba(${wr},${wg},${wb},${((l + 1) / ALPHA_LEVELS).toFixed(3)})`);
+    }
   }
 
   get cellWidth() {
@@ -242,18 +241,6 @@ export class AsciiRenderer {
 
   setFontFamily(family: string) {
     if (family) this.fontFamily = family;
-  }
-
-  setTheme(theme: Theme) {
-    const p = (this.palette = PALETTES[theme]);
-    const [fr, fg, fb] = p.fish;
-    this.fishStyles = FISH_ALPHAS.map((a) => `rgba(${fr},${fg},${fb},${a})`);
-    const [wr, wg, wb] = p.wake;
-    this.wakeStyles = [];
-    for (let l = 0; l < ALPHA_LEVELS; l++) {
-      this.wakeStyles.push(`rgba(${wr},${wg},${wb},${((l + 1) / ALPHA_LEVELS).toFixed(3)})`);
-    }
-    if (this.cols) this.paintBackground();
   }
 
   resize(width: number, height: number, dpr: number) {
@@ -320,14 +307,38 @@ export class AsciiRenderer {
     ctx.textBaseline = "middle";
 
     this.drawHeat();
+    this.drawBubbles(t);
     this.drawFish();
     this.drawKoi(t);
     this.drawLilyPads(world.lilyPads, t);
   }
 
+  private drawBubbles(t: number) {
+    const { ctx, cols, rows, cw, ch, width: W, height: H } = this;
+    if (W === 0 || H === 0) return;
+    const bubbles = [
+      { x: 0.32, y: 0.44, sp: 0.08, char: "°", col: "rgba(180,220,255,0.4)" },
+      { x: 0.35, y: 0.52, sp: 0.12, char: "o", col: "rgba(200,235,255,0.6)" },
+      { x: 0.38, y: 0.48, sp: 0.15, char: "O", col: "rgba(225,248,255,0.75)" },
+      { x: 0.68, y: 0.36, sp: 0.09, char: "°", col: "rgba(180,220,255,0.4)" },
+      { x: 0.72, y: 0.42, sp: 0.14, char: "o", col: "rgba(200,235,255,0.6)" },
+      { x: 0.64, y: 0.78, sp: 0.11, char: "o", col: "rgba(200,235,255,0.6)" },
+      { x: 0.67, y: 0.82, sp: 0.07, char: "°", col: "rgba(180,220,255,0.4)" },
+    ];
+    for (const b of bubbles) {
+      const by = ((((b.y - t * b.sp * 0.04) % 1) + 1) % 1) * H;
+      const bx = (b.x + Math.sin(t * 0.7 + b.x * 8) * 0.012) * W;
+      const col = Math.floor(bx / cw);
+      const row = Math.floor(by / ch);
+      if (col >= 0 && col < cols && row >= 0 && row < rows) {
+        ctx.fillStyle = b.col;
+        ctx.fillText(b.char, (col + 0.5) * cw, (row + 0.5) * ch + 1);
+      }
+    }
+  }
+
   private drawRipples(t: number) {
-    const { ctx, cw, ch, cols, rows, palette } = this;
-    const light = palette === PALETTES.light;
+    const { ctx, cw, ch, cols, rows } = this;
     const alive: RippleRing[] = [];
 
     for (const r of this.ripples) {
@@ -337,10 +348,8 @@ export class AsciiRenderer {
 
       const progress = age / r.duration;
       const currentRadius = progress * r.maxRadius;
-      const alpha = Math.sin((1 - progress) * Math.PI) * (light ? 0.38 : 0.6);
-      const strokeColor = light
-        ? `rgba(50, 110, 130, ${alpha.toFixed(3)})`
-        : `rgba(130, 225, 255, ${alpha.toFixed(3)})`;
+      const alpha = Math.sin((1 - progress) * Math.PI) * 0.6;
+      const strokeColor = `rgba(130, 225, 255, ${alpha.toFixed(3)})`;
 
       const numPoints = Math.max(8, Math.floor(currentRadius * 0.85));
       ctx.fillStyle = strokeColor;
@@ -360,12 +369,9 @@ export class AsciiRenderer {
   }
 
   private drawLilyPads(pads: LilyPad[], t: number) {
-    const { ctx, cw, ch, cols, rows, palette } = this;
-    const light = palette === PALETTES.light;
+    const { ctx, cw, ch, cols, rows } = this;
     const PAD_GLYPHS = "%8#@";
-    const PAD_COLORS = light
-      ? ["#2a5e38", "#387848", "#489258", "#5aa86b"]
-      : ["#1c3e25", "#285834", "#346e42", "#428652"];
+    const PAD_COLORS = ["#1c3e25", "#285834", "#346e42", "#428652"];
 
     for (const pad of pads) {
       const bobX = Math.sin(t * 0.7 + pad.notchAngle) * 1.2;
@@ -379,7 +385,7 @@ export class AsciiRenderer {
       const r1 = Math.min(rows - 1, Math.floor((padY + pad.radius) / ch));
 
       // Under-leaf drop shadow
-      ctx.fillStyle = light ? "rgba(25, 45, 30, 0.16)" : "rgba(0, 0, 0, 0.55)";
+      ctx.fillStyle = "rgba(4, 10, 18, 0.6)";
       for (let r = r0; r <= r1; r++) {
         for (let c = c0; c <= c1; c++) {
           const px = (c + 0.5) * cw;
@@ -413,7 +419,7 @@ export class AsciiRenderer {
 
           ctx.fillStyle = PAD_COLORS[colorIdx];
           ctx.fillRect(c * cw + 1, r * ch + 1, cw - 1, ch - 1);
-          ctx.fillStyle = light ? "#15331e" : "#0f2615";
+          ctx.fillStyle = "#0f2615";
           ctx.fillText(glyph, px, py + 1);
         }
       }
@@ -422,13 +428,26 @@ export class AsciiRenderer {
         const fc = Math.floor(padX / cw);
         const fr = Math.floor(padY / ch);
         const offsets = [
-          [0, 0, "#ffd13b", "*"],
-          [-1, 0, "#e84a75", "%"],
-          [1, 0, "#e84a75", "%"],
-          [0, -1, "#f492b2", "o"],
-          [0, 1, "#f492b2", "o"],
-          [-1, -1, "#ffb8cf", "."],
-          [1, 1, "#ffb8cf", "."],
+          // Golden stamen center
+          [0, 0, "#f5be24", "*"],
+          // Radiating white petals (like Image 1)
+          [-1, 0, "#ffffff", "-"],
+          [1, 0, "#ffffff", "-"],
+          [0, -1, "#ffffff", "|"],
+          [0, 1, "#ffffff", "|"],
+          [-1, -1, "#ffffff", "\\"],
+          [1, 1, "#ffffff", "\\"],
+          [1, -1, "#ffffff", "/"],
+          [-1, 1, "#ffffff", "/"],
+          // Soft petal outer tips
+          [-2, 0, "#eef2f8", "."],
+          [2, 0, "#eef2f8", "."],
+          [0, -2, "#eef2f8", "."],
+          [0, 2, "#eef2f8", "."],
+          [-2, -1, "#eef2f8", "o"],
+          [2, 1, "#eef2f8", "o"],
+          [1, -2, "#eef2f8", "o"],
+          [-1, 2, "#eef2f8", "o"],
         ];
         for (const [ox, oy, fill, glyph] of offsets) {
           const col = fc + (ox as number);
@@ -597,7 +616,12 @@ export class AsciiRenderer {
     const t = (p + 1) / 2;
     const width = half * breadth * (0.45 + 0.55 * Math.sin(t * Math.PI * 0.85));
     const q = (-qx * ey + qy * ex) / width;
-    return p * p + q * q <= 1 ? t : -1;
+    if (p * p + q * q <= 1) {
+      // Ray striation detection across fin breadth
+      const isRay = Math.abs(Math.sin(q * 16)) > 0.56;
+      return isRay ? 10 + t : t;
+    }
+    return -1;
   }
 
   private ray(du: number, a: number) {
@@ -648,6 +672,17 @@ export class AsciiRenderer {
     this.hitV = a * bestSign;
     if (bestOver > L * 0.008) return false;
 
+    // Snout barbels / whiskers
+    if (s < 0.045 && a > w && a < w + L * 0.05) {
+      const bDist = Math.hypot(s * L, a - w);
+      if (bDist < L * 0.038) {
+        this.hitFlag = FLAG_BARBEL;
+        this.hitShade = 0.9;
+        this.hitColor = this.skinAt(0.02, vn, 1);
+        return true;
+      }
+    }
+
     if (a <= w) {
       const across = a / (w || 1);
       // Eye check on flanks of head
@@ -658,13 +693,21 @@ export class AsciiRenderer {
         return true;
       }
       const facing = (nx * -0.65 + ny * -0.8) * across;
-      let shade = 0.68 - across * across * 0.52 + facing * 0.28;
-      if (s > shape.dorsal[0] && s < shape.dorsal[1] && across < 0.3) {
-        shade += 0.18 * Math.pow(1 - across / 0.3, 1.4);
+      let shade = 0.72 - across * across * 0.54 + facing * 0.28;
+      // Dorsal ridge spine highlight
+      if (s > shape.dorsal[0] && s < shape.dorsal[1] && across < 0.22) {
+        shade += 0.22 * Math.pow(1 - across / 0.22, 1.6);
       }
-      if (s < 0.05) shade = Math.max(shade, 0.75);
+      // Reticulated diamond scale mesh (Japanese sumi-e scale texture from Image 1)
+      if (s > 0.12 && s < 0.78) {
+        const su = s * 22;
+        const sv = across * 3.8;
+        const scaleGrid = Math.sin(su * Math.PI) * Math.cos(sv * Math.PI);
+        shade += scaleGrid * 0.09;
+      }
+      if (s < 0.05) shade = Math.max(shade, 0.78);
       this.hitFlag = FLAG_BODY;
-      this.hitShade = shade;
+      this.hitShade = clamp(shade, 0, 1);
       this.hitColor = this.skinAt(s, vn, across);
       return true;
     }
@@ -676,8 +719,10 @@ export class AsciiRenderer {
       const outer = L * (0.014 + spread * Math.pow(smoothstep(0, 0.85, k), 0.75)) * round;
       const notch = L * fork * smoothstep(0.6, 1, k);
       if (a <= outer && a >= notch) {
-        this.hitFlag = FLAG_FIN;
-        this.hitShade = 0.4 + 0.3 * (1 - a / (outer || 1)) - this.ray(u - L * t0, a);
+        const rayAngle = Math.atan2(a, u - L * t0);
+        const isRay = Math.abs(Math.sin(rayAngle * 20)) > 0.55;
+        this.hitFlag = isRay ? FLAG_FIN_RAY : FLAG_FIN;
+        this.hitShade = 0.42 + 0.38 * (1 - a / (outer || 1)) + (isRay ? 0.22 : -0.05);
         this.hitColor = this.finAt(k);
         return true;
       }
@@ -695,9 +740,11 @@ export class AsciiRenderer {
       ft = this.inFin(u, a, rootU, L * (v2 + swing * 0.4), L * vr * (tip / (L * pr)), shape.finBreadth);
     }
     if (ft >= 0) {
-      this.hitFlag = FLAG_FIN;
-      this.hitShade = 0.38 + 0.3 * (1 - ft) - this.ray(u - rootU, a);
-      this.hitColor = this.finAt(ft);
+      const isRay = ft >= 10;
+      const tVal = isRay ? ft - 10 : ft;
+      this.hitFlag = isRay ? FLAG_FIN_RAY : FLAG_FIN;
+      this.hitShade = 0.42 + 0.35 * (1 - tVal) + (isRay ? 0.22 : -0.05);
+      this.hitColor = this.finAt(tVal);
       return true;
     }
     return false;
@@ -803,13 +850,13 @@ export class AsciiRenderer {
             koiShade[i] = clamp(shade + flicker, 0, 1);
 
             // Underwater soft drop shadow offset onto pond floor
-            const shadowDc = Math.round((L * 0.045) / cw) + 1;
-            const shadowDr = Math.round((L * 0.035) / ch) + 1;
+            const shadowDc = Math.round((L * 0.055) / cw) + 2;
+            const shadowDr = Math.round((L * 0.045) / ch) + 2;
             const sc = c + shadowDc;
             const sr = r + shadowDr;
             if (sc >= 0 && sc < cols && sr >= 0 && sr < rows) {
               const si = sr * cols + sc;
-              this.koiShadow[si] = Math.max(this.koiShadow[si], coverage * 0.85);
+              this.koiShadow[si] = Math.max(this.koiShadow[si], coverage * 0.9);
             }
           } else {
             koiFlag[i] = FLAG_EDGE;
@@ -821,35 +868,28 @@ export class AsciiRenderer {
   }
 
   private drawKoiShadows() {
-    const { ctx, cols, rows, cw, ch, koiShadow, koiFlag, palette } = this;
-    const light = palette === PALETTES.light;
+    const { ctx, cols, rows, cw, ch, koiShadow, koiFlag } = this;
     const n = cols * rows;
 
     for (let i = 0; i < n; i++) {
       const s = koiShadow[i];
-      if (s < 0.08 || koiFlag[i]) continue;
+      if (s < 0.06 || koiFlag[i]) continue;
       const col = i % cols;
       const row = (i / cols) | 0;
       const x = col * cw;
       const y = row * ch;
 
-      if (light) {
-        ctx.fillStyle = `rgba(32, 48, 64, ${(s * 0.22).toFixed(3)})`;
-        ctx.fillRect(x + 1, y + 1, cw - 1, ch - 1);
-      } else {
-        ctx.fillStyle = `rgba(0, 0, 0, ${(s * 0.85).toFixed(3)})`;
-        ctx.fillRect(x + 1, y + 1, cw - 1, ch - 1);
-        if (s > 0.45) {
-          ctx.fillStyle = "rgba(45, 55, 75, 0.45)";
-          ctx.fillText(".", x + cw / 2, y + ch / 2 + 1);
-        }
+      ctx.fillStyle = `rgba(5, 12, 22, ${(s * 0.75).toFixed(3)})`;
+      ctx.fillRect(x + 1, y + 1, cw - 1, ch - 1);
+      if (s > 0.4) {
+        ctx.fillStyle = `rgba(70, 105, 140, ${(s * 0.5).toFixed(3)})`;
+        ctx.fillText("·", x + cw / 2, y + ch / 2 + 1);
       }
     }
   }
 
   private drawKoi(t: number) {
     const { ctx, cols, rows, cw, ch, koiFlag, koiShade, koiKey, koiDepth, koiColor, palette } = this;
-    const light = palette === PALETTES.light;
     const n = cols * rows;
     for (let i = 0; i < n; i++) {
       const flag = koiFlag[i];
@@ -863,7 +903,7 @@ export class AsciiRenderer {
       const skin = koiColor[i];
       const haze = (1 - koiDepth[i]) * palette.haze;
       const sink = (c: RGB): RGB =>
-        light && skin === WHITE ? c : mix(c, palette.bgRgb, haze);
+        skin === WHITE ? mix(c, palette.bgRgb, haze * 0.5) : mix(c, palette.bgRgb, haze);
 
       const tick = Math.floor(t * 2.4 + (key % 997) / 97);
       const roll = hash3(key, tick, 7);
@@ -877,17 +917,28 @@ export class AsciiRenderer {
       }
 
       if (flag === FLAG_EYE) {
-        ctx.fillStyle = light ? "#181a20" : "#08090c";
+        ctx.fillStyle = "#08090c";
         ctx.fillRect(x + 1, y + 1, cw - 1, ch - 1);
-        ctx.fillStyle = light ? "#ffffff" : "#e0e4ec";
+        ctx.fillStyle = "#f4f8ff";
         ctx.fillText("o", x + cw / 2, y + ch / 2 + 1);
+        continue;
+      }
+
+      if (flag === FLAG_BARBEL) {
+        const c = sink(skin === WHITE ? [240, 240, 245] : tone(skin, 0.45));
+        ctx.fillStyle = css(c);
+        ctx.fillText("~", x + cw / 2, y + ch / 2 + 1);
         continue;
       }
 
       let fill = tone(skin, shade);
       let glyph: string;
-      if (flag === FLAG_FIN) {
-        fill = mix(fill, palette.bgRgb, light ? 0.35 : 0.45);
+      if (flag === FLAG_FIN_RAY) {
+        fill = mix(fill, palette.bgRgb, 0.28);
+        const rayChars = "\\|/-";
+        glyph = rayChars[(key >>> 7) % rayChars.length];
+      } else if (flag === FLAG_FIN) {
+        fill = mix(fill, palette.bgRgb, 0.48);
         glyph = FIN_GLYPHS[(key >>> 8) % FIN_GLYPHS.length];
       } else {
         const jitter = ((key >>> 4) % 3) - 1;
@@ -896,18 +947,18 @@ export class AsciiRenderer {
 
       let ink: RGB;
       if (skin === WHITE) {
-        ink = light ? [130, 125, 120] : [190, 124, 98];
+        ink = [190, 124, 98];
       } else if (skin === SUMI) {
         ink = [10, 12, 16];
       } else {
-        ink = light ? [135, 20, 16] : mix(fill, tone(skin, 0), 0.6);
+        ink = mix(fill, tone(skin, 0), 0.6);
       }
       if (flag === FLAG_FIN) ink = mix(ink, fill, 0.35);
       fill = sink(fill);
       ctx.fillStyle = css(fill);
       ctx.fillRect(x + 1, y + 1, cw - 1, ch - 1);
 
-      ctx.fillStyle = roll < 0.045 ? (light ? "#ffffff" : GLINTS[key % GLINTS.length]) : css(sink(ink));
+      ctx.fillStyle = roll < 0.045 ? GLINTS[key % GLINTS.length] : css(sink(ink));
       ctx.fillText(glyph, x + cw / 2, y + ch / 2 + 1);
     }
   }

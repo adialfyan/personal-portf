@@ -1,4 +1,4 @@
-import { AsciiRenderer, type Theme } from "./renderer";
+import { AsciiRenderer } from "./renderer";
 import { World, type KoiKind, type KoiSpec } from "./world";
 
 const STEP = 1 / 60;
@@ -17,9 +17,9 @@ export class OceanEngine {
   private intersectionObserver: IntersectionObserver;
   private disposed = false;
 
-  constructor(private canvas: HTMLCanvasElement, koi?: KoiSpec[], theme: Theme = "light") {
+  constructor(private canvas: HTMLCanvasElement, koi?: KoiSpec[]) {
     this.world = new World(koi);
-    this.renderer = new AsciiRenderer(canvas, theme);
+    this.renderer = new AsciiRenderer(canvas);
     this.renderer.setFontFamily("ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace");
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -51,10 +51,6 @@ export class OceanEngine {
     if (rect.width > 0 && rect.height > 0) {
       this.world.resize(rect.width, rect.height, this.renderer.cellWidth, this.renderer.cellHeight);
     }
-  }
-
-  setTheme(theme: Theme) {
-    this.renderer.setTheme(theme);
   }
 
   togglePause(): boolean {
