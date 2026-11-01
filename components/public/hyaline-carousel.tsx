@@ -122,11 +122,13 @@ export function HyalineCarousel({
         const y = d * rise;
         const z = -d * gap;
 
-        // Depth fade
+        // Depth fade: ultra-smooth quadratic dissipation into distance
         const dist = Math.abs(d);
-        const alpha = clamp(1 - (dist - 1.8) * 0.35, 0, 1);
+        // Start fading gradually at 1.0, reaching 0 smoothly at ~3.4
+        const fadeProgress = clamp((dist - 1.0) / 2.4, 0, 1);
+        const alpha = Math.pow(1 - fadeProgress, 1.8);
 
-        if (alpha <= 0.01) {
+        if (alpha <= 0.005) {
           el.style.display = "none";
           continue;
         }
@@ -211,7 +213,7 @@ export function HyalineCarousel({
       onPointerCancel={handlePointerUp}
       onWheel={handleWheel}
     >
-      {/* 3D Perspective Stage */}
+      {/* 3D Perspective Stage with Perimeter Vignette Dissolve */}
       <div
         ref={rootRef}
         className="relative w-full h-[540px] sm:h-[580px] md:h-[620px] flex items-center justify-center cursor-grab active:cursor-grabbing"
@@ -295,6 +297,19 @@ export function HyalineCarousel({
             );
           })}
         </div>
+
+        {/* Soft Perimeter Dissolve: Melts edges into #ffffff background seamlessly without hard cutoffs */}
+        <div
+          className="pointer-events-none absolute inset-0 z-20"
+          style={{
+            background: [
+              "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.85) 6%, rgba(255,255,255,0.4) 14%, transparent 25%)",
+              "linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0.85) 6%, rgba(255,255,255,0.4) 14%, transparent 25%)",
+              "linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.7) 4%, transparent 12%)",
+              "linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.7) 4%, transparent 12%)",
+            ].join(", "),
+          }}
+        />
       </div>
 
       {/* Editorial Control & Currently Active Item Details */}
