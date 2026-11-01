@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import Lenis from "lenis";
 import "lenis/dist/lenis.css";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type Lenis from "lenis";
 
 export function SmoothScroll() {
   useEffect(() => {
@@ -13,7 +11,9 @@ export function SmoothScroll() {
     ).matches;
     if (prefersReducedMotion) return;
 
-    let lenis: Lenis | null = null;
+    let lenisInstance: Lenis | null = null;
+    let cleanupDesktop: (() => void) | null = null;
+    let isCancelled = false;
     const isPointerFine = window.matchMedia("(pointer: fine)").matches;
 
     // Smooth anchor navigation (e.g. /#work, #work)
@@ -30,8 +30,8 @@ export function SmoothScroll() {
           const targetEl = document.getElementById(hash);
           if (targetEl) {
             e.preventDefault();
-            if (lenis) {
-              lenis.scrollTo(targetEl, { offset: -60, duration: 1.0 });
+            if (lenisInstance) {
+              lenisInstance.scrollTo(targetEl, { offset: -60, duration: 1.0 });
             } else {
               targetEl.scrollIntoView({ behavior: "smooth" });
             }
@@ -44,32 +44,44 @@ export function SmoothScroll() {
 
     // Initialize Lenis only on fine-pointer (desktop/laptop) devices
     // Touch devices use native 120Hz GPU compositor scrolling for optimal battery and latency
-    let onTick: ((time: number) => void) | null = null;
-
     if (isPointerFine) {
-      gsap.registerPlugin(ScrollTrigger);
+      Promise.all([
+        import("lenis"),
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]).then(([{ default: LenisConstructor }, { default: gsap }, { ScrollTrigger }]) => {
+        if (isCancelled) return;
 
-      lenis = new Lenis({
-        lerp: 0.1,
-        wheelMultiplier: 1.0,
-        touchMultiplier: 1.0,
-        smoothWheel: true,
-        syncTouch: false,
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new LenisConstructor({
+          lerp: 0.1,
+          wheelMultiplier: 1.0,
+          touchMultiplier: 1.0,
+          smoothWheel: true,
+          syncTouch: false,
+        });
+        lenisInstance = lenis;
+
+        lenis.on("scroll", ScrollTrigger.update);
+
+        const onTick = (time: number) => {
+          lenis.raf(time * 1000);
+        };
+        gsap.ticker.add(onTick);
+        gsap.ticker.lagSmoothing(500, 33);
+
+        cleanupDesktop = () => {
+          gsap.ticker.remove(onTick);
+          lenis.destroy();
+        };
       });
-
-      lenis.on("scroll", ScrollTrigger.update);
-
-      onTick = (time: number) => {
-        lenis?.raf(time * 1000);
-      };
-      gsap.ticker.add(onTick);
-      gsap.ticker.lagSmoothing(500, 33);
     }
 
     return () => {
+      isCancelled = true;
       document.removeEventListener("click", handleAnchorClick);
-      if (onTick) gsap.ticker.remove(onTick);
-      if (lenis) lenis.destroy();
+      if (cleanupDesktop) cleanupDesktop();
     };
   }, []);
 

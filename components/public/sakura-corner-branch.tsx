@@ -737,6 +737,7 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
               src={petal.src}
               alt=""
               aria-hidden="true"
+              unoptimized
               width={petal.size}
               height={Math.round(petal.size * 1.3)}
               className="object-contain drop-shadow-[0_2px_4px_rgba(219,39,119,0.12)]"
