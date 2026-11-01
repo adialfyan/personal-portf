@@ -28,7 +28,6 @@ const GLINTS = ["#fffaf0", "#ffe7b8", "#ffd27a", "#fff3e2"];
 
 const SKIN_RAMP = ".:;=+*%#@";
 const FIN_GLYPHS = ":;'.:";
-const RAY_GLYPHS = ["", "-", "\\", "|", "/"];
 const EDGE_HEAVY = ":;";
 const EDGE_LIGHT = ".',`";
 const FLAG_BODY = 1;
@@ -622,10 +621,6 @@ export class AsciiRenderer {
       return isRay ? 10 + t : t;
     }
     return -1;
-  }
-
-  private ray(du: number, a: number) {
-    return Math.sin(Math.atan2(a, du) * 26) > 0.45 ? 0.1 : 0;
   }
 
   private sampleKoi(px: number, py: number, L: number) {
