@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Newsreader } from "next/font/google";
+import { PageTransitionProvider } from "@/components/public/page-transition";
 import { SmoothScroll } from "@/components/public/smooth-scroll";
 import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
@@ -60,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <SmoothScroll />
-        {children}
+        <PageTransitionProvider>{children}</PageTransitionProvider>
       </body>
     </html>
   );

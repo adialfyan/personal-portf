@@ -9,8 +9,14 @@ export function SiteHeader() {
     >
       <div
         suppressHydrationWarning
-        className="mx-auto flex max-w-[1440px] items-center justify-end px-6 py-4 md:px-10"
+        className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 md:px-10"
       >
+        <Link
+          href="/"
+          className="text-xs font-medium tracking-[0.2em] uppercase text-foreground hover:text-muted transition-colors"
+        >
+          Adi Alfian Hafis
+        </Link>
         <nav
           aria-label="Primary"
           className="flex items-center gap-5 text-xs font-medium tracking-[0.2em] uppercase md:gap-8"

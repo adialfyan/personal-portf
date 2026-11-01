@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import type { ProjectCard, ProjectDetail } from "@/lib/queries/types";
@@ -37,6 +38,48 @@ export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) 
   // Active morph tracking
   const morphTweenRef = useRef<gsap.core.Tween | null>(null);
   const activeMorphIdxRef = useRef<number | null>(null);
+
+  // Floating cursor preview refs
+  const previewRef = useRef<HTMLDivElement | null>(null);
+  const xToRef = useRef<((value: number) => void) | null>(null);
+  const yToRef = useRef<((value: number) => void) | null>(null);
+
+  useEffect(() => {
+    if (!previewRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    xToRef.current = gsap.quickTo(previewRef.current, "x", {
+      duration: 0.38,
+      ease: "power3.out",
+    });
+    yToRef.current = gsap.quickTo(previewRef.current, "y", {
+      duration: 0.38,
+      ease: "power3.out",
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!previewRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    if (hoveredIndex !== null) {
+      gsap.to(previewRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.28,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    } else {
+      gsap.to(previewRef.current, {
+        opacity: 0,
+        scale: 0.94,
+        duration: 0.22,
+        ease: "power2.in",
+        overwrite: "auto",
+      });
+    }
+  }, [hoveredIndex]);
 
   if (!projects || projects.length === 0) {
     return null;
@@ -161,11 +204,77 @@ export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) 
     }
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!xToRef.current || !yToRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cursorX = e.clientX - rect.left;
+    const cursorY = e.clientY - rect.top;
+
+    const cardWidth = 320;
+    const cardHeight = 230;
+    const targetX =
+      cursorX + cardWidth + 36 > rect.width
+        ? cursorX - cardWidth - 24
+        : cursorX + 32;
+    const targetY =
+      cursorY - cardHeight * 0.75 < 0
+        ? cursorY + 24
+        : cursorY - cardHeight * 0.75;
+
+    xToRef.current(targetX);
+    yToRef.current(targetY);
+  };
+
   return (
     <div
       className="relative w-full py-6 md:py-10 bg-background text-foreground select-none"
+      onMouseMove={handleMouseMove}
       onMouseLeave={handleContainerLeave}
     >
+      {/* Floating Cursor Thumbnail Preview (Active on desktop pointer devices) */}
+      <div
+        ref={previewRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-0 z-30 hidden md:block w-[320px] opacity-0 scale-95 overflow-hidden rounded-sm border border-border bg-background shadow-2xl"
+        style={{ willChange: "transform, opacity" }}
+      >
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
+          {projects.map((p, i) =>
+            p.cover_image_path ? (
+              <Image
+                key={p.id || p.slug}
+                src={p.cover_image_path}
+                alt={p.title}
+                fill
+                sizes="320px"
+                className={`object-cover filter grayscale contrast-125 transition-opacity duration-300 ${
+                  hoveredIndex === i ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ) : null
+          )}
+        </div>
+        {hoveredIndex !== null && projects[hoveredIndex] && (
+          <div className="px-4 py-3 border-t border-border bg-background">
+            <div className="flex items-baseline justify-between gap-3">
+              <span
+                className="text-sm font-normal text-foreground tracking-tight"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {projects[hoveredIndex].title}
+              </span>
+              <span className="shrink-0 text-[10px] font-medium tracking-[0.18em] uppercase text-muted">
+                {projects[hoveredIndex].year
+                  ? projects[hoveredIndex].year.slice(0, 4)
+                  : "2026"}
+              </span>
+            </div>
+            <p className="mt-1 text-[10px] font-medium tracking-[0.18em] uppercase text-muted">
+              {projects[hoveredIndex].project_type || "Production System"}
+            </p>
+          </div>
+        )}
+      </div>
       {/* Single, shared lightweight SVG filter for the entire section */}
       <svg
         className="pointer-events-none absolute h-0 w-0 overflow-hidden"

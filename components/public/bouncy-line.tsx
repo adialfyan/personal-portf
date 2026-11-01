@@ -7,8 +7,8 @@ export interface BouncyLineProps {
   className?: string;
   color?: string;
   lineWidth?: number;
-  sensitivity?: number; // 1 - 100 (proximity threshold to catch cursor, default: 40)
-  bounceAmount?: number; // 1 - 100 (elasticity and duration, default: 60)
+  sensitivity?: number; // 1 - 100 (proximity threshold to catch cursor, default: 8)
+  bounceAmount?: number; // 1 - 100 (elasticity and duration, default: 10)
   trackMouseX?: boolean; // If true, string curves toward cursor X; default: true
   ariaHidden?: boolean;
 }
@@ -23,8 +23,8 @@ export function BouncyLine({
   className = "",
   color = "var(--color-border, #e5e5e5)",
   lineWidth = 1,
-  sensitivity = 40,
-  bounceAmount = 60,
+  sensitivity = 8,
+  bounceAmount = 10,
   trackMouseX = true,
   ariaHidden = true,
 }: BouncyLineProps) {
@@ -111,7 +111,8 @@ export function BouncyLine({
 
     // Proximity parameters
     const mappedSnapDist = (sensitivity / 100) * 145 + 5;
-    const maxDisplacement = mappedSnapDist * 2.2;
+    // Keep the pull range usable even with a very tight snap zone
+    const maxDisplacement = Math.max(90, mappedSnapDist * 2.2);
 
     const release = () => {
       isHoveringRef.current = false;
@@ -121,7 +122,7 @@ export function BouncyLine({
       const amount = bounceAmount / 100;
       const mappedDuration = 0.55 + amount * 0.95;
       const mappedPeriod = 0.42 - amount * 0.32;
-      const mappedStrength = 0.6 + amount * 0.85;
+      const mappedStrength = 0.3 + amount * 0.7;
 
       gsap.killTweensOf(pointsRef.current);
       gsap.to(pointsRef.current, {
@@ -153,11 +154,11 @@ export function BouncyLine({
       const prev = prevMouseRef.current;
       prevMouseRef.current = { x: mouseX, y: mouseY };
 
-      // High-speed strum detection (if mouse sliced completely across line in one frame)
+      // High-speed strum only: a slow pass just falls through to the proximity follow
       if (prev !== null && !isHoveringRef.current && mouseX >= 0 && mouseX <= w) {
+        const swipeDeltaY = mouseY - prev.y;
         const crossed = (prev.y - midY) * (mouseY - midY) < 0;
-        if (crossed) {
-          const swipeDeltaY = mouseY - prev.y;
+        if (crossed && Math.abs(swipeDeltaY) > 12) {
           const direction = Math.sign(swipeDeltaY) || 1;
           const impulse = Math.min(mappedSnapDist * 1.6, Math.max(30, Math.abs(swipeDeltaY) * 0.9)) * direction;
           

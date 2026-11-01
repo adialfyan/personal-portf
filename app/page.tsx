@@ -122,7 +122,7 @@ export default async function Home() {
                 className="text-xs font-medium tracking-[0.2em] uppercase text-muted mb-6"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Overview
+                Full-Stack Developer &bull; Portfolio
               </p>
               <h1
                 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-normal tracking-[-0.02em] leading-[1.04] text-foreground text-balance"
@@ -134,7 +134,7 @@ export default async function Home() {
                   intensity={12}
                   className="font-normal italic"
                 />{" "}
-                web applications and scalable enterprise systems.
+                web applications and enterprise systems.
               </h1>
             </div>
 
@@ -198,7 +198,7 @@ export default async function Home() {
                           </span>
                         </div>
                       </Link>
-                      <BouncyLine sensitivity={30} bounceAmount={55} />
+                      <BouncyLine />
                     </li>
 
                     <li>
@@ -230,7 +230,7 @@ export default async function Home() {
                           </span>
                         </div>
                       </Link>
-                      <BouncyLine sensitivity={30} bounceAmount={55} />
+                      <BouncyLine />
                     </li>
 
                     <li>
@@ -262,7 +262,7 @@ export default async function Home() {
                           </span>
                         </div>
                       </Link>
-                      <BouncyLine sensitivity={30} bounceAmount={55} />
+                      <BouncyLine />
                     </li>
 
                     <li>
@@ -294,7 +294,7 @@ export default async function Home() {
                           </span>
                         </div>
                       </Link>
-                      <BouncyLine sensitivity={30} bounceAmount={55} />
+                      <BouncyLine />
                     </li>
                   </ol>
                 </div>

@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/public/json-ld";
 import { SiteHeader } from "@/components/public/site-header";
 import { SiteFooter } from "@/components/public/site-footer";
 import { ShelfGrid } from "@/components/public/shelf-grid";
+import { AsciiAquarium } from "@/components/public/ascii-ocean/ascii-aquarium";
 import {
   getShelfItems,
   getSiteProfile,
@@ -82,6 +83,9 @@ export default async function ShelfPage() {
             <ShelfGrid items={items} />
           </div>
         </section>
+
+        {/* ——— Digital Artifact: Interactive ASCII Aquarium ——— */}
+        <AsciiAquarium />
       </main>
 
       <SiteFooter
