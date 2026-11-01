@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useId, useLayoutEffect, useRef } from "react";
+import { useId, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 export interface SakuraCornerBranchProps {
@@ -149,6 +149,8 @@ const PETAL_DEFINITIONS: PetalDef[] = [
  * SakuraCornerBranch Component
  * - Rest State: Clean Sumi-e bare wooden branch resting peacefully in top-right
  *   corner with a quiet ambient spring breeze.
+ * - Entrance (page load): the branch dissolves in through the sprite-noise mask,
+ *   then the flower clusters bloom smoothly on their own.
  * - Hover State (Sequential Morphing Bloom & Falling Petals):
  *     1. Flower clusters bloom ONE BY ONE (satu persatu) in sequence.
  *     2. Authentic Liquid Gooey Morphing (from MorphText engine) applied exclusively
@@ -159,6 +161,97 @@ const PETAL_DEFINITIONS: PetalDef[] = [
  *     Flowers melt and dissolve back into the branch in reverse cascade, leaving
  *     only the clean resting bare branch.
  */
+function bloomClusters(
+  els: (HTMLDivElement | null)[],
+  tweens: (gsap.core.Tween | null)[],
+  duration = 0.85
+) {
+  BLOOM_CLUSTERS.forEach((cluster, i) => {
+    const el = els[i];
+    if (!el) return;
+
+    tweens[i]?.kill();
+    tweens[i] = gsap.fromTo(
+      el,
+      { opacity: 0, scale: 0.35 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration,
+        delay: cluster.delay,
+        ease: "power2.out",
+      }
+    );
+  });
+}
+
+/**
+ * Falling Petal Particle Animator (Gugur).
+ * Module scope so the compiler does not see a ref being reassigned in an effect.
+ */
+function dropPetal(
+  petalEls: (HTMLDivElement | null)[],
+  petalTweens: (gsap.core.Timeline | gsap.core.Tween)[],
+  container: HTMLDivElement | null,
+  index: number,
+  initialDelay: number,
+  shouldRepeat: () => boolean
+) {
+  const el = petalEls[index];
+  if (!el || !container) return;
+
+  const def = PETAL_DEFINITIONS[index];
+  const rect = container.getBoundingClientRect();
+  const width = rect.width || 440;
+  const height = rect.height || 440;
+
+  const startX = (def.pctX / 100) * width + (Math.random() * 16 - 8);
+  const startY = (def.pctY / 100) * height + (Math.random() * 16 - 8);
+
+  const driftX = def.driftX * (0.85 + Math.random() * 0.35);
+  const fallY = def.fallDist * (0.85 + Math.random() * 0.3);
+  const duration = def.duration * (0.9 + Math.random() * 0.25);
+  const rotationTotal = (Math.random() > 0.5 ? 1 : -1) * (45 + Math.random() * 35);
+
+  gsap.set(el, {
+    x: startX,
+    y: startY,
+    opacity: 0,
+    rotationZ: Math.random() * 40 - 20,
+    rotationY: 0,
+    scale: 0.85,
+    force3D: true,
+  });
+
+  const tl = gsap.timeline({
+    delay: initialDelay,
+    onComplete: () => {
+      if (shouldRepeat()) {
+        dropPetal(petalEls, petalTweens, container, index, 0.3 + Math.random() * 0.5, shouldRepeat);
+      }
+    },
+  });
+
+  tl.to(el, { opacity: 0.92, scale: 1, duration: 0.45, ease: "power1.out" }, 0);
+  tl.to(el, { y: startY + fallY, duration, ease: "sine.in" }, 0);
+  tl.to(el, {
+    keyframes: [
+      { x: startX + driftX * 0.4, duration: duration * 0.33, ease: "sine.inOut" },
+      { x: startX + driftX * 0.85, duration: duration * 0.33, ease: "sine.inOut" },
+      { x: startX + driftX, duration: duration * 0.34, ease: "sine.out" },
+    ],
+  }, 0);
+  tl.to(el, {
+    rotationZ: `+=${rotationTotal}`,
+    rotationY: 360 * (Math.random() > 0.5 ? 1 : -1),
+    duration,
+    ease: "none",
+  }, 0);
+  tl.to(el, { opacity: 0, scale: 0.75, duration: 0.65, ease: "power2.in" }, duration - 0.65);
+
+  petalTweens[index] = tl;
+}
+
 export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) {
   const rawId = useId();
   const filterId = `flower-morph-filter-${rawId.replace(/[^a-zA-Z0-9-_]/g, "")}`;
@@ -172,6 +265,19 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
   const turbulenceRef = useRef<SVGFETurbulenceElement | null>(null);
   const blurRef = useRef<SVGFEGaussianBlurElement | null>(null);
   const colorMatrixRef = useRef<SVGFEColorMatrixElement | null>(null);
+
+  const releasePetals = (offset: number) => {
+    PETAL_DEFINITIONS.forEach((petal, i) => {
+      dropPetal(
+        petalRefs.current,
+        petalTweens.current,
+        containerRef.current,
+        i,
+        offset + petal.baseDelay,
+        () => isHoveredRef.current
+      );
+    });
+  };
 
   const isHoveredRef = useRef(false);
   const isMorphingRef = useRef(false);
@@ -287,94 +393,25 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       ease: "sine.inOut",
     });
 
+    // Entrance: bloom once the pixel dissolve is mostly through.
+    const bloomTimer = window.setTimeout(() => {
+      bloomClusters(clusterRefs.current, clusterTweens.current, 1.2);
+    }, 520);
+    // Drop the pixel mask so petals can keep falling outside the box.
+    const revealTimer = window.setTimeout(() => {
+      containerRef.current?.classList.remove("sakura-dissolve");
+    }, 950);
+
     const clusters = clusterTweens.current;
     const petals = petalTweens.current;
     return () => {
+      window.clearTimeout(bloomTimer);
+      window.clearTimeout(revealTimer);
       if (ambientTweenRef.current) ambientTweenRef.current.kill();
       if (morphProgressTween.current) morphProgressTween.current.kill();
       clusters.forEach((t) => t?.kill());
       petals.forEach((t) => t?.kill());
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-    };
-  }, []);
-
-  // 2. Falling Petal Particle Animator (Gugur)
-  const dropPetalRef = useRef<(index: number, initialDelay?: number) => void>(() => {});
-
-  useEffect(() => {
-    dropPetalRef.current = (index: number, initialDelay = 0) => {
-      const el = petalRefs.current[index];
-      const container = containerRef.current;
-      if (!el || !container) return;
-
-      const def = PETAL_DEFINITIONS[index];
-      const rect = container.getBoundingClientRect();
-      const width = rect.width || 440;
-      const height = rect.height || 440;
-
-      const startX = (def.pctX / 100) * width + (Math.random() * 16 - 8);
-      const startY = (def.pctY / 100) * height + (Math.random() * 16 - 8);
-
-      const driftX = def.driftX * (0.85 + Math.random() * 0.35);
-      const fallY = def.fallDist * (0.85 + Math.random() * 0.3);
-      const duration = def.duration * (0.9 + Math.random() * 0.25);
-      const rotationTotal = (Math.random() > 0.5 ? 1 : -1) * (45 + Math.random() * 35);
-
-      gsap.set(el, {
-        x: startX,
-        y: startY,
-        opacity: 0,
-        rotationZ: Math.random() * 40 - 20,
-        rotationY: 0,
-        scale: 0.85,
-        force3D: true,
-      });
-
-      const tl = gsap.timeline({
-        delay: initialDelay,
-        onComplete: () => {
-          if (isHoveredRef.current) {
-            dropPetalRef.current(index, 0.3 + Math.random() * 0.5);
-          }
-        },
-      });
-
-      tl.to(el, {
-        opacity: 0.92,
-        scale: 1,
-        duration: 0.45,
-        ease: "power1.out",
-      }, 0);
-
-      tl.to(el, {
-        y: startY + fallY,
-        duration: duration,
-        ease: "sine.in",
-      }, 0);
-
-      tl.to(el, {
-        keyframes: [
-          { x: startX + driftX * 0.4, duration: duration * 0.33, ease: "sine.inOut" },
-          { x: startX + driftX * 0.85, duration: duration * 0.33, ease: "sine.inOut" },
-          { x: startX + driftX, duration: duration * 0.34, ease: "sine.out" },
-        ],
-      }, 0);
-
-      tl.to(el, {
-        rotationZ: `+=${rotationTotal}`,
-        rotationY: 360 * (Math.random() > 0.5 ? 1 : -1),
-        duration: duration,
-        ease: "none",
-      }, 0);
-
-      tl.to(el, {
-        opacity: 0,
-        scale: 0.75,
-        duration: 0.65,
-        ease: "power2.in",
-      }, duration - 0.65);
-
-      petalTweens.current[index] = tl;
     };
   }, []);
 
@@ -437,24 +474,13 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
 
       clusterTweens.current[i] = gsap.fromTo(
         el,
-        {
-          opacity: 0,
-          scale: 0.35,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.85,
-          delay: cluster.delay,
-          ease: "power2.out",
-        }
+        { opacity: 0, scale: 0.35 },
+        { opacity: 1, scale: 1, duration: 0.85, delay: cluster.delay, ease: "power2.out" }
       );
     });
 
     // Trigger Falling Petals (Gugur)
-    PETAL_DEFINITIONS.forEach((petal, i) => {
-      dropPetalRef.current(i, petal.baseDelay);
-    });
+    releasePetals(0);
   };
 
   // 4. Leave Handler: Flowers Melt Away in Reverse Cascade -> Return to Bare Branch
@@ -530,7 +556,7 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       ref={containerRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`absolute top-0 right-0 z-20 pointer-events-auto cursor-pointer select-none overflow-visible w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[490px] lg:h-[490px] ${className}`}
+      className={`absolute top-0 right-0 z-20 pointer-events-auto cursor-pointer select-none overflow-visible w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[490px] lg:h-[490px] sakura-dissolve ${className}`}
     >
       {/* Liquid Gooey Morph Filter for Flowers (MorphText Architecture) */}
       <svg
