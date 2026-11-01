@@ -13,7 +13,7 @@ export interface EditorialProjectIndexProps {
 const BESPOKE_SECONDARY_TEXTS: Record<string, string> = {
   "simman-e-budgeting": "Host-to-Host Banking ERP",
   "acrylico-app": "Industrial ERP & AI Biometrics",
-  "projectteams": "Field Activity & Verification",
+  "projectteams": "Finance & Field Operations ERP",
   "jejaklab": "Hyperledger Fabric DLT",
   "ascii-koi": "Autonomous Reynolds Boids",
   "kanso-core-erp": "Event Logistics Engine",

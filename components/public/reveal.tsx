@@ -24,6 +24,24 @@ export function Reveal({ children, className, as = "div" }: RevealProps) {
 
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.92;
+
+      if (inView) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 16 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power3.out",
+            clearProps: "all",
+          },
+        );
+        return;
+      }
+
       gsap.fromTo(
         el,
         { clipPath: "inset(8% 0 8% 0)", y: 24, opacity: 0 },

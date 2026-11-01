@@ -109,12 +109,17 @@ export async function getFeaturedProjects(): Promise<ProjectCard[]> {
         .order("sort_order", { ascending: true })
         .limit(10);
       if (!error && data && data.length > 0) {
-        return (data as Array<Record<string, unknown>>).map((row) => ({
-          ...(row as object),
-          technologies: mapTechnologies(
+        return (data as Array<Record<string, unknown>>).map((row) => {
+          const curated = CURATED_PROJECTS.find((p) => p.slug === row.slug);
+          const mapped = mapTechnologies(
             row.project_technologies as ProjectTechJoin[] | null,
-          ),
-        })) as ProjectCard[];
+          );
+          return {
+            ...curated,
+            ...(row as object),
+            technologies: mapped.length > 0 ? mapped : (curated?.technologies ?? []),
+          };
+        }) as ProjectCard[];
       }
     } catch (e) {
       console.warn("getFeaturedProjects using curated fallback:", e);
@@ -167,13 +172,43 @@ export async function getProjectBySlug(
         .maybeSingle();
       if (!error && data) {
         const row = data as Record<string, unknown>;
+        const curated = CURATED_PROJECTS.find((p) => p.slug === slug);
+        const rawMedia = (row.project_media ?? []) as ProjectDetail["media"];
+
+        // De-duplicate media items by normalized image_path
+        const seen = new Set<string>();
+        const uniqueMedia = rawMedia.filter((m) => {
+          const key = (m.image_path || "").trim().toLowerCase();
+          if (!key || seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+
+        const mappedTech = row.project_technologies
+          ? mapTechnologies(row.project_technologies as ProjectTechJoin[] | null)
+          : [];
+        const technologies =
+          mappedTech.length > 0 ? mappedTech : (curated?.technologies ?? []);
+
+        const rawLinks = (row.project_links as ProjectDetail["links"]) ?? [];
+        const links = rawLinks.length > 0 ? rawLinks : (curated?.links ?? []);
+
         return {
+          ...curated,
           ...(row as object),
-          technologies: mapTechnologies(
-            row.project_technologies as ProjectTechJoin[] | null,
-          ),
-          links: (row.project_links ?? []) as ProjectDetail["links"],
-          media: (row.project_media ?? []) as ProjectDetail["media"],
+          live_url: (row.live_url as string) || curated?.live_url || null,
+          repository_url:
+            (row.repository_url as string) || curated?.repository_url || null,
+          overview: (row.overview as string) || curated?.overview || null,
+          problem: (row.problem as string) || curated?.problem || null,
+          approach: (row.approach as string) || curated?.approach || null,
+          technical_decisions:
+            (row.technical_decisions as string) || curated?.technical_decisions || null,
+          outcome: (row.outcome as string) || curated?.outcome || null,
+          reflection: (row.reflection as string) || curated?.reflection || null,
+          technologies,
+          links,
+          media: uniqueMedia.length > 0 ? uniqueMedia : (curated?.media ?? []),
         } as ProjectDetail;
       }
     } catch (e) {

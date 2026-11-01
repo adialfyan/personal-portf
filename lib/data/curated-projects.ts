@@ -15,7 +15,7 @@ export const CURATED_PROJECTS: ProjectDetail[] = [
     status: "published",
     is_featured: true,
     sort_order: 1,
-    cover_image_path: "/projects/simman.jpg",
+    cover_image_path: "/projects/simman-dashboard.jpg",
     live_url: null,
     repository_url: "https://github.com/adialfyan/keuanganman",
     overview:
@@ -69,18 +69,11 @@ Code pushes pass through automated linting, test suites, and Dockerized build ru
         sort_order: 1,
       },
       {
-        id: "media-simman-02",
-        project_id: "proj-01-simman",
-        image_path: "/projects/simman.jpg",
-        caption: "Centralized financial operations dashboard with real-time clearance streams, student billing ledger, and budget telemetry.",
-        sort_order: 2,
-      },
-      {
         id: "media-simman-03",
         project_id: "proj-01-simman",
         image_path: "/projects/simman-va-portal.jpg",
         caption: "Integrated student syahriyah portal with direct Host-to-Host (H2H) Virtual Account clearing.",
-        sort_order: 3,
+        sort_order: 2,
       },
     ],
   },
@@ -93,12 +86,12 @@ Code pushes pass through automated linting, test suites, and Dockerized build ru
     project_type: "Industrial ERP & AI Biometrics",
     role: "Lead Full-Stack Engineer",
     client: "Acrylico Industrial Fabrication",
-    year: "2025 - Present",
+    year: "2026",
     duration: "Production Deployed",
     status: "published",
     is_featured: true,
     sort_order: 2,
-    cover_image_path: "/projects/acrylico.jpg",
+    cover_image_path: "/projects/acrylico-workshop-screen.png",
     live_url: null,
     repository_url: "https://github.com/adialfyan/acrylic-erp",
     overview:
@@ -143,79 +136,175 @@ Automated headless browser test suites validating worker biometric recognition, 
       {
         id: "media-acrylico-01",
         project_id: "proj-02-acrylico",
-        image_path: "/projects/acrylico.jpg",
-        caption: "3D digital twin of factory floor with real-time technician character status and executive dashboard.",
+        image_path: "/projects/acrylico-dashboard-screen.png",
+        caption: "Executive operational and financial dashboard tracking active fabrication milestones, invoice aging, and order pipelines.",
         sort_order: 1,
       },
       {
         id: "media-acrylico-02",
         project_id: "proj-02-acrylico",
-        image_path: "/projects/acrylico-landing.jpg",
-        caption: "Commercial fabrication landing portal showcasing custom signage and building facade capabilities.",
+        image_path: "/projects/acrylico-portal-screen.png",
+        caption: "Dedicated multi-role authentication portal for factory management, workshop floor operators, and engineering staff.",
         sort_order: 2,
       },
     ],
   },
   {
-    id: "proj-03-projectteams",
-    title: "ProjectTeams Field Activity",
-    slug: "projectteams",
+    id: "proj-06-natacode",
+    title: "Nata Code Digital Agency",
+    slug: "natacode",
     summary:
-      "Collaborative field coordination platform featuring multi-photo before/after audit trails, mobile survey logging, and hierarchical progress verification.",
-    project_type: "Field Operations & Workflow",
-    role: "Full-Stack Engineer & Core Maintainer",
-    client: "Field Activity & Marketing Coordination",
-    year: "2024 - 2025",
-    duration: "Production Deployed",
+      "Creative software house and digital agency platform engineered with Laravel 13, Inertia.js 2.0, custom GPU GLSL shaders, and tactile Locomotive Scroll motion physics.",
+    project_type: "Creative Tech & Agency Platform",
+    role: "Lead Creative Technologist & UI/UX Architect",
+    client: "Nata Code Agency",
+    year: "2026",
+    duration: "Active Production",
     status: "published",
     is_featured: true,
     sort_order: 3,
-    cover_image_path: "/projects/projectteams.jpg",
+    cover_image_path: "/projects/natacode-hero.png",
     live_url: null,
-    repository_url: "https://github.com/adialfyan/ProjectTeams",
+    repository_url: "https://github.com/adialfyan/natacode",
     overview:
-      "ProjectTeams is a distributed workflow engine built for field coordinators, sales promoters (SPG), and quality inspectors. It structures real-time multi-photo site documentation, before/after comparison pairs, and verifiable field sampling records across regional branches.",
+      "Nata Code is a contemporary software house and digital product agency platform built on international creative engineering standards (Cuberto × Locomotive × Basic Agency). It features hybrid SPA architecture with zero-delay routing, custom procedural GLSL shaders, and hardware-adaptive 60fps motion choreography.",
     problem:
-      "Field teams frequently uploaded chaotic media streams across messaging apps, resulting in mismatched before/after installation pairs, lost captions, and difficult supervisory verification across regional operational campaigns.",
+      "Traditional creative agency websites often suffer from heavy WebGL assets that stutter on mid-tier mobile devices, disconnected CMS backends that require redeploying for content updates, and sluggish SPA routing that degrades user engagement.",
     approach:
-      "Constructed a clean, high-performance web application with structured multi-photo upload batches, immutable before/after pairing validation, offline-tolerant data entry, and centralized supervisor review consoles.",
+      "Architected a unified Laravel 13 and Inertia.js 2.0 system powered by React 18 and Vite. Implemented custom GLSL Simplex Noise shaders with branchless Bayer matrix dithering, paired with a hardware tier profiler (useDeviceTier) that adapts animation budgets dynamically to guarantee 60fps across all screens.",
     technical_decisions:
       `01 — Key Engineering Highlights:
 
-01. Atomic Before/After Media Pairing
-Structured media validation engine ensuring installation photos strictly associate with their corresponding baseline references without index collisions.
+01. Hybrid SPA Architecture (Inertia 2.0 & Laravel 13)
+Zero-API boilerplate routing connecting Laravel 13 controllers with React 18 components, providing instant client-side page transitions without page reloads.
 
-02. Multi-Batch Photo Uploads with Captions
-Client-side image compression and chunked uploads allowing field staff to submit dozens of on-site high-resolution photos over unstable 4G networks.
+02. Custom GLSL Shader Background & Bayer Dithering
+Procedural 2D Simplex Noise shader responding dynamically to real-time cursor coordinates, optimized with branchless 4x4 Bayer Matrix dithering to eliminate GPU branching penalties.
 
-03. Consumer Sampling & Field Telemetry Ledger
-Structured ingestion pipelines capturing real-time consumer interviews, brand switching statistics, and GPS-tagged site visits.
+03. Hardware Tier Profiling Engine
+Dynamic scoring pipeline (useDeviceTier) assessing device RAM, CPU core concurrency, and network latency to intelligently scale animation complexity between high, mid, and low tiers.
 
-04. Comprehensive Quality Assurance Manuals
-Designed rigorous testing scenarios covering concurrent uploads, session recovery, and multi-tenant permission isolation.`,
+04. Iris Radial Ink Preloader
+Canvas 2D radial expansion simulation mimicking natural ink diffusion in water, synchronized with background asset hydration and progress-driven state machines.
+
+05. Bezier Curve Dome Transitions
+Custom SVG Quadratic Bezier dome page wipe transition enhanced with retro-computational Bayer dither overlays maintaining visual continuity during route changes.
+
+06. Modular SaaS & Portfolio CMS
+Database-driven content management console for agency service offerings, portfolio project case studies, and SaaS product tiers with dynamic pricing models.`,
     outcome:
       `01 — Measurable Impact:
 
-01. Unified regional marketing and field activity logs into a single auditable dashboard.
-02. Prevented report discrepancies through strict programmatic before/after grouping logic.
-03. Enabled supervisors to verify on-site deliverables in minutes rather than days.`,
+01. Sustained locked 60fps rendering across desktop and mobile devices via intelligent hardware tier degradation.
+02. Reduced perceived page transition latency to zero through Inertia.js hybrid SPA routing.
+03. Eliminated GPU branch stalls using branchless 4x4 Bayer matrix shader dithering.
+04. Delivered a unified CMS console managing creative services, portfolio items, and SaaS product tiers.`,
     reflection:
-      "Software for users in the field must be resilient to intermittent network connectivity and intuitive under direct daylight. Simplicity and bulletproof media association are paramount.",
+      "Balancing international-grade motion design with strict computational performance requires treating frame budgets as first-class constraints. Designing procedural shaders that degrade gracefully across hardware tiers proves that high-end aesthetics and speed can coexist effortlessly.",
+    published_at: "2025-05-01T00:00:00Z",
+    technologies: [
+      { id: "tech-laravel", name: "Laravel 13", slug: "laravel" },
+      { id: "tech-inertia", name: "Inertia.js", slug: "inertia" },
+      { id: "tech-react", name: "React", slug: "react" },
+      { id: "tech-gsap", name: "GSAP Motion", slug: "gsap" },
+      { id: "tech-webgl", name: "WebGL / GLSL", slug: "webgl" },
+      { id: "tech-locomotive", name: "Locomotive Scroll", slug: "locomotive-scroll" },
+      { id: "tech-tailwind", name: "Tailwind CSS", slug: "tailwind" },
+    ],
+    links: [],
+    media: [
+      {
+        id: "media-natacode-01",
+        project_id: "proj-06-natacode",
+        image_path: "/projects/natacode-services.png",
+        caption: "Interactive digital solutions directory featuring animated accordion drawers and tactile micro-states.",
+        sort_order: 1,
+      },
+      {
+        id: "media-natacode-02",
+        project_id: "proj-06-natacode",
+        image_path: "/projects/natacode-portfolio.png",
+        caption: "Dual-mode portfolio catalog (List & Grid view) with dynamic hover-triggered project thumbnail previews.",
+        sort_order: 2,
+      },
+      {
+        id: "media-natacode-03",
+        project_id: "proj-06-natacode",
+        image_path: "/projects/natacode-outro.png",
+        caption: "High-contrast brand finale and conversion outro with colossal typographic layout and location metadata.",
+        sort_order: 3,
+      },
+    ],
+  },
+  {
+    id: "proj-03-projectteams",
+    title: "Timnas Production ERP",
+    slug: "projectteams",
+    summary:
+      "Enterprise operations platform combining multi-basis margin financial ledgers, GPS-tagged field activity monitoring, and SPG personnel dispatch.",
+    project_type: "Operations & Financial ERP",
+    role: "Lead Full-Stack Engineer",
+    client: "PT Nastiti Utama Mandiri (Timnas Production)",
+    year: "2026",
+    duration: "Production Deployed",
+    status: "published",
+    is_featured: true,
+    sort_order: 4,
+    cover_image_path: "/projects/projectteams-dashboard.jpg",
+    live_url: null,
+    repository_url: "https://github.com/adialfyan/ProjectTeams",
+    overview:
+      "Timnas Production ERP is an integrated enterprise operations platform engineered for PT Nastiti Utama Mandiri. It bridges executive financial margin auditing, multi-basis profit-and-loss reports, real-time field activity telemetry, and regional brand ambassador (SPG) dispatch management under a unified real-time dashboard.",
+    problem:
+      "Regional production campaigns and field marketing activities suffered from disconnected reporting pipelines. Supervisors tracked field teams across unverified chat groups, while finance calculated margins retrospectively from static spreadsheets, creating reconciliation lags and revenue leakage across client projects.",
+    approach:
+      "Architected a unified Laravel & Inertia.js platform integrating real-time margin realization engines, interactive Leaflet location dispatching, before/after site inspection verifications, and hierarchical approval workflows for purchase orders and client billing.",
+    technical_decisions:
+      `01 — Key Engineering Highlights:
+
+01. Multi-Basis Financial Margin Engine
+Configurable financial calculation pipeline supporting dynamic management fee formulas (deduction vs. markup), real-time contracted revenue tracking, and automated Net Margin realization.
+
+02. Interactive Field Mapping & Dispatch Telemetry
+Integrated geospatial Leaflet map interfaces tracking regional project locations, active field staff check-ins, and on-site delivery verification across Central Java.
+
+03. Structured Before/After Inspection Pipeline
+Atomic media upload pipeline enforcing baseline and completion verification photo pairs with client-side compression and GPS timestamp hashing.
+
+04. Multi-Tenant Role & Permission Isolation
+Fine-grained authorization architecture via Spatie permissions segregating Super Admin, Finance, Project Managers, and Field Staff consoles.`,
+    outcome:
+      `01 — Measurable Impact:
+
+01. Unified multi-project financial margin tracking and operational field logs into a single centralized command center.
+02. Accelerated invoice generation, client PO reconciliation, and budget realization auditing from weeks to real-time.
+03. Eliminated operational discrepancies through programmatic before/after grouping and location-tagged site inspections.`,
+    reflection:
+      "Building internal ERPs for dynamic operational agencies demands a tight coupling between financial ledger precision and frictionless field worker UX. When operational telemetry directly feeds the general ledger, business clarity replaces administrative friction.",
     published_at: "2024-11-01T00:00:00Z",
     technologies: [
       { id: "tech-laravel", name: "Laravel", slug: "laravel" },
+      { id: "tech-inertia", name: "Inertia.js", slug: "inertia" },
+      { id: "tech-react", name: "React", slug: "react" },
+      { id: "tech-leaflet", name: "Leaflet Maps", slug: "leaflet" },
       { id: "tech-mysql", name: "MySQL", slug: "mysql" },
-      { id: "tech-bootstrap", name: "Bootstrap / Stisla", slug: "bootstrap" },
-      { id: "tech-restapi", name: "REST APIs", slug: "rest-api" },
+      { id: "tech-tailwind", name: "Tailwind CSS", slug: "tailwind" },
     ],
     links: [],
     media: [
       {
         id: "media-projteam-01",
         project_id: "proj-03-projectteams",
-        image_path: "/projects/projectteams.jpg",
-        caption: "Field activity testing documentation and before/after verification framework.",
+        image_path: "/projects/projectteams-order-detail.jpg",
+        caption: "Project lifecycle management console with real-time margin financials, document compliance, and geospatial site locations.",
         sort_order: 1,
+      },
+      {
+        id: "media-projteam-02",
+        project_id: "proj-03-projectteams",
+        image_path: "/projects/projectteams-financial-reports.jpg",
+        caption: "Realized margin calculation engine featuring multi-basis project reporting, cash flow analysis, and automated PDF export.",
+        sort_order: 2,
       },
     ],
   },
@@ -232,8 +321,8 @@ Designed rigorous testing scenarios covering concurrent uploads, session recover
     duration: "In Active Research (Soon)",
     status: "published",
     is_featured: true,
-    sort_order: 4,
-    cover_image_path: "/projects/jejaklab.jpg",
+    sort_order: 5,
+    cover_image_path: "/projects/jejaklab-dashboard.jpg",
     live_url: null,
     repository_url: null,
     overview:
@@ -277,9 +366,16 @@ Low-latency TCP API bridges linking physical IoT barcode scanners and a lightwei
       {
         id: "media-jejaklab-01",
         project_id: "proj-04-jejaklab",
-        image_path: "/projects/jejaklab.jpg",
-        caption: "Architectural blueprint and multi-peer consortium distributed ledger topology.",
+        image_path: "/projects/jejaklab-reagents.jpg",
+        caption: "Laboratory reagent inventory catalog with storage shelf tracking and hazardous chemical expiration telemetry.",
         sort_order: 1,
+      },
+      {
+        id: "media-jejaklab-02",
+        project_id: "proj-04-jejaklab",
+        image_path: "/projects/jejaklab-telemetry.jpg",
+        caption: "IoT sensor time-series telemetry tracking real-time air quality, room temperature, and lab humidity.",
+        sort_order: 2,
       },
     ],
   },
@@ -296,7 +392,7 @@ Low-latency TCP API bridges linking physical IoT barcode scanners and a lightwei
     duration: "Live Artifact",
     status: "published",
     is_featured: true,
-    sort_order: 5,
+    sort_order: 6,
     cover_image_path: "/projects/ascii-koi.jpg",
     live_url: "/shelf#ascii-aquarium",
     repository_url: "https://github.com/adialfyan/ascii-koi-",
@@ -336,14 +432,6 @@ Custom ASCII character density gradient mapped to Japanese calligraphy aesthetic
       { id: "tech-nextjs", name: "Next.js", slug: "nextjs" },
     ],
     links: [],
-    media: [
-      {
-        id: "media-asciikoi-01",
-        project_id: "proj-05-ascii-koi",
-        image_path: "/projects/ascii-koi.jpg",
-        caption: "Living monospace Nishikigoi pond rendered via procedural kinematic math.",
-        sort_order: 1,
-      },
-    ],
+    media: [],
   },
 ];
