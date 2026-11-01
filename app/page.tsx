@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BouncyLine } from "@/components/public/bouncy-line";
-import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
 import { EditorialProjectIndex } from "@/components/public/editorial-project-index";
+import { GitHubActivityLedger } from "@/components/public/github-activity-ledger";
 import { JsonLd } from "@/components/public/json-ld";
 import { MorphText } from "@/components/public/morph-text";
 import { Reveal } from "@/components/public/reveal";
@@ -10,7 +10,6 @@ import { SakuraCornerBranch } from "@/components/public/sakura-corner-branch";
 import { SiteFooter } from "@/components/public/site-footer";
 import { SiteHeader } from "@/components/public/site-header";
 import {
-  getFavoriteShelfItems,
   getFeaturedProjects,
   getFeaturedWritings,
   getSiteProfile,
@@ -80,7 +79,6 @@ export default async function Home() {
   const socialLinks = await getVisibleSocialLinks(profile?.id ?? null);
   const projects = await getFeaturedProjects();
   const featuredWritings = await getFeaturedWritings();
-  const favoriteShelf = await getFavoriteShelfItems();
 
   const name = profile?.full_name || "Adi Alfian Hafis";
   const title =
@@ -469,38 +467,8 @@ export default async function Home() {
         </section>
         <BouncyLine className="w-full" />
 
-        {/* ——— Cultural Shelf Teaser ——— */}
-        <section>
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
-            <div className="mb-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-              <div>
-                <p
-                  className="text-xs font-medium tracking-[0.2em] uppercase text-muted mb-2"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Shelf &bull; Media Ledger
-                </p>
-                <h2
-                  className="text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground font-normal"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Cinema, Records &amp; Readings
-                </h2>
-              </div>
-              <Link
-                href="/shelf"
-                className="text-xs font-medium tracking-[0.2em] uppercase text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5"
-              >
-                <span>Full Archive</span>
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </div>
-            <BouncyLine className="mb-10" />
-
-            <CulturalShelfShowcase items={favoriteShelf.slice(0, 4)} />
-          </div>
-        </section>
-        <BouncyLine className="w-full" />
+        {/* ——— GitHub Engineering & Cadence Ledger ——— */}
+        <GitHubActivityLedger />
 
         {/* ——— Contact CTA (inversion) ——— */}
         <section className="bg-dark text-ivory">
