@@ -3,13 +3,14 @@
 import { useState, useMemo } from "react";
 import type { ShelfItem, ShelfMediaType } from "@/lib/queries/types";
 import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
+import { HyalineCarousel } from "@/components/public/hyaline-carousel";
 
 interface ShelfGridProps {
   items: ShelfItem[];
 }
 
 type FilterOption = "all" | ShelfMediaType;
-type ViewMode = "gallery" | "table";
+type ViewMode = "3d" | "gallery" | "table";
 
 const MEDIA_LABELS: Record<ShelfMediaType, string> = {
   film: "Film",
@@ -81,8 +82,19 @@ export function ShelfGrid({ items }: ShelfGridProps) {
         <div className="flex items-center gap-1 border border-border p-1 bg-surface self-start sm:self-auto">
           <button
             type="button"
+            onClick={() => setViewMode("3d")}
+            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors cursor-pointer ${
+              viewMode === "3d"
+                ? "bg-dark text-ivory"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            3D Stream
+          </button>
+          <button
+            type="button"
             onClick={() => setViewMode("gallery")}
-            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors ${
+            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors cursor-pointer ${
               viewMode === "gallery"
                 ? "bg-dark text-ivory"
                 : "text-muted hover:text-foreground"
@@ -93,7 +105,7 @@ export function ShelfGrid({ items }: ShelfGridProps) {
           <button
             type="button"
             onClick={() => setViewMode("table")}
-            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors ${
+            className={`px-3 py-1.5 text-[11px] font-medium tracking-wider uppercase transition-colors cursor-pointer ${
               viewMode === "table"
                 ? "bg-dark text-ivory"
                 : "text-muted hover:text-foreground"
@@ -104,7 +116,9 @@ export function ShelfGrid({ items }: ShelfGridProps) {
         </div>
       </div>
 
-      {viewMode === "gallery" ? (
+      {viewMode === "3d" ? (
+        <HyalineCarousel items={filteredItems} path="rise" />
+      ) : viewMode === "gallery" ? (
         <CulturalShelfShowcase items={filteredItems} />
       ) : (
         <>

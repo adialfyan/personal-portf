@@ -14,23 +14,23 @@ import { getSiteUrl } from "@/lib/site";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Shelf — Cinema, Records & Literature",
+  title: "Shelf — Cinema, Records & Digital Artifacts",
   description:
-    "A personal ledger of films, sound recordings, and foundational books shaping craft and perspective.",
+    "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
   alternates: {
     canonical: "/shelf",
   },
   openGraph: {
-    title: "Shelf — Cinema, Records & Literature",
+    title: "Shelf — Cinema, Records & Digital Artifacts",
     description:
-      "A personal ledger of films, sound recordings, and foundational books shaping craft and perspective.",
+      "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shelf — Cinema, Records & Literature",
+    title: "Shelf — Cinema, Records & Digital Artifacts",
     description:
-      "A personal ledger of films, sound recordings, and foundational books shaping craft and perspective.",
+      "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
   },
 };
 
@@ -47,9 +47,9 @@ export default async function ShelfPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Shelf — Cinema, Records & Literature",
+          name: "Shelf — Cinema, Records & Digital Artifacts",
           description:
-            "A personal ledger of films, sound recordings, and foundational books shaping craft and perspective.",
+            "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
           url: `${siteUrl}/shelf`,
         }}
       />
@@ -63,16 +63,16 @@ export default async function ShelfPage() {
               className="text-xs font-medium tracking-[0.2em] uppercase text-muted mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Shelf &bull; Media Archive
+              Shelf &bull; Curated Archive &amp; Artifacts
             </p>
             <h1
               className="max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-normal tracking-[-0.02em] leading-[1.04] text-foreground text-balance"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Cinema, records &amp; essential readings.
+              Cinema, sound recordings &amp; digital artifacts.
             </h1>
             <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted font-normal leading-relaxed text-balance">
-              A personal ledger of films, sound recordings, and literature that inform my perspective on aesthetics, human nature, and structural durability.
+              A ledger of cinematic works, analog recordings, and foundational literature, alongside interactive computational artifacts. Exploring aesthetics, human psychology, and durable craft.
             </p>
           </div>
         </section>
