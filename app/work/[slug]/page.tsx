@@ -245,31 +245,33 @@ export default async function ProjectPage({
         {project.media.length > 0 && (
           <section className="border-t border-border">
             <div className="mx-auto max-w-[1440px] space-y-10 px-6 py-16 md:px-10 md:py-24">
-              {project.media.map((m) => {
-                const url = getMediaUrl(m.image_path);
-                if (!url) return null;
-                return (
-                  <Reveal key={m.id}>
-                    <figure>
-                      <span className="block overflow-hidden border border-border">
-                        <Image
-                          src={url}
-                          alt={m.caption ?? project.title}
-                          width={1600}
-                          height={900}
-                          className="w-full object-cover"
-                          sizes="100vw"
-                        />
-                      </span>
-                      {m.caption && (
-                        <figcaption className="mt-3 text-xs font-medium tracking-[0.2em] uppercase text-muted">
-                          {m.caption}
-                        </figcaption>
-                      )}
-                    </figure>
-                  </Reveal>
-                );
-              })}
+              {project.media
+                .filter((m) => m.image_path !== project.cover_image_path)
+                .map((m) => {
+                  const url = getMediaUrl(m.image_path);
+                  if (!url) return null;
+                  return (
+                    <Reveal key={m.id}>
+                      <figure>
+                        <span className="block overflow-hidden border border-border">
+                          <Image
+                            src={url}
+                            alt={m.caption ?? project.title}
+                            width={1600}
+                            height={900}
+                            className="w-full object-cover"
+                            sizes="100vw"
+                          />
+                        </span>
+                        {m.caption && (
+                          <figcaption className="mt-3 text-xs font-medium tracking-[0.2em] uppercase text-muted">
+                            {m.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    </Reveal>
+                  );
+                })}
             </div>
           </section>
         )}
