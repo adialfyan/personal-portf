@@ -3,12 +3,29 @@
 import {
   useEffect,
   useRef,
+  useState,
   startTransition,
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
+  const [curtainActive, setCurtainActive] = useState(false);
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    setCurtainActive(true);
+    const timer = setTimeout(() => {
+      setCurtainActive(false);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, []);
+
   const finishRef = useRef<(() => void) | null>(null);
   const pathname = usePathname();
   const prevPathname = useRef(pathname);
@@ -72,5 +89,15 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       document.removeEventListener("click", handleClick, { capture: true });
   }, [router]);
 
-  return <>{children}</>;
+  return (
+    <>
+      {curtainActive && (
+        <div aria-hidden="true" className="segue-entrance-curtain">
+          <div className="segue-entrance-trail" />
+          <div className="segue-entrance-lead" />
+        </div>
+      )}
+      {children}
+    </>
+  );
 }

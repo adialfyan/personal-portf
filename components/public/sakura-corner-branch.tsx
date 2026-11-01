@@ -147,7 +147,7 @@ const PETAL_DEFINITIONS: PetalDef[] = [
 
 /**
  * Falling Petal Particle Animator (Gugur).
- * Module scope so the compiler does not see a ref being reassigned in an effect.
+ * Module scope so React Compiler does not infer mutation of captured ref.
  */
 function dropPetal(
   petalEls: (HTMLDivElement | null)[],
@@ -222,11 +222,10 @@ function dropPetal(
 
 /**
  * SakuraCornerBranch Component
- * - Rest State: Clean Sumi-e bare wooden branch resting peacefully in top-right
- *   corner with a quiet ambient spring breeze.
- * - Entrance Animation (on page refresh / load):
- *     1. Branch materializes at resting pose via authentic pixel-dither SVG dissolve.
- *     2. Branch awakens and stretches into hover pose (scale: 1.03, rotation: 2.8, etc.).
+ * - Rest State: Clean Sumi-e bare wooden branch resting peacefully in top-right corner.
+ * - Entrance Sequence (after page transition reveals the screen):
+ *     1. Branch starts in exact resting pose (scale: 0.88, opacity: 0.78, rotation: 0).
+ *     2. Branch stretches dynamically into active hover pose (scale: 1.03, rotation: 2.8).
  *     3. Flowers bloom smoothly one by one with the MorphText liquid gooey filter.
  *     4. Sakura petals detach and drift gently through the hero section.
  * - Interactive States:
@@ -236,7 +235,6 @@ function dropPetal(
 export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) {
   const rawId = useId();
   const filterId = `flower-morph-filter-${rawId.replace(/[^a-zA-Z0-9-_]/g, "")}`;
-  const pixelFilterId = `branch-pixel-filter-${rawId.replace(/[^a-zA-Z0-9-_]/g, "")}`;
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const branchWrapperRef = useRef<HTMLDivElement | null>(null);
@@ -248,11 +246,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
   const turbulenceRef = useRef<SVGFETurbulenceElement | null>(null);
   const blurRef = useRef<SVGFEGaussianBlurElement | null>(null);
   const colorMatrixRef = useRef<SVGFEColorMatrixElement | null>(null);
-
-  // Pixelate entrance SVG filter elements
-  const floodRef = useRef<SVGFEFloodElement | null>(null);
-  const tileCompRef = useRef<SVGFECompositeElement | null>(null);
-  const morphRef = useRef<SVGFEMorphologyElement | null>(null);
 
   const releasePetals = (offset: number) => {
     PETAL_DEFINITIONS.forEach((petal, i) => {
@@ -334,7 +327,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       ) {
         rafIdRef.current = requestAnimationFrame(tick);
       } else {
-        // Reset to exact identity & STOP RAF LOOP (0% CPU cost when idle)
         animRef.current.scale = 0;
         animRef.current.blur = 0;
         animRef.current.alphaThreshold = 1;
@@ -351,10 +343,10 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
     const branch = branchWrapperRef.current;
     if (!branch) return;
 
-    // 1. Initial State: Resting bare branch (sebelum di-hover)
+    // 1. Initial State: Resting bare branch pose (sebelum di-hover)
     gsap.set(branch, {
       scale: 0.88,
-      opacity: 0,
+      opacity: 0.78,
       rotation: 0,
       x: 0,
       y: 0,
@@ -378,61 +370,14 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion) {
-      gsap.set(branch, { opacity: 0.78 });
       return;
     }
-
-    // Step 1: Pixelated transition entrance at resting position (sebelum di-hover)
-    branch.style.filter = `url(#${pixelFilterId})`;
-    const pix = { size: 16 };
-    const flood = floodRef.current;
-    const tileComp = tileCompRef.current;
-    const morph = morphRef.current;
 
     const entranceTl = gsap.timeline();
     entranceTimelineRef.current = entranceTl;
 
-    // Fade opacity from 0 to 0.78 (resting opacity)
-    entranceTl.to(
-      branch,
-      {
-        opacity: 0.78,
-        duration: 0.5,
-        ease: "power1.out",
-      },
-      0
-    );
-
-    // Resolve pixel size from 16 -> 0 (smooth dither resolve)
-    entranceTl.to(
-      pix,
-      {
-        size: 0,
-        duration: 0.85,
-        ease: "power2.inOut",
-        onUpdate: () => {
-          const s = Math.round(pix.size);
-          if (s <= 1) {
-            branch.style.filter = "none";
-          } else if (flood && tileComp && morph) {
-            const half = Math.max(1, Math.round(s / 2));
-            flood.setAttribute("x", String(half));
-            flood.setAttribute("y", String(half));
-            flood.setAttribute("width", String(half));
-            flood.setAttribute("height", String(half));
-            tileComp.setAttribute("width", String(s));
-            tileComp.setAttribute("height", String(s));
-            morph.setAttribute("radius", String(half));
-          }
-        },
-        onComplete: () => {
-          branch.style.filter = "none";
-        },
-      },
-      0
-    );
-
-    // Step 2: Batangnya ikut seperti saat di-hover ("lalauuu batangnya ikutt sprpti di hoverr")
+    // Wait for the page-level pixelated transition curtain to wipe (~0.6s),
+    // then the branch stretches into active pose ("batangnya ikut seperti di-hover")
     entranceTl.to(
       branch,
       {
@@ -444,12 +389,11 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
         duration: 1.25,
         ease: "power2.out",
       },
-      0.9
+      0.65
     );
 
-    // Step 3: Lalu mekar dengan smooth ("lalu mekar")
+    // Lalu mekar dengan smooth ("lalu mekar")
     entranceTl.add(() => {
-      // Trigger liquid gooey morph filter bell curve
       isMorphingRef.current = true;
       startLoop();
 
@@ -495,12 +439,18 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
         );
       });
 
-      // Release single wave of petals fluttering down on entrance
+      // Single initial wave of floating petals
       PETAL_DEFINITIONS.forEach((petal, i) => {
-        dropPetal(petalRefs.current, petalTweens.current, containerRef.current, i, 0.4 + petal.baseDelay, () => false);
+        dropPetal(
+          petalRefs.current,
+          petalTweens.current,
+          containerRef.current,
+          i,
+          0.3 + petal.baseDelay,
+          () => false
+        );
       });
-      
-    }, 1.0);
+    }, 0.75);
 
     const ambientTween = gsap.to(branch, {
       rotation: 1.2,
@@ -518,7 +468,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
     const petals = petalTweens.current;
     return () => {
       entranceTl.kill();
-      branch.style.filter = "none";
       ambientTween.kill();
       morphProgressTween.current?.kill();
       clusters.forEach((t) => t?.kill());
@@ -665,14 +614,13 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
       onMouseLeave={handleMouseLeave}
       className={`absolute top-0 right-0 z-20 pointer-events-auto cursor-pointer select-none overflow-visible w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[490px] lg:h-[490px] ${className}`}
     >
-      {/* SVG Filters: Liquid Gooey Morph Filter + Square Pixel Dither Filter */}
+      {/* Liquid Gooey Morph Filter for Flowers (MorphText Architecture) */}
       <svg
         aria-hidden="true"
         className="pointer-events-none absolute h-0 w-0 overflow-hidden"
         style={{ position: "absolute", width: 0, height: 0 }}
       >
         <defs>
-          {/* 1. Liquid Gooey Morph Filter for Flowers (MorphText Architecture) */}
           <filter
             id={filterId}
             x="-30%"
@@ -712,15 +660,6 @@ export function SakuraCornerBranch({ className = "" }: SakuraCornerBranchProps) 
               result="gooey"
             />
             <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
-          </filter>
-
-          {/* 2. Authentic Square Pixel-Dither Entrance Filter for Bare Branch */}
-          <filter id={pixelFilterId} x="-10%" y="-10%" width="120%" height="120%">
-            <feFlood ref={floodRef} x="8" y="8" width="8" height="8" />
-            <feComposite ref={tileCompRef} width="16" height="16" />
-            <feTile result="tile" />
-            <feComposite in="SourceGraphic" in2="tile" operator="in" />
-            <feMorphology ref={morphRef} operator="dilate" radius="8" />
           </filter>
         </defs>
       </svg>

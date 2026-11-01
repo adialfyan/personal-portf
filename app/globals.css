@@ -264,3 +264,47 @@ html.lenis body {
     pointer-events: none;
   }
 }
+
+/*
+  Initial page entrance curtain:
+  Plays the identical 2-tone Sprite Noise dissolve (lead + trail curtain) on first load / refresh,
+  matching the site's cross-page transition.
+*/
+.segue-entrance-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+}
+.segue-entrance-lead {
+  position: absolute;
+  inset: 0;
+  background: var(--segue-lead-color);
+  -webkit-mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
+  mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
+  -webkit-mask-size: 1841.667% 100%, 100% 100%;
+  mask-size: 1841.667% 100%, 100% 100%;
+  -webkit-mask-position: calc((var(--segue-lead-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
+  mask-position: calc((var(--segue-lead-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude, add;
+  animation: segue-lead-frame var(--segue-duration) var(--segue-ease) 0s forwards;
+}
+.segue-entrance-trail {
+  position: absolute;
+  inset: 0;
+  background: var(--segue-trail-color);
+  -webkit-mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
+  mask-image: var(--segue-sprite), linear-gradient(#000 0 0);
+  -webkit-mask-size: 1841.667% 100%, 100% 100%;
+  mask-size: 1841.667% 100%, 100% 100%;
+  -webkit-mask-position: calc((var(--segue-trail-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
+  mask-position: calc((var(--segue-trail-frame) * 26 + 1) / 418 * 100%) 0, 0 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude, add;
+  animation: segue-trail-frame var(--segue-duration) var(--segue-ease) var(--segue-gap) forwards;
+}
