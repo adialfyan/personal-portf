@@ -20,6 +20,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      # PageProps/LayoutProps globals live in .next/types, which only exists after typegen
+      - run: npx next typegen
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
