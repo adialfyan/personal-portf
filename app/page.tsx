@@ -128,7 +128,7 @@ export default async function Home() {
               >
                 Building{" "}
                 <MorphText
-                  words={["reliable", "scalable", "resilient", "thoughtful"]}
+                  words={["practical", "reliable", "resilient", "responsive"]}
                   intensity={12}
                   className="font-normal italic"
                 />{" "}
@@ -148,11 +148,24 @@ export default async function Home() {
                   >
                     Introduction &bull; Bio
                   </p>
-                  <div className="space-y-6 text-lg sm:text-xl md:text-2xl font-normal leading-relaxed text-foreground/90 max-w-2xl">
-                    <p>{bio}</p>
-                    <p className="text-base sm:text-lg text-muted font-normal leading-relaxed">
-                      Specializing in full-stack architecture, high-reliability enterprise platforms, and thoughtful digital interfaces built with clean engineering.
+                  <div className="space-y-4 text-lg sm:text-xl md:text-2xl font-normal leading-relaxed text-foreground/90 max-w-2xl">
+                    <p>
+                      Full-stack developer building practical web applications, financial tools, and internal systems.
                     </p>
+                    <p className="text-base sm:text-lg text-muted font-normal leading-relaxed">
+                      Working across backend architecture, relational databases, and responsive frontends. Learn more about my engineering background, production systems (SIMMAN, Acrylico, Nata Code), and core capabilities.
+                    </p>
+                  </div>
+
+                  {/* Tactile Button linking directly to /about */}
+                  <div className="mt-8">
+                    <Link
+                      href="/about"
+                      className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium tracking-[0.16em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all group cursor-pointer"
+                    >
+                      <span>Read Editorial Profile &amp; Background</span>
+                      <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -200,7 +213,7 @@ export default async function Home() {
 
                     <li>
                       <Link
-                        href="/writing"
+                        href="/about"
                         className="group block pt-2.5 pb-2 transition-colors"
                       >
                         <div className="flex items-baseline justify-between">
@@ -210,6 +223,37 @@ export default async function Home() {
                               style={{ fontFamily: "var(--font-display)" }}
                             >
                               02
+                            </span>
+                            <span
+                              className="text-lg text-foreground group-hover:underline tracking-tight truncate"
+                              style={{ fontFamily: "var(--font-display)" }}
+                            >
+                              About &bull; Profile
+                            </span>
+                          </div>
+                          <span
+                            className="text-[11px] font-medium tracking-[0.16em] uppercase flex-shrink-0 px-2.5 py-1 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-neutral-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] group-hover:bg-neutral-100 group-hover:border-neutral-400/90 group-hover:text-foreground group-active:translate-y-[1px] transition-all inline-flex items-center gap-1.5"
+                          >
+                            <span>Profile</span>
+                            <span>&rarr;</span>
+                          </span>
+                        </div>
+                      </Link>
+                      <BouncyLine />
+                    </li>
+
+                    <li>
+                      <Link
+                        href="/writing"
+                        className="group block pt-2.5 pb-2 transition-colors"
+                      >
+                        <div className="flex items-baseline justify-between">
+                          <div className="flex items-baseline gap-3 min-w-0 pr-4">
+                            <span
+                              className="text-xs text-muted/70 font-normal"
+                              style={{ fontFamily: "var(--font-display)" }}
+                            >
+                              03
                             </span>
                             <span
                               className="text-lg text-foreground group-hover:underline tracking-tight truncate"
@@ -240,7 +284,7 @@ export default async function Home() {
                               className="text-xs text-muted/70 font-normal"
                               style={{ fontFamily: "var(--font-display)" }}
                             >
-                              03
+                              04
                             </span>
                             <span
                               className="text-lg text-foreground group-hover:underline tracking-tight truncate"
@@ -271,7 +315,7 @@ export default async function Home() {
                               className="text-xs text-muted/70 font-normal"
                               style={{ fontFamily: "var(--font-display)" }}
                             >
-                              04
+                              05
                             </span>
                             <span
                               className="text-lg text-foreground group-hover:underline tracking-tight truncate"
@@ -298,7 +342,7 @@ export default async function Home() {
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   <span className="text-[11px] font-medium tracking-wider uppercase">Directory</span>
-                  <span>4 sections</span>
+                  <span>5 sections</span>
                 </div>
               </div>
             </div>
