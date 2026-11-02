@@ -188,7 +188,28 @@ Teknologi: Laravel, PostgreSQL, Redis, REST API & Webhook, Docker, Linux VPS, Gi
 
 ---
 
-## 5. ⚠️ CATATAN SINKRONISASI
+## 5. 📜 DATA PELATIHAN & SERTIFIKASI (Form Tambah Pelatihan Kemnaker)
+
+### Pelatihan 1: MLOps: A Multiple Case Study In Industry
+* **Lembaga Pelatihan**: `Lembaga Pengembangan Kompetensi Lulusan FTIK Universitas Semarang` *(jika berupa pencarian instansi di Kemnaker, ketik/pilih: `Universitas Semarang`)*
+* **Program Pelatihan**: `Pelatihan MLOps: A Multiple Case Study In Industry`
+* **Kejuruan**: `Teknologi Informasi dan Komunikasi (TIK)` *(atau `Teknik Informatika`)*
+* **Sub Kejuruan**: `Rekayasa Perangkat Lunak / Software Engineering` *(atau `Kecerdasan Buatan / Sains Data` sesuai opsi dropdown Kemnaker)*
+* **Tipe Lokasi**: `Dalam Negeri`
+* **Lokasi**: `Kota Semarang, Jawa Tengah`
+* **Tanggal Mulai**: `26 Oktober 2026` *(atau `Oktober 2026`)*
+* **Tanggal Berakhir**: `29 Oktober 2026` *(atau `Oktober 2026`)*
+* **Deskripsi (Opsional — Siap Salin)**:
+```text
+Mengikuti pelatihan intensif MLOps (Machine Learning Operations) yang diselenggarakan oleh LPKL FTIK Universitas Semarang. Pelatihan ini berfokus pada siklus hidup penerapan model pembelajaran mesin (machine learning) ke lingkungan produksi industri, mencakup otomatisasi pipeline data, pengujian dan versioning model, deployment sistem, serta studi kasus integrasi AI pada kebutuhan operasional industri nyata.
+```
+* **Nomor Sertifikat**: `1488/USM.H4.FTIK/I/2026`
+* **File Sertifikat (Siap Diunggah)**: `/home/aloalfyan/Downloads/G.211.22.0013_J0000209.pdf`
+* **Tautan Verifikasi Resmi**: `http://sipkol.usm.ac.id/view/sertifikat-pelatihan/J0000209/5708`
+
+---
+
+## 6. ⚠️ CATATAN SINKRONISASI
 
 * Kemnaker mencatat MAN 1 Kota Semarang: **Maret 2025 – September 2026**.
 * LinkedIn & portofolio masih menulis **Mar 2025 – Oct 2025** dan tahun proyek `2026`.

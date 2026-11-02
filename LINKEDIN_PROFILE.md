@@ -275,3 +275,17 @@ Rekognisi Karya Prestasi Mahasiswa, Penelitian Hybrid Blockchain & Kriptografi I
 Undergraduate thesis: "Securing Educational Financial Data Against Insider Threats: A Hybrid Blockchain Approach with Merkle Tree Aggregation".
 Focused on modern software engineering, web application development, data structures, and cryptographic security.
 ```
+
+---
+
+## 9. 📜 LICENSES & CERTIFICATIONS (Sertifikasi di LinkedIn)
+
+*(Di LinkedIn, klik **Add profile section** → **Recommended** → **Add license or certification**)*
+
+* **Name**: `MLOps: A Multiple Case Study In Industry`
+* **Issuing Organization**: `Universitas Semarang` *(atau `LPKL FTIK Universitas Semarang`)*
+* **Issue Date**: `October 2026`
+* **Expiration Date**: Centang *(This credential does not expire)*
+* **Credential ID**: `1488/USM.H4.FTIK/I/2026`
+* **Credential URL**: `http://sipkol.usm.ac.id/view/sertifikat-pelatihan/J0000209/5708`
+* **Skills**: `Machine Learning Operations (MLOps)`, `Software Engineering`, `Continuous Integration and Continuous Delivery (CI/CD)`, `Docker`
