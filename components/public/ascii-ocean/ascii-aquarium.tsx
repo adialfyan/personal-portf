@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { OceanEngine } from "./engine";
+import type { OceanEngine } from "./engine";
 import type { KoiKind } from "./world";
 
 const VARIETY_OPTIONS: { id: KoiKind | "all"; label: string; desc: string }[] = [
@@ -14,24 +14,54 @@ const VARIETY_OPTIONS: { id: KoiKind | "all"; label: string; desc: string }[] = 
 ];
 
 export function AsciiAquarium() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const engineRef = useRef<OceanEngine | null>(null);
+  const [inView, setInView] = useState(false);
 
   const [activeVariety, setActiveVariety] = useState<KoiKind | "all">("all");
   const [isPaused, setIsPaused] = useState(false);
 
+  // Lazy-mount: Only instantiate canvas engine when within 350px of viewport
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const el = sectionRef.current;
+    if (!el) return;
 
-    const engine = new OceanEngine(canvas);
-    engineRef.current = engine;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        }
+      },
+      { rootMargin: "350px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+    let engine: OceanEngine | null = null;
+    let active = true;
+
+    import("./engine").then(({ OceanEngine: EngineClass }) => {
+      if (!active || !canvasRef.current) return;
+      engine = new EngineClass(canvasRef.current);
+      engineRef.current = engine;
+      if (activeVariety !== "all") {
+        engine.setVariety(activeVariety);
+      }
+    });
 
     return () => {
-      engine.destroy();
-      engineRef.current = null;
+      active = false;
+      if (engine) {
+        engine.destroy();
+        engineRef.current = null;
+      }
     };
-  }, []);
+  }, [inView]);
 
   const handleSelectVariety = (kind: KoiKind | "all") => {
     setActiveVariety(kind);
@@ -57,6 +87,7 @@ export function AsciiAquarium() {
 
   return (
     <section
+      ref={sectionRef}
       id="ascii-aquarium"
       className="relative w-full py-16 md:py-24 border-t border-border bg-background text-foreground overflow-hidden"
     >

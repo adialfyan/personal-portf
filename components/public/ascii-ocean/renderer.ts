@@ -246,8 +246,8 @@ export class AsciiRenderer {
     this.width = width;
     this.height = height;
     this.dpr = dpr;
-    // On mobile screens, scale cell width down so the pond retains a fine, detailed ASCII grid
-    this.cw = width < 500 ? clamp(Math.round(width / 68), 5, 8) : clamp(Math.round(width / 136), 8, 12);
+    // Calibrated cell scaling: produces crisp Japanese sumi-e monospace characters while reducing render loop overdraw
+    this.cw = width < 500 ? clamp(Math.round(width / 60), 6, 9) : clamp(Math.round(width / 115), 10, 14);
     this.ch = Math.round(this.cw * 1.45);
     this.cols = Math.ceil(width / this.cw);
     this.rows = Math.ceil(height / this.ch);

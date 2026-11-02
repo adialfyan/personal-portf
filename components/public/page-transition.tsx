@@ -14,7 +14,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const duration = isMobile ? 420 : 700;
+    const duration = isMobile ? 340 : 400;
     const timer = setTimeout(() => {
       setCurtainActive(false);
     }, duration);
@@ -67,7 +67,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       document.startViewTransition(
         () =>
           new Promise<void>((resolve) => {
-            const timer = setTimeout(() => resolve(), 3500);
+            const timer = setTimeout(() => resolve(), 2000);
             startTransition(() => {
               router.push(url.pathname + url.search + url.hash);
               finishRef.current = () => {

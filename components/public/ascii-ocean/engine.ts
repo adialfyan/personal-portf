@@ -9,8 +9,10 @@ export class OceanEngine {
   private renderer: AsciiRenderer;
   private raf = 0;
   private last = 0;
+  private lastRender = 0;
+  private readonly targetFrameDuration = 1000 / 30; // 30 FPS rendering budget
   private acc = 0;
-  private visible = true;
+  private visible = false;
   private isPaused = false;
   private reducedMotion: MediaQueryList;
   private resizeObserver: ResizeObserver;
@@ -42,7 +44,6 @@ export class OceanEngine {
     document.fonts?.load(`600 16px monospace`).then(() => {
       if (!this.disposed && this.reducedMotion.matches) this.drawStill();
     });
-    this.schedule();
   }
 
   setVariety(kind: KoiKind | "all") {
@@ -88,7 +89,8 @@ export class OceanEngine {
   private resize() {
     const rect = this.canvas.getBoundingClientRect();
     if (rect.width < 1 || rect.height < 1) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Cap DPR to 1.25: Monospace character cells remain ultra-crisp while eliminating 60% memory & overdraw on high-DPI screens
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     this.renderer.resize(rect.width, rect.height, dpr);
     this.world.resize(rect.width, rect.height, this.renderer.cellWidth, this.renderer.cellHeight);
     if (this.reducedMotion.matches) this.drawStill();
@@ -98,12 +100,19 @@ export class OceanEngine {
     cancelAnimationFrame(this.raf);
     if (this.disposed || !this.visible || this.isPaused || this.reducedMotion.matches) return;
     this.last = performance.now();
+    this.lastRender = performance.now();
     this.raf = requestAnimationFrame(this.frame);
   }
 
   private frame = (now: number) => {
     if (this.isPaused || this.disposed || !this.visible) return;
-    const dt = Math.min(0.1, (now - this.last) / 1000);
+    this.raf = requestAnimationFrame(this.frame);
+
+    const elapsed = now - this.lastRender;
+    if (elapsed < this.targetFrameDuration) return;
+    this.lastRender = now - (elapsed % this.targetFrameDuration);
+
+    const dt = Math.min(0.08, (now - this.last) / 1000);
     this.last = now;
     this.acc += dt;
     let steps = 0;
@@ -114,7 +123,6 @@ export class OceanEngine {
     }
     if (steps === MAX_STEPS) this.acc = 0;
     this.renderer.render(this.world, dt);
-    this.raf = requestAnimationFrame(this.frame);
   };
 
   private drawStill() {

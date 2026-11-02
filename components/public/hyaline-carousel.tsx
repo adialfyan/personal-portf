@@ -55,6 +55,7 @@ export function HyalineCarousel({
     hoverIdx: -1,
     raf: 0,
     lastFrame: 0,
+    isVisible: true,
   });
 
   // Total visible shells on stage
@@ -76,7 +77,19 @@ export function HyalineCarousel({
 
     const ro = new ResizeObserver(measure);
     ro.observe(el);
-    return () => ro.disconnect();
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        stateRef.current.isVisible = entry.isIntersecting;
+      },
+      { rootMargin: "150px" }
+    );
+    io.observe(el);
+
+    return () => {
+      ro.disconnect();
+      io.disconnect();
+    };
   }, []);
 
   const fit = Math.min(dimensions.w, dimensions.h) / BASE_FRAME;
@@ -87,6 +100,9 @@ export function HyalineCarousel({
     const state = stateRef.current;
 
     const loop = (now: number) => {
+      state.raf = requestAnimationFrame(loop);
+      if (!state.isVisible) return;
+
       const dt = state.lastFrame ? Math.min(0.05, (now - state.lastFrame) / 1000) : 1 / 60;
       state.lastFrame = now;
 
@@ -105,7 +121,7 @@ export function HyalineCarousel({
       }
 
       const active = wrapIndex(Math.round(state.pos), n);
-      setActiveItemIndex(active);
+      setActiveItemIndex((prev) => (prev === active ? prev : active));
 
       // Render cards
       const half = visibleShells / 2;
