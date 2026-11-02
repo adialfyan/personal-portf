@@ -9,16 +9,42 @@
 
 *(Salin teks ini ke kolom **Deskripsi Diri / Ringkasan Profil** di portal Kemnaker)*
 
+### Versi Bahasa Indonesia (untuk portal Kemnaker)
+
 ```text
-Saya adalah lulusan baru (fresh graduate) Teknik Informatika yang berfokus pada pengembangan aplikasi web full-stack. Selama masa kuliah hingga setelah lulus, saya mengerjakan beberapa proyek kontrak dan freelance, mulai dari sistem keuangan institusi, sistem operasional perusahaan, sampai eksperimen antarmuka interaktif.
+Lulusan Teknik Informatika Universitas Semarang dengan fokus pengembangan web full-stack. Saya senang mengubah masalah yang rumit menjadi perangkat lunak yang bersih dan bisa diandalkan.
 
-Dari proyek-proyek tersebut saya belajar hal-hal yang sekarang saya bawa ke dunia kerja:
-1. Sistem keuangan dan administrasi: ikut membangun sistem pembayaran siswa dengan integrasi Virtual Account bank, pencatatan anggaran per divisi, dan laporan rekap otomatis.
-2. Sistem operasional: membangun alur kerja internal (antrean produksi, pencatatan proyek, verifikasi dokumentasi lapangan) agar pekerjaan manual berkurang.
-3. Antarmuka web: mengerjakan frontend React/Inertia yang responsif, termasuk beberapa animasi dan visualisasi berbasis Canvas.
-4. Infrastruktur dasar: terbiasa menggunakan Git, Docker, dan server Linux VPS untuk menjalankan serta merawat aplikasi yang sudah dipakai pengguna.
+Selama kuliah dan mengerjakan proyek lepas, saya:
+• Membangun SIMMAN E-Budgeting, sistem keuangan madrasah untuk pembayaran siswa, pagu anggaran divisi, dan laporan audit, menggunakan Laravel, PostgreSQL, dan Redis. Pembayaran lewat Virtual Account masuk ke buku besar secara otomatis lewat webhook, sehingga staf tidak perlu mencatat ulang secara manual.
+• Membangun Acrylico ERP untuk workshop akrilik menggunakan Laravel, Vue, dan Inertia. Job ticket kertas diganti antrean stasiun kerja yang real-time, dan absensi diverifikasi di browser dalam waktu di bawah 400ms sehingga data biometrik tidak keluar dari perangkat pekerja.
+• Membangun situs agensi Nata Code dengan Laravel 13, Inertia 2.0, React, dan shader GLSL buatan sendiri, lengkap dengan pendeteksian kemampuan perangkat agar halaman tetap 60fps di ponsel kelas bawah.
+• Menulis skripsi tentang pelacakan aset laboratorium dengan Hyperledger Fabric 2.5 (konsensus Raft, chaincode Go), serta membangun simulasi kolam koi ASCII murni TypeScript dan Canvas yang menjalankan 150+ agen di bawah 2ms per frame.
 
-Saya menyadari masih banyak yang perlu dipelajari. Karena itu saya terbuka pada masukan, senang bekerja dalam tim, dan berkomitmen menyelesaikan pekerjaan dengan rapi, terdokumentasi, dan tepat waktu.
+Keahlian utama: PHP/Laravel, TypeScript/JavaScript, React, SQL (PostgreSQL & MySQL), Git, REST API & webhook, Docker, Linux VPS.
+
+Saya mudah bekerja dalam tim, cepat belajar, dan terbiasa menulis kode yang mudah dirawat. Saat ini saya mencari posisi entry-level Full-Stack Developer untuk berkontribusi pada produk yang berdampak sambil terus belajar dari engineer yang lebih berpengalaman.
+
+📍 Semarang, Indonesia | Terbuka untuk remote dan relokasi
+📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
+```
+
+### English version (LinkedIn / job portals)
+
+```text
+Computer Science graduate from Universitas Semarang with a focus on full-stack web development. I enjoy turning complex problems into clean, reliable software.
+
+During my studies and project work, I:
+• Built SIMMAN E-Budgeting, a school financial system for student payments, division budgets, and audit reports, using Laravel, PostgreSQL, and Redis. Virtual-account webhooks post bank payments straight into the ledger, so staff no longer re-key them by hand.
+• Built Acrylico ERP for an acrylic fabrication workshop using Laravel, Vue, and Inertia. Paper job tickets became a live workstation queue, and worker attendance is verified in the browser in under 400ms, so biometric data never leaves the device.
+• Built Nata Code's agency site with Laravel 13, Inertia 2.0, React, and custom GLSL shaders, with device-capability profiling that keeps shader-heavy pages at 60fps on low-end phones.
+• Wrote an undergraduate thesis on laboratory asset provenance with Hyperledger Fabric 2.5 (Raft consensus, Go chaincodes), and built an ASCII koi pond simulation in plain TypeScript and Canvas that runs 150+ agents in under 2ms per frame.
+
+Core skills: PHP/Laravel, TypeScript/JavaScript, React, SQL (PostgreSQL & MySQL), Git, REST APIs & webhooks, Docker, Linux VPS
+
+I work well in collaborative teams, learn quickly, and care about writing maintainable code. I am currently seeking an entry-level Full-Stack Developer position where I can contribute to impactful products while growing alongside experienced engineers.
+
+📍 Semarang, Indonesia | Open to remote and relocation
+📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
 ```
 
 ---

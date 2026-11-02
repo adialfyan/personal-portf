@@ -36,25 +36,20 @@ Web Developer & Creative Technologist | Next.js, Canvas API, WebGL & Motion Phys
 ## 3. 📝 ABOUT SECTION (Ringkasan Profil — Humble & Otentik)
 
 ```text
-Hello! I am a fresh graduate software engineer and full-stack developer who enjoys building reliable web applications, internal tools, and interactive digital experiments.
+Computer Science graduate from Universitas Semarang with a focus on full-stack web development. I enjoy turning complex problems into clean, reliable software.
 
-During my studies and through independent freelance work, I have focused on solving real operational problems with clean code and solid architectural fundamentals:
+During my studies and project work, I:
+• Built SIMMAN E-Budgeting, a school financial system for student payments, division budgets, and audit reports, using Laravel, PostgreSQL, and Redis. Virtual-account webhooks post bank payments straight into the ledger, so staff no longer re-key them by hand.
+• Built Acrylico ERP for an acrylic fabrication workshop using Laravel, Vue, and Inertia. Paper job tickets became a live workstation queue, and worker attendance is verified in the browser in under 400ms, so biometric data never leaves the device.
+• Built Nata Code's agency site with Laravel 13, Inertia 2.0, React, and custom GLSL shaders, with device-capability profiling that keeps shader-heavy pages at 60fps on low-end phones.
+• Wrote an undergraduate thesis on laboratory asset provenance with Hyperledger Fabric 2.5 (Raft consensus, Go chaincodes), and built an ASCII koi pond simulation in plain TypeScript and Canvas that runs 150+ agents in under 2ms per frame.
 
-• Financial Systems & Payments: Built SIMMAN E-Budgeting, integrating direct Host-to-Host (H2H) Virtual Account banking webhooks that eliminated manual teller verification and programmatically locked division budget limits.
-• Operations & Workstations: Engineered Acrylico ERP, replacing paper job-tickets with live shop floor Kanban queues and client-side face recognition attendance (<400ms verification) that keeps employee biometric data completely on-device.
-• Creative Computing & Math Simulation: Built an autonomous 60fps ASCII Nishikigoi Pond in pure TypeScript and Canvas API, solving Reynolds flocking boids, 20-node kinematic spine undulation waves, and spatial hash grid partitioning with zero external libraries.
-• Interactive Web & Design Systems: Developed Nata Code's agency web platform using Laravel 13, Inertia.js 2.0, React, and custom procedural GLSL shaders optimized for 60fps across low-end and high-end hardware tiers.
-• Distributed Systems & Research: Researched laboratory asset provenance using Hyperledger Fabric 2.5 with dual-host Raft consensus and Go microservice chaincodes.
+Core skills: PHP/Laravel, TypeScript/JavaScript, React, SQL (PostgreSQL & MySQL), Git, REST APIs & webhooks, Docker, Linux VPS
 
-I enjoy digging into both sides of software engineering: deterministic backend business logic with relational databases, and high-performance interactive interfaces that feel tactile and responsive.
+I work well in collaborative teams, learn quickly, and care about writing maintainable code. I am currently seeking an entry-level Full-Stack Developer position where I can contribute to impactful products while growing alongside experienced engineers.
 
-Core Stack:
-• Backend: Laravel, PHP 8+, PostgreSQL, MySQL, Redis, Go, Docker, REST & Webhooks
-• Frontend & Motion: React, Vue 3, Inertia.js, TypeScript, Tailwind CSS, Canvas API, GSAP, WebGL/GLSL
-• Concepts: System Design, Relational Data Modeling, Kinematic Physics Algorithms, Client-Side Biometrics
-
-Currently open for full-time junior/associate software engineering opportunities, freelance projects, and tech collaborations!
-Let's connect or drop me an email at: adialfianhafiz@gmail.com
+📍 Semarang, Indonesia | Open to remote and relocation
+📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
 ```
 
 ---
