@@ -161,7 +161,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Drawer Footer Metadata */}
-        <div className="relative z-10 pt-4 pb-6 sm:pb-4 border-t border-border flex items-center justify-between text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
+        <div className="relative z-10 pt-4 pb-6 sm:pb-4 border-t border-border flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
           <span>Frontend &amp; Full-Stack Developer</span>
           <span>Portfolio</span>
         </div>
