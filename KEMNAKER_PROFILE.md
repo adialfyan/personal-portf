@@ -9,26 +9,24 @@
 
 *(Salin teks ini ke kolom **Deskripsi Diri / Ringkasan Profil** di portal Kemnaker)*
 
-### Versi Bahasa Indonesia (untuk portal Kemnaker)
+### Versi Bahasa Indonesia (untuk portal Kemnaker — Format Naratif Murni)
+
+> **Catatan**: Portal Kemnaker tidak mendukung bullet point (`•`) dan sering menggabungkan baris baru menjadi satu blok teks. Teks di bawah dirancang mengalir sebagai narasi profesional yang rapi dan mudah dibaca oleh HR/rekruter.
+
+#### Opsi A: Tiga Paragraf Mengalir (Rekomendasi Utama)
 
 ```text
-Lulusan Teknik Informatika Universitas Semarang dengan fokus utama pada rekayasa antarmuka (Frontend Development) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack (Laravel, PostgreSQL, REST API). Saya senang merancang antarmuka web yang interaktif, rapi, dan responsif, ditopang arsitektur backend yang andal dan tertata.
+Lulusan Teknik Informatika Universitas Semarang yang berfokus pada rekayasa antarmuka web modern (Frontend Development) menggunakan React, TypeScript, dan Next.js, didukung pemahaman menyeluruh terhadap arsitektur Full-Stack berbasis Laravel, PostgreSQL, dan REST API. Saya memiliki minat besar dalam merancang antarmuka pengguna yang bersih, responsif, dan intuitif, yang ditopang oleh logika sistem yang andal.
 
-Selama kuliah dan mengerjakan proyek lepas, saya:
-• Mengembangkan antarmuka interaktif dan CMS Nata Code menggunakan React 18, Inertia.js 2.0, dan Tailwind CSS. Mengintegrasikan animasi GSAP, visual kanvas prosedural, dan penyesuaian kemampuan perangkat agar halaman tetap ringan dan mulus di berbagai ponsel.
-• Membangun antarmuka dashboard operasional dan antrean stasiun kerja Acrylico ERP dengan Vue dan Inertia, mengintegrasikan verifikasi presensi wajah instan langsung di peramban tanpa mengirim data biometrik karyawan keluar perangkat, serta menguji alur pengguna dengan Playwright E2E.
-• Merancang antarmuka portal keuangan dan tata letak SIMMAN E-Budgeting untuk menyederhanakan alur transaksi sekolah yang rumit menjadi mudah digunakan staf, terhubung ke backend Laravel, PostgreSQL, dan webhook kliring Virtual Account bank.
-• Mengembangkan simulasi interaktif kolam koi ASCII berbasis TypeScript dan Canvas API dengan simulasi kawanan alami dan fisika gelombang tubuh ikan, serta menyelesaikan skripsi penelitian tentang pengamanan integritas data keuangan institusi pendidikan dari manipulasi internal menggunakan jejak audit kriptografis (hybrid blockchain & Merkle Tree).
+Selama masa studi dan pengerjaan proyek lepas, saya terbiasa membangun aplikasi web untuk kebutuhan operasional institusi maupun industri. Pengalaman ini mencakup perancangan portal keuangan SIMMAN E-Budgeting yang mengotomatisasi pencatatan transaksi Virtual Account bank ke buku besar, pembuatan dashboard antrean kerja dan presensi biometrik pada Acrylico ERP, serta pengembangan antarmuka agensi Nata Code dengan animasi interaktif yang ringan dan adaptif di berbagai perangkat. Saya juga menyelesaikan skripsi penelitian tentang pengamanan integritas data keuangan institusi pendidikan dari risiko manipulasi internal menggunakan jejak audit kriptografis berbasis hybrid blockchain.
 
-Keahlian utama:
-• Frontend: React.js, TypeScript/JavaScript, Next.js, Inertia.js, Vue.js, Tailwind CSS, HTML5 Canvas API, GSAP
-• Backend & Basis Data: Laravel (PHP 8+), PostgreSQL, MySQL, Redis, REST APIs & Webhooks
-• Alat & Alur Kerja: Git, Docker, Linux VPS, Playwright, Vite, Postman
+Dalam bekerja, saya terbiasa menulis kode komponen yang rapi dan terstruktur, senang berkolaborasi dalam tim, serta cepat mempelajari hal baru. Saat ini saya siap berkontribusi secara penuh dan profesional pada posisi entry-level Frontend Developer maupun Full-Stack Developer, baik secara jarak jauh (remote) maupun penempatan langsung di kantor.
+```
 
-Saya memiliki kepekaan pada detail tampilan (UI/UX), terbiasa menulis kode komponen yang modular dan mudah dirawat, serta cepat belajar hal baru. Saat ini saya mencari posisi entry-level Frontend Developer atau Full-Stack Developer untuk berkontribusi membangun antarmuka web yang bermanfaat sambil terus belajar bersama tim engineer berpengalaman.
+#### Opsi B: Satu Paragraf Utuh (Jika portal Kemnaker otomatis menghapus spasi baris/Enter)
 
-📍 Semarang, Indonesia | Terbuka untuk remote dan relokasi
-📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
+```text
+Lulusan Teknik Informatika Universitas Semarang dengan fokus rekayasa antarmuka web modern (Frontend) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack menggunakan Laravel dan PostgreSQL. Saya terbiasa membangun perangkat lunak untuk kebutuhan operasional nyata, seperti portal keuangan sekolah SIMMAN E-Budgeting yang terhubung dengan kliring Virtual Account bank, sistem manajemen bengkel Acrylico ERP dengan verifikasi presensi wajah langsung di peramban, serta antarmuka interaktif agensi Nata Code yang responsif di berbagai perangkat seluler. Saya juga menyelesaikan penelitian skripsi mengenai pengamanan data keuangan institusi pendidikan dari manipulasi internal menggunakan jejak audit kriptografis berbasis blockchain. Saya memiliki perhatian tinggi pada detail tampilan antarmuka, terbiasa menulis kode yang rapi dan modular, serta siap berkontribusi penuh pada posisi entry-level Frontend Developer maupun Full-Stack Developer.
 ```
 
 ### English version (LinkedIn / job portals)
