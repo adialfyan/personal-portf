@@ -16,7 +16,7 @@
 #### Opsi A: Tiga Paragraf Mengalir (Rekomendasi Utama)
 
 ```text
-Lulusan Teknik Informatika Universitas Semarang yang berfokus pada rekayasa antarmuka web modern (Frontend Development) menggunakan React, TypeScript, dan Next.js, didukung pemahaman menyeluruh terhadap arsitektur Full-Stack berbasis Laravel, PostgreSQL, dan REST API. Saya memiliki minat besar dalam merancang antarmuka pengguna yang bersih, responsif, dan intuitif, yang ditopang oleh logika sistem yang andal.
+Lulusan Teknik Informatika Universitas Semarang (IPK 3,97/4,00) yang berfokus pada rekayasa antarmuka web modern (Frontend Development) berbasis React, TypeScript, dan Next.js, didukung pemahaman menyeluruh terhadap arsitektur Full-Stack berbasis Laravel, PostgreSQL, dan REST API. Saya memiliki minat besar dalam merancang antarmuka pengguna yang bersih, responsif, dan intuitif, yang ditopang oleh logika sistem yang andal.
 
 Selama masa studi dan pengerjaan proyek lepas, saya terbiasa membangun aplikasi web untuk kebutuhan operasional institusi maupun industri. Pengalaman ini mencakup perancangan portal keuangan SIMMAN E-Budgeting yang mengotomatisasi pencatatan transaksi Virtual Account bank ke buku besar, pembuatan dashboard antrean kerja dan presensi biometrik pada Acrylico ERP, serta pengembangan antarmuka agensi Nata Code dengan animasi interaktif yang ringan dan adaptif di berbagai perangkat. Saya juga menyelesaikan skripsi penelitian tentang pengamanan integritas data keuangan institusi pendidikan dari risiko manipulasi internal menggunakan jejak audit kriptografis berbasis hybrid blockchain.
 
@@ -26,13 +26,13 @@ Dalam bekerja, saya terbiasa menulis kode komponen yang rapi dan terstruktur, se
 #### Opsi B: Satu Paragraf Utuh (Jika portal Kemnaker otomatis menghapus spasi baris/Enter)
 
 ```text
-Lulusan Teknik Informatika Universitas Semarang dengan fokus rekayasa antarmuka web modern (Frontend) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack menggunakan Laravel dan PostgreSQL. Saya terbiasa membangun perangkat lunak untuk kebutuhan operasional nyata, seperti portal keuangan sekolah SIMMAN E-Budgeting yang terhubung dengan kliring Virtual Account bank, sistem manajemen bengkel Acrylico ERP dengan verifikasi presensi wajah langsung di peramban, serta antarmuka interaktif agensi Nata Code yang responsif di berbagai perangkat seluler. Saya juga menyelesaikan penelitian skripsi mengenai pengamanan data keuangan institusi pendidikan dari manipulasi internal menggunakan jejak audit kriptografis berbasis blockchain. Saya memiliki perhatian tinggi pada detail tampilan antarmuka, terbiasa menulis kode yang rapi dan modular, serta siap berkontribusi penuh pada posisi entry-level Frontend Developer maupun Full-Stack Developer.
+Lulusan Teknik Informatika Universitas Semarang (IPK 3,97/4,00) dengan fokus rekayasa antarmuka web modern (Frontend) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack menggunakan Laravel dan PostgreSQL. Saya terbiasa membangun perangkat lunak untuk kebutuhan operasional nyata, seperti portal keuangan sekolah SIMMAN E-Budgeting yang terhubung dengan kliring Virtual Account bank, sistem manajemen bengkel Acrylico ERP dengan verifikasi presensi wajah langsung di peramban, serta antarmuka interaktif agensi Nata Code yang responsif di berbagai perangkat seluler. Saya juga menyelesaikan penelitian skripsi mengenai pengamanan data keuangan institusi pendidikan dari manipulasi internal menggunakan jejak audit kriptografis berbasis blockchain. Saya memiliki perhatian tinggi pada detail tampilan antarmuka, terbiasa menulis kode yang rapi dan modular, serta siap berkontribusi penuh pada posisi entry-level Frontend Developer maupun Full-Stack Developer.
 ```
 
 ### English version (LinkedIn / job portals)
 
 ```text
-Computer Science graduate from Universitas Semarang specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, responsive, and intuitive user interfaces backed by dependable systems architecture.
+Computer Science graduate from Universitas Semarang (GPA 3.97 / 4.00) specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, responsive, and intuitive user interfaces backed by dependable systems architecture.
 
 During my studies and project work, I:
 • Built Nata Code's agency web experience and CMS using React 18, Inertia.js 2.0, and Tailwind CSS. Implemented smooth GSAP viewport motion, procedural canvas shaders, and device-tier profiling to keep interactive animations lightweight and fluid across all mobile devices.

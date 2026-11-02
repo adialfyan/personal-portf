@@ -36,7 +36,7 @@ Frontend Developer & Creative Technologist | React, Canvas API, WebGL/GLSL & Mod
 ## 3. 📝 ABOUT SECTION (Ringkasan Profil — Humble & Otentik)
 
 ```text
-Computer Science graduate from Universitas Semarang specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, responsive, and intuitive user interfaces backed by dependable systems architecture.
+Computer Science graduate from Universitas Semarang (GPA 3.97 / 4.00) specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, responsive, and intuitive user interfaces backed by dependable systems architecture.
 
 During my studies and project work, I:
 • Built Nata Code's agency web experience and CMS using React 18, Inertia.js 2.0, and Tailwind CSS. Implemented smooth GSAP viewport motion, procedural canvas shaders, and device-tier profiling to keep interactive animations lightweight and fluid across all mobile devices.
@@ -254,3 +254,24 @@ Tambahkan tautan ini pada bagian **Featured** profil LinkedIn:
 * **Frameworks & Web**: `React.js`, `Inertia.js`, `Vue.js`, `Next.js`, `Tailwind CSS`
 * **Databases & DevOps**: `PostgreSQL`, `MySQL`, `Redis`, `Docker`, `Git`
 * **Creative & Math**: `HTML5 Canvas`, `GSAP (GreenSock)`, `WebGL`
+
+---
+
+## 8. 🎓 EDUCATION (Pendidikan di LinkedIn)
+
+*(Di LinkedIn, klik **Add profile section** → **Core** → **Add education**)*
+
+* **School**: `Universitas Semarang`
+* **Degree**: `Bachelor of Computer Science (S.Kom.)` / `Sarjana Komputer`
+* **Field of Study**: `Informatics Engineering` / `Teknik Informatika`
+* **Dates**: `2022 – 2026`
+* **Grade**: `3.97 / 4.00 (Cum Laude)`
+* **Activities and Societies**:
+```text
+Rekognisi Karya Prestasi Mahasiswa, Penelitian Hybrid Blockchain & Kriptografi Integritas Data Keuangan
+```
+* **Description**:
+```text
+Undergraduate thesis: "Securing Educational Financial Data Against Insider Threats: A Hybrid Blockchain Approach with Merkle Tree Aggregation".
+Focused on modern software engineering, web application development, data structures, and cryptographic security.
+```
