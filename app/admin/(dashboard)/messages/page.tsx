@@ -45,22 +45,32 @@ export default async function MessagesPage({
         Inquiries from the contact form. Reply via your email client.
       </p>
 
-      <div className="flex flex-wrap gap-2 font-mono text-xs tracking-[0.2em] uppercase">
-        {FILTERS.map((f) => (
-          <Link
-            key={f.value}
-            href={
-              f.value === "all" ? "/admin/messages" : `/admin/messages?status=${f.value}`
-            }
-            className={`border px-4 py-2 ${
-              filter === f.value
-                ? "border-accent text-accent"
-                : "border-border text-muted hover:text-foreground"
-            }`}
-          >
-            {f.label}
-          </Link>
-        ))}
+      <div className="flex flex-wrap gap-2 text-xs tracking-[0.16em] uppercase">
+        {FILTERS.map((f) => {
+          const isSelected = filter === f.value;
+          return (
+            <Link
+              key={f.value}
+              href={
+                f.value === "all" ? "/admin/messages" : `/admin/messages?status=${f.value}`
+              }
+              className={`group inline-flex items-center px-3.5 py-2 text-xs font-medium uppercase rounded-[3px] border transition-all duration-150 select-none ${
+                isSelected
+                  ? "bg-[#0a0a0a] text-white border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.24),0_1px_0_#000] active:translate-y-[1px]"
+                  : "bg-neutral-50/90 text-neutral-600 border-neutral-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:text-foreground hover:border-neutral-400/90 active:translate-y-[1px]"
+              }`}
+            >
+              <span
+                className={`w-2 h-2 rounded-[1.5px] mr-2 shrink-0 border transition-all ${
+                  isSelected
+                    ? "bg-white border-white/80 shadow-[0_0_4px_rgba(255,255,255,0.9)]"
+                    : "bg-neutral-300 border-neutral-400/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] group-hover:bg-neutral-400"
+                }`}
+              />
+              {f.label}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="mt-6 border-t border-border">

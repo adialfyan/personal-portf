@@ -108,16 +108,16 @@ export async function GitHubActivityLedger() {
               Public Activity &amp; Cadence
             </h2>
           </div>
-          <div className="flex items-center gap-4 text-xs font-medium tracking-[0.18em] uppercase text-muted">
-            <span>
-              {totalContributions.toLocaleString()} Contributions Past Year
+          <div className="flex flex-wrap items-center gap-2.5 text-xs font-medium tracking-[0.18em] uppercase text-muted">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase rounded-[3px] border border-neutral-200/90 bg-white text-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.95)]">
+              <span className="w-2 h-2 rounded-[1.5px] bg-neutral-700 border border-neutral-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]" />
+              <span>{totalContributions.toLocaleString()} Contributions Past Year</span>
             </span>
-            <span>&bull;</span>
             <a
               href="https://github.com/adialfyan"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors inline-flex items-center gap-1"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all"
             >
               <span>github.com/adialfyan</span>
               <span aria-hidden="true">&rarr;</span>

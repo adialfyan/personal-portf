@@ -91,7 +91,7 @@ export function SiteHeader() {
             aria-expanded={isOpen}
             aria-controls="mobile-navigation-drawer"
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="md:hidden text-xs font-medium tracking-[0.2em] uppercase text-foreground hover:text-muted transition-colors py-1.5 px-3 border border-border bg-background cursor-pointer"
+            className="md:hidden text-xs font-medium tracking-[0.2em] uppercase text-foreground py-1.5 px-3 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
           >
             {isOpen ? "Close" : "Menu"}
           </button>
@@ -129,7 +129,7 @@ export function SiteHeader() {
             type="button"
             onClick={closeMenu}
             aria-label="Close menu"
-            className="text-xs font-medium tracking-[0.2em] uppercase text-foreground py-1.5 px-3 border border-border bg-background hover:bg-surface transition-colors cursor-pointer"
+            className="text-xs font-medium tracking-[0.2em] uppercase text-foreground py-1.5 px-3 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
           >
             Close
           </button>

@@ -506,7 +506,7 @@ export function GlideCarousel({ projects }: GlideCarouselProps) {
             type="button"
             onClick={() => glideStep(-1)}
             aria-label="Previous project"
-            className="flex h-11 w-11 items-center justify-center border border-border bg-background text-foreground transition-all duration-200 hover:bg-foreground hover:text-background hover:border-foreground active:scale-95 cursor-pointer shadow-sm"
+            className="flex h-11 w-11 items-center justify-center rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
           >
             <svg
               width="16"
@@ -526,7 +526,7 @@ export function GlideCarousel({ projects }: GlideCarouselProps) {
             type="button"
             onClick={() => glideStep(1)}
             aria-label="Next project"
-            className="flex h-11 w-11 items-center justify-center border border-border bg-background text-foreground transition-all duration-200 hover:bg-foreground hover:text-background hover:border-foreground active:scale-95 cursor-pointer shadow-sm"
+            className="flex h-11 w-11 items-center justify-center rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
           >
             <svg
               width="16"

@@ -198,9 +198,10 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="bg-dark px-8 py-4 text-xs font-medium tracking-[0.2em] uppercase text-ivory transition-colors hover:bg-neutral-800 disabled:opacity-50"
+        className="inline-flex items-center justify-center gap-2.5 rounded-[3px] border border-black bg-[#0a0a0a] px-8 py-4 text-xs font-medium tracking-[0.2em] uppercase text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.24),0_1px_0_#000] hover:bg-neutral-900 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)] disabled:opacity-50 transition-all cursor-pointer"
       >
-        {status === "sending" ? "Sending…" : "Send message ↗"}
+        <span className="w-2 h-2 rounded-[1.5px] bg-white border border-white/80 shadow-[0_0_4px_rgba(255,255,255,0.9)]" />
+        <span>{status === "sending" ? "Sending…" : "Send message ↗"}</span>
       </button>
     </form>
   );

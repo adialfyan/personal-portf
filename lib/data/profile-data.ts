@@ -14,7 +14,7 @@ export const DEFAULT_PROFILE: Profile = {
   availability_text: "Available for work",
   email: "adialfianhafiz@gmail.com",
   resume_url: null,
-  portrait_path: null,
+  portrait_path: "/portrait.jpg",
   updated_at: new Date().toISOString(),
 };
 

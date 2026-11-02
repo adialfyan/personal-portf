@@ -188,8 +188,7 @@ export default async function Home() {
                             </span>
                           </div>
                           <span
-                            className="text-sm text-muted/70 flex-shrink-0 font-normal group-hover:text-foreground transition-colors inline-flex items-center gap-1"
-                            style={{ fontFamily: "var(--font-display)" }}
+                            className="text-[11px] font-medium tracking-[0.16em] uppercase flex-shrink-0 px-2.5 py-1 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-neutral-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] group-hover:bg-neutral-100 group-hover:border-neutral-400/90 group-hover:text-foreground group-active:translate-y-[1px] transition-all inline-flex items-center gap-1.5"
                           >
                             <span>Production</span>
                             <span>&darr;</span>
@@ -220,8 +219,7 @@ export default async function Home() {
                             </span>
                           </div>
                           <span
-                            className="text-sm text-muted/70 flex-shrink-0 font-normal group-hover:text-foreground transition-colors inline-flex items-center gap-1"
-                            style={{ fontFamily: "var(--font-display)" }}
+                            className="text-[11px] font-medium tracking-[0.16em] uppercase flex-shrink-0 px-2.5 py-1 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-neutral-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] group-hover:bg-neutral-100 group-hover:border-neutral-400/90 group-hover:text-foreground group-active:translate-y-[1px] transition-all inline-flex items-center gap-1.5"
                           >
                             <span>Essays</span>
                             <span>&rarr;</span>
@@ -252,8 +250,7 @@ export default async function Home() {
                             </span>
                           </div>
                           <span
-                            className="text-sm text-muted/70 flex-shrink-0 font-normal group-hover:text-foreground transition-colors inline-flex items-center gap-1"
-                            style={{ fontFamily: "var(--font-display)" }}
+                            className="text-[11px] font-medium tracking-[0.16em] uppercase flex-shrink-0 px-2.5 py-1 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-neutral-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] group-hover:bg-neutral-100 group-hover:border-neutral-400/90 group-hover:text-foreground group-active:translate-y-[1px] transition-all inline-flex items-center gap-1.5"
                           >
                             <span>Curations</span>
                             <span>&rarr;</span>
@@ -284,8 +281,7 @@ export default async function Home() {
                             </span>
                           </div>
                           <span
-                            className="text-sm text-muted/70 flex-shrink-0 font-normal group-hover:text-foreground transition-colors inline-flex items-center gap-1"
-                            style={{ fontFamily: "var(--font-display)" }}
+                            className="text-[11px] font-medium tracking-[0.16em] uppercase flex-shrink-0 px-2.5 py-1 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-neutral-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] group-hover:bg-neutral-100 group-hover:border-neutral-400/90 group-hover:text-foreground group-active:translate-y-[1px] transition-all inline-flex items-center gap-1.5"
                           >
                             <span>Contact</span>
                             <span>↗</span>

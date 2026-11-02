@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteHeader } from "@/components/public/site-header";
 import { SiteFooter } from "@/components/public/site-footer";
+import { WritingsFilterList } from "@/components/public/writings-filter-list";
 import {
   getAllPublishedWritings,
   getSiteProfile,
@@ -29,13 +29,6 @@ export const metadata: Metadata = {
     description:
       "Technical whitepapers, systems engineering monographs, and essays on durable software architecture.",
   },
-};
-
-const CATEGORY_LABELS: Record<string, string> = {
-  paper: "Paper",
-  architecture: "Architecture",
-  essay: "Essay",
-  note: "Field Note",
 };
 
 export default async function WritingPage() {
@@ -69,77 +62,10 @@ export default async function WritingPage() {
           </div>
         </section>
 
-        {/* ——— Articles List ——— */}
+        {/* ——— Articles List with 3D Tactile Category Filtering ——— */}
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-            <div className="border-b border-border pb-4 mb-8 flex items-baseline justify-between text-xs font-medium tracking-[0.2em] uppercase text-muted">
-              <span>Published Entries</span>
-              <span>{writings.length} Documents</span>
-            </div>
-
-            <ol className="divide-y divide-border">
-              {writings.map((writing, index) => {
-                const dateStr = writing.published_at
-                  ? new Date(writing.published_at).toLocaleDateString("en-US", {
-                      month: "short",
-                      year: "numeric",
-                    })
-                  : "Recent";
-
-                const categoryLabel =
-                  CATEGORY_LABELS[writing.category] ?? writing.category;
-
-                return (
-                  <li key={writing.id} className="py-10 md:py-14 first:pt-4">
-                    <Link
-                      href={`/writing/${writing.slug}`}
-                      className="group block"
-                    >
-                      <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-4 mb-4">
-                        <div className="flex flex-wrap items-center gap-3 text-xs font-medium tracking-[0.18em] uppercase text-muted">
-                          <span>{String(index + 1).padStart(2, "0")}</span>
-                          <span>&bull;</span>
-                          <span className="text-foreground">{categoryLabel}</span>
-                          <span>&bull;</span>
-                          <span>{writing.reading_time_minutes} min read</span>
-                        </div>
-                        <span className="text-xs font-medium tracking-wider text-muted md:text-right">
-                          {dateStr}
-                        </span>
-                      </div>
-
-                      <div className="flex items-start justify-between gap-6">
-                        <div className="max-w-4xl">
-                          <h2
-                            className="text-2xl sm:text-3xl md:text-4xl text-foreground font-normal tracking-tight group-hover:underline transition-all"
-                            style={{ fontFamily: "var(--font-display)" }}
-                          >
-                            {writing.title}
-                          </h2>
-                          {writing.subtitle && (
-                            <p className="mt-3 text-base sm:text-lg text-muted/90 font-normal leading-relaxed">
-                              {writing.subtitle}
-                            </p>
-                          )}
-                          {writing.summary && (
-                            <p className="mt-2 text-sm sm:text-base text-muted/70 font-normal leading-relaxed max-w-3xl">
-                              {writing.summary}
-                            </p>
-                          )}
-                        </div>
-
-                        <span
-                          aria-hidden="true"
-                          className="text-xl text-muted group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0 pt-1"
-                        >
-                          ↗
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ol>
+            <WritingsFilterList writings={writings} />
           </div>
         </section>
       </main>

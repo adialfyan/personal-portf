@@ -79,11 +79,11 @@ export function ContributionMatrixClient({
             <div className="flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] uppercase text-muted">
               <span>INTENSITY</span>
               <div className="flex items-center gap-1 ml-1">
-                <span className="w-2.5 h-2.5 border border-neutral-200/40 bg-neutral-100/50" />
-                <span className="w-2.5 h-2.5 border border-neutral-300/80 bg-neutral-200" />
-                <span className="w-2.5 h-2.5 border border-neutral-500/80 bg-neutral-400" />
-                <span className="w-2.5 h-2.5 border border-neutral-800 bg-neutral-700" />
-                <span className="w-2.5 h-2.5 border border-black bg-[#0a0a0a]" />
+                <span className="w-2.5 h-2.5 border border-neutral-200/40 bg-neutral-100/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]" />
+                <span className="w-2.5 h-2.5 border border-neutral-300/80 bg-neutral-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]" />
+                <span className="w-2.5 h-2.5 border border-neutral-500/80 bg-neutral-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]" />
+                <span className="w-2.5 h-2.5 border border-neutral-800 bg-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]" />
+                <span className="w-2.5 h-2.5 border border-black bg-[#0a0a0a] shadow-[0_1px_2px_rgba(0,0,0,0.25)]" />
               </div>
             </div>
           )}

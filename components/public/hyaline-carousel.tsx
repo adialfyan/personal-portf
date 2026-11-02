@@ -333,7 +333,7 @@ export function HyalineCarousel({
             onClick={() => {
               stateRef.current.target -= 1;
             }}
-            className="p-2 border border-border bg-background text-foreground hover:bg-surface hover:border-foreground/30 transition-colors cursor-pointer"
+            className="p-2.5 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
             aria-label="Previous item"
           >
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -345,7 +345,7 @@ export function HyalineCarousel({
             onClick={() => {
               stateRef.current.target += 1;
             }}
-            className="p-2 border border-border bg-background text-foreground hover:bg-surface hover:border-foreground/30 transition-colors cursor-pointer"
+            className="p-2.5 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
             aria-label="Next item"
           >
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -357,7 +357,7 @@ export function HyalineCarousel({
               href={currentActive.external_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium tracking-[0.14em] uppercase border border-border bg-background text-foreground hover:bg-surface hover:border-foreground/40 transition-colors"
+              className="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium tracking-[0.14em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all"
             >
               <span>Explore</span>
               <svg width="10" height="10" viewBox="0 0 12 12" fill="none">

@@ -125,7 +125,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             onClick={handlePrev}
             disabled={!canScrollLeft}
             aria-label="Previous project"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-foreground transition-all hover:bg-neutral-900 hover:text-white disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+            className="flex h-10 w-10 items-center justify-center rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
           >
             ←
           </button>
@@ -134,7 +134,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             onClick={handleNext}
             disabled={!canScrollRight}
             aria-label="Next project"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-foreground transition-all hover:bg-neutral-900 hover:text-white disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+            className="flex h-10 w-10 items-center justify-center rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
           >
             →
           </button>

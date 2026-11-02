@@ -82,23 +82,31 @@ export function AsciiAquarium() {
           </div>
 
           {/* Action Tools */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <button
               type="button"
               onClick={handleManualSplash}
-              className="px-4 py-2 text-xs font-medium tracking-[0.15em] uppercase border border-border bg-background text-foreground hover:bg-surface transition-colors cursor-pointer"
+              className="group inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium tracking-[0.15em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
             >
+              <span className="w-2 h-2 rounded-[1.5px] bg-neutral-300 border border-neutral-400/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] group-hover:bg-neutral-400 transition-colors" />
               Feed &bull; Splash
             </button>
             <button
               type="button"
               onClick={handleTogglePause}
-              className={`px-4 py-2 text-xs font-medium tracking-[0.15em] uppercase border transition-colors cursor-pointer ${
+              className={`group inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium tracking-[0.15em] uppercase rounded-[3px] border transition-all cursor-pointer ${
                 isPaused
-                  ? "border-foreground bg-foreground text-background"
-                  : "border-border bg-background text-foreground hover:bg-surface"
+                  ? "bg-[#0a0a0a] text-white border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.24),0_1px_0_#000] active:translate-y-[1px]"
+                  : "border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px]"
               }`}
             >
+              <span
+                className={`w-2 h-2 rounded-[1.5px] border transition-all ${
+                  isPaused
+                    ? "bg-white border-white/80 shadow-[0_0_4px_rgba(255,255,255,0.9)]"
+                    : "bg-neutral-300 border-neutral-400/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] group-hover:bg-neutral-400"
+                }`}
+              />
               {isPaused ? "Resume" : "Pause"}
             </button>
           </div>
@@ -117,12 +125,19 @@ export function AsciiAquarium() {
                   key={opt.id}
                   type="button"
                   onClick={() => handleSelectVariety(opt.id)}
-                  className={`px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ease-out cursor-pointer rounded-sm ${
+                  className={`group inline-flex items-center px-3 py-1.5 text-xs font-medium tracking-[0.15em] uppercase rounded-[3px] border transition-all duration-150 cursor-pointer select-none ${
                     isSelected
-                      ? "bg-foreground text-background shadow-xs scale-[1.02]"
-                      : "border border-border bg-background text-muted hover:text-foreground hover:border-foreground/40 hover:bg-surface/50"
+                      ? "bg-[#0a0a0a] text-white border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.24),0_1px_0_#000] active:translate-y-[1px]"
+                      : "bg-neutral-50/90 text-neutral-600 border-neutral-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:text-foreground hover:border-neutral-400/90 active:translate-y-[1px]"
                   }`}
                 >
+                  <span
+                    className={`w-2 h-2 rounded-[1.5px] mr-1.5 shrink-0 border transition-all ${
+                      isSelected
+                        ? "bg-white border-white/80 shadow-[0_0_4px_rgba(255,255,255,0.9)]"
+                        : "bg-neutral-300 border-neutral-400/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] group-hover:bg-neutral-400"
+                    }`}
+                  />
                   {opt.label}
                 </button>
               );
