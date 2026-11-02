@@ -177,6 +177,30 @@ html.lenis body {
   color: rgba(10, 10, 10, 0.85);
 }
 
+/* Typeset display equations (hand-authored HTML inside long-form content) */
+.editorial-content .equation {
+  margin: 2.25rem 0;
+  padding: 1.15rem 1.4rem;
+  border-left: 2px solid #0a0a0a;
+  background-color: #fafafa;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+  color: #0a0a0a;
+  overflow-x: auto;
+}
+
+.editorial-content .equation var {
+  font-style: italic;
+}
+
+.editorial-content .equation sub,
+.editorial-content .equation sup {
+  font-size: 0.62em;
+  line-height: 0;
+}
+
 /* Long-form reading on phones: drop body size, keep wide tables and URLs inside the viewport */
 .editorial-content p,
 .editorial-content li,
@@ -199,6 +223,11 @@ html.lenis body {
   .editorial-content blockquote {
     font-size: 1.1rem;
     padding-left: 1rem;
+  }
+
+  .editorial-content .equation {
+    font-size: 1rem;
+    padding: 0.9rem 1rem;
   }
 
   .editorial-content table {

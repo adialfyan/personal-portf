@@ -68,19 +68,15 @@ To resolve the tension between relational performance, regulatory data privacy (
 ### Tier 1: Local Recursive Transaction Hash Chain (RTHC)
 Every financial transaction inserted into the off-chain relational database (MySQL/PostgreSQL) is sequentially linked into a forward-secure cryptographic chain. Each transaction block generates a deterministic hash:
 
-\`\`\`text
-H(n) = SHA-256( Nonce(n) || H(n-1) || Amount || Timestamp || User_UUID || Category )
-\`\`\`
+<div class="equation"><var>H</var><sub>n</sub> = SHA-256( <var>N</var><sub>n</sub> ∥ <var>H</var><sub>n−1</sub> ∥ Amount ∥ Timestamp ∥ User_UUID ∥ Category )</div>
 
 - **CSPRNG Nonce (32 bytes)**: Guarantees pre-image entropy and eliminates rainbow table attacks.
-- **Linkage Invariant**: Altering a historical record at index $k$ invalidates the computed hash of every subsequent record from $k+1$ through $n$, immediately exposing tampering.
+- **Linkage Invariant**: Altering a historical record at index <var>k</var> invalidates the computed hash of every subsequent record from <var>k</var>+1 through <var>n</var>, immediately exposing tampering.
 
 ### Tier 2: Daily Batch Merkle Tree Aggregation
 At the close of each accounting day, background workers aggregate all valid transaction hashes generated during that 24-hour cycle into a binary Merkle Tree.
 
-\`\`\`text
-Parent(i) = Keccak-256( sort( H_left, H_right ) )
-\`\`\`
+<div class="equation"><var>Parent</var><sub>i</sub> = Keccak-256( sort( <var>H</var><sub>left</sub>, <var>H</var><sub>right</sub> ) )</div>
 
 - **EVM Compatibility**: The transition to \`Keccak-256\` ensures native execution within the Ethereum Virtual Machine, minimizing smart contract verification gas costs.
 - **Lexicographical Sorting**: Child node hashes are sorted lexicographically prior to concatenation, eliminating branch order ambiguity.
@@ -111,7 +107,7 @@ This enables auditors to reconstruct the full chronological history of human err
 
 ## 04 — Empirical Attack Simulation & Evaluation
 
-The architecture was evaluated across controlled experimental trials ($n = 10$ iterations per scenario) orchestrating five direct database manipulation attack vectors alongside five normal operational workflows:
+The architecture was evaluated across controlled experimental trials (<var>n</var> = 10 iterations per scenario) orchestrating five direct database manipulation attack vectors alongside five normal operational workflows:
 
 | Scenario ID | Attack Vector / Operation | Category | Detection Result | Anomaly Signal |
 | :--- | :--- | :--- | :--- | :--- |
