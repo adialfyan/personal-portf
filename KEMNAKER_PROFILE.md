@@ -12,17 +12,20 @@
 ### Versi Bahasa Indonesia (untuk portal Kemnaker)
 
 ```text
-Lulusan Teknik Informatika Universitas Semarang dengan fokus pengembangan web full-stack. Saya senang mengubah masalah yang rumit menjadi perangkat lunak yang bersih dan bisa diandalkan.
+Lulusan Teknik Informatika Universitas Semarang dengan fokus utama pada rekayasa antarmuka (Frontend Development) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack (Laravel, PostgreSQL, REST API). Saya senang merancang antarmuka web yang interaktif, responsif, dan berkinerja tinggi (60fps), ditopang arsitektur backend yang kokoh dan tertata.
 
 Selama kuliah dan mengerjakan proyek lepas, saya:
-• Membangun SIMMAN E-Budgeting, sistem keuangan madrasah untuk pembayaran siswa, pagu anggaran divisi, dan laporan audit, menggunakan Laravel, PostgreSQL, dan Redis. Pembayaran lewat Virtual Account masuk ke buku besar secara otomatis lewat webhook, sehingga staf tidak perlu mencatat ulang secara manual.
-• Membangun Acrylico ERP untuk workshop akrilik menggunakan Laravel, Vue, dan Inertia. Job ticket kertas diganti antrean stasiun kerja yang real-time, dan absensi diverifikasi di browser dalam waktu di bawah 400ms sehingga data biometrik tidak keluar dari perangkat pekerja.
-• Membangun situs agensi Nata Code dengan Laravel 13, Inertia 2.0, React, dan shader GLSL buatan sendiri, lengkap dengan pendeteksian kemampuan perangkat agar halaman tetap 60fps di ponsel kelas bawah.
-• Menulis skripsi tentang pelacakan aset laboratorium dengan Hyperledger Fabric 2.5 (konsensus Raft, chaincode Go), serta membangun simulasi kolam koi ASCII murni TypeScript dan Canvas yang menjalankan 150+ agen di bawah 2ms per frame.
+• Mengembangkan antarmuka interaktif dan CMS Nata Code menggunakan React 18, Inertia.js 2.0, dan Tailwind CSS. Mengintegrasikan motion GSAP, shader prosedural GLSL, dan profiling kemampuan perangkat (useDeviceTier) agar visual interaktif tetap stabil 60fps di perangkat seluler kelas menengah/bawah.
+• Membangun antarmuka dashboard operasional dan antrean stasiun kerja Acrylico ERP dengan Vue dan Inertia, mengintegrasikan verifikasi presensi wajah langsung di browser (<400ms) tanpa mengirim data biometrik ke server, serta menguji alur pengguna dengan Playwright E2E.
+• Merancang antarmuka portal keuangan dan tata letak SIMMAN E-Budgeting untuk menyederhanakan alur transaksi sekolah yang rumit menjadi mudah digunakan staf, terhubung ke backend Laravel, PostgreSQL, dan webhook kliring Virtual Account bank.
+• Mengembangkan simulasi kolam koi ASCII 60fps murni TypeScript dan Canvas API (algoritma boids dan kinematic spine wave di bawah 2ms/frame), serta menyelesaikan skripsi riset integritas data menggunakan Hyperledger Fabric 2.5 dan Go.
 
-Keahlian utama: PHP/Laravel, TypeScript/JavaScript, React, SQL (PostgreSQL & MySQL), Git, REST API & webhook, Docker, Linux VPS.
+Keahlian utama:
+• Frontend: React.js, TypeScript/JavaScript, Next.js, Inertia.js, Vue.js, Tailwind CSS, HTML5 Canvas API, GSAP
+• Backend & Basis Data: Laravel (PHP 8+), PostgreSQL, MySQL, Redis, REST APIs & Webhooks
+• Alat & Alur Kerja: Git, Docker, Linux VPS, Playwright, Vite, Postman
 
-Saya mudah bekerja dalam tim, cepat belajar, dan terbiasa menulis kode yang mudah dirawat. Saat ini saya mencari posisi entry-level Full-Stack Developer untuk berkontribusi pada produk yang berdampak sambil terus belajar dari engineer yang lebih berpengalaman.
+Saya memiliki kepekaan pada detail tampilan (UI/UX), terbiasa menulis kode komponen yang modular dan mudah dirawat, serta cepat belajar hal baru. Saat ini saya mencari posisi entry-level Frontend Developer atau Full-Stack Developer untuk berkontribusi membangun antarmuka web yang bermanfaat sambil terus belajar bersama tim engineer berpengalaman.
 
 📍 Semarang, Indonesia | Terbuka untuk remote dan relokasi
 📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
@@ -31,17 +34,20 @@ Saya mudah bekerja dalam tim, cepat belajar, dan terbiasa menulis kode yang muda
 ### English version (LinkedIn / job portals)
 
 ```text
-Computer Science graduate from Universitas Semarang with a focus on full-stack web development. I enjoy turning complex problems into clean, reliable software.
+Computer Science graduate from Universitas Semarang specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, high-performance, and responsive user interfaces backed by dependable systems architecture.
 
 During my studies and project work, I:
-• Built SIMMAN E-Budgeting, a school financial system for student payments, division budgets, and audit reports, using Laravel, PostgreSQL, and Redis. Virtual-account webhooks post bank payments straight into the ledger, so staff no longer re-key them by hand.
-• Built Acrylico ERP for an acrylic fabrication workshop using Laravel, Vue, and Inertia. Paper job tickets became a live workstation queue, and worker attendance is verified in the browser in under 400ms, so biometric data never leaves the device.
-• Built Nata Code's agency site with Laravel 13, Inertia 2.0, React, and custom GLSL shaders, with device-capability profiling that keeps shader-heavy pages at 60fps on low-end phones.
-• Wrote an undergraduate thesis on laboratory asset provenance with Hyperledger Fabric 2.5 (Raft consensus, Go chaincodes), and built an ASCII koi pond simulation in plain TypeScript and Canvas that runs 150+ agents in under 2ms per frame.
+• Built Nata Code's agency web experience and CMS using React 18, Inertia.js 2.0, and Tailwind CSS. Implemented smooth GSAP viewport motions, procedural GLSL background shaders, and device-tier profiling (useDeviceTier) to keep heavy interactive elements at a locked 60fps across low-end mobile devices.
+• Engineered responsive workstation queue boards and operator dashboards for Acrylico ERP using Vue and Inertia. Integrated in-browser client-side facial biometrics (<400ms inference) keeping employee vectors on-device, verified through automated Playwright end-to-end tests.
+• Designed user-friendly transaction portals and financial reporting layouts for SIMMAN E-Budgeting, simplifying complex multi-tier institutional workflows connected to Laravel, PostgreSQL, and real-time bank Virtual Account clearing webhooks.
+• Built an autonomous 60fps Japanese koi pond simulation in plain TypeScript and HTML5 Canvas API (Reynolds flocking boids, 20-node kinematic spine waves, <2ms frame times), alongside an undergraduate research thesis on distributed provenance using Hyperledger Fabric 2.5 and Go.
 
-Core skills: PHP/Laravel, TypeScript/JavaScript, React, SQL (PostgreSQL & MySQL), Git, REST APIs & webhooks, Docker, Linux VPS
+Core skills:
+• Frontend: React.js, TypeScript/JavaScript, Next.js, Inertia.js, Vue.js, Tailwind CSS, Canvas API, GSAP
+• Backend & Databases: Laravel (PHP 8+), PostgreSQL, MySQL, Redis, REST APIs & Webhooks
+• Tools & Workflow: Git, Docker, Linux VPS, Playwright, Vite
 
-I work well in collaborative teams, learn quickly, and care about writing maintainable code. I am currently seeking an entry-level Full-Stack Developer position where I can contribute to impactful products while growing alongside experienced engineers.
+I care deeply about UI polish, state management, component reusability, and frontend performance while understanding how data flows across the entire stack. I am currently seeking an entry-level Frontend Developer or Full-Stack Developer position where I can craft engaging web products and grow alongside experienced engineering teams.
 
 📍 Semarang, Indonesia | Open to remote and relocation
 📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app

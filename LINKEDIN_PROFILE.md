@@ -6,19 +6,19 @@
 
 ## 1. 🎯 HEADLINE (Pilih Salah Satu)
 
-### Opsi 1: Fresh Graduate + All-Rounder (Rekomendasi Utama — Sangat Humble & Dilirik Recruiter)
+### Opsi 1: Frontend & Full-Stack Developer (Rekomendasi Utama — Fokus Frontend + Fondasi Backend)
 ```text
-Fresh Graduate Full-Stack Developer & Creative Technologist | Building Web Applications, Financial Tools & Interactive Systems (Laravel, React, PostgreSQL)
+Fresh Graduate Frontend & Full-Stack Developer | React, TypeScript, Next.js & Laravel | Crafting Interactive UIs, Motion & Robust Web Systems
 ```
 
-### Opsi 2: Software Engineering & Systems Focus (Fokus Web & Backend)
+### Opsi 2: Junior Frontend Engineer (Full-Stack Capable)
 ```text
-Junior Full-Stack Software Engineer | Laravel, React, Inertia.js & PostgreSQL | Passionate in Systems Engineering, Clean Architecture & Web Tools
+Junior Frontend Engineer (Full-Stack Capable) | React, Inertia.js, TypeScript & Laravel | UI Performance, Canvas API & Clean Architecture
 ```
 
-### Opsi 3: Creative Tech & Frontend Motion (Fokus UI/UX & Interaktivitas)
+### Opsi 3: Creative Technologist & Web Developer
 ```text
-Web Developer & Creative Technologist | Next.js, Canvas API, WebGL & Motion Physics | Exploring the Intersection of Math, Design & Code
+Frontend Developer & Creative Technologist | React, Canvas API, WebGL/GLSL & Modern Full-Stack (Laravel, PostgreSQL) | Universitas Semarang
 ```
 
 ---
@@ -36,17 +36,20 @@ Web Developer & Creative Technologist | Next.js, Canvas API, WebGL & Motion Phys
 ## 3. 📝 ABOUT SECTION (Ringkasan Profil — Humble & Otentik)
 
 ```text
-Computer Science graduate from Universitas Semarang with a focus on full-stack web development. I enjoy turning complex problems into clean, reliable software.
+Computer Science graduate from Universitas Semarang specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, high-performance, and responsive user interfaces backed by dependable systems architecture.
 
 During my studies and project work, I:
-• Built SIMMAN E-Budgeting, a school financial system for student payments, division budgets, and audit reports, using Laravel, PostgreSQL, and Redis. Virtual-account webhooks post bank payments straight into the ledger, so staff no longer re-key them by hand.
-• Built Acrylico ERP for an acrylic fabrication workshop using Laravel, Vue, and Inertia. Paper job tickets became a live workstation queue, and worker attendance is verified in the browser in under 400ms, so biometric data never leaves the device.
-• Built Nata Code's agency site with Laravel 13, Inertia 2.0, React, and custom GLSL shaders, with device-capability profiling that keeps shader-heavy pages at 60fps on low-end phones.
-• Wrote an undergraduate thesis on laboratory asset provenance with Hyperledger Fabric 2.5 (Raft consensus, Go chaincodes), and built an ASCII koi pond simulation in plain TypeScript and Canvas that runs 150+ agents in under 2ms per frame.
+• Built Nata Code's agency web experience and CMS using React 18, Inertia.js 2.0, and Tailwind CSS. Implemented smooth GSAP viewport motions, procedural GLSL background shaders, and device-tier profiling (useDeviceTier) to keep heavy interactive elements at a locked 60fps across low-end mobile devices.
+• Engineered responsive workstation queue boards and operator dashboards for Acrylico ERP using Vue and Inertia. Integrated in-browser client-side facial biometrics (<400ms inference) keeping employee vectors on-device, verified through automated Playwright end-to-end tests.
+• Designed user-friendly transaction portals and financial reporting layouts for SIMMAN E-Budgeting, simplifying complex multi-tier institutional workflows connected to Laravel, PostgreSQL, and real-time bank Virtual Account clearing webhooks.
+• Built an autonomous 60fps Japanese koi pond simulation in plain TypeScript and HTML5 Canvas API (Reynolds flocking boids, 20-node kinematic spine waves, <2ms frame times), alongside an undergraduate research thesis on distributed provenance using Hyperledger Fabric 2.5 and Go.
 
-Core skills: PHP/Laravel, TypeScript/JavaScript, React, SQL (PostgreSQL & MySQL), Git, REST APIs & webhooks, Docker, Linux VPS
+Core skills:
+• Frontend: React.js, TypeScript/JavaScript, Next.js, Inertia.js, Vue.js, Tailwind CSS, Canvas API, GSAP
+• Backend & Databases: Laravel (PHP 8+), PostgreSQL, MySQL, Redis, REST APIs & Webhooks
+• Tools & Workflow: Git, Docker, Linux VPS, Playwright, Vite
 
-I work well in collaborative teams, learn quickly, and care about writing maintainable code. I am currently seeking an entry-level Full-Stack Developer position where I can contribute to impactful products while growing alongside experienced engineers.
+I care deeply about UI polish, state management, component reusability, and frontend performance while understanding how data flows across the entire stack. I am currently seeking an entry-level Frontend Developer or Full-Stack Developer position where I can craft engaging web products and grow alongside experienced engineering teams.
 
 📍 Semarang, Indonesia | Open to remote and relocation
 📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
@@ -230,9 +233,9 @@ Tambahkan tautan ini pada bagian **Featured** profil LinkedIn:
 ## 7. 🏷️ TOP SKILLS & ENDORSEMENTS
 
 ### Top 3 Pinned Skills (Paling Atas):
-1. **Full-Stack Development**
-2. **Software Engineering**
-3. **Laravel**
+1. **Frontend Development**
+2. **React.js**
+3. **Full-Stack Development** (atau **Laravel**)
 
 ### 15 Core Skills:
 * **Languages & Core**: `TypeScript`, `JavaScript`, `PHP`, `SQL`, `Go (Golang)`
