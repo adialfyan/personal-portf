@@ -60,14 +60,14 @@ I care deeply about UI polish, state management, component reusability, and user
 ## 4. 🏢 EXPERIENCE (Pengalaman Kerja — Freelance & Kontrak Proyek)
 
 ### Posisi 1: Nata Code
-* **Title**: `Full-Stack Developer & Creative Technologist`
+* **Title**: `Founder & Full-Stack Developer`
 * **Company Name**: `Nata Code`
-* **Employment Type**: `Freelance`
+* **Employment Type**: `Self-employed` (atau `Freelance`)
 * **Location**: `Semarang, Central Java, Indonesia (Remote / Hybrid)`
 * **Dates**: `Jan 2026 – Present`
 * **Description**:
 ```text
-Developed the interactive website and CMS platform for Nata Code, a contemporary software house and digital agency.
+Founded and run an independent digital studio (Nata Code) delivering modern web applications, client solutions, and interactive digital products.
 
 Key Technical Highlights:
 • Built a fluid single-page application using Laravel 13, Inertia.js 2.0, React 18, and Vite with zero page reload latency.

@@ -60,20 +60,20 @@ I care deeply about UI polish, state management, component reusability, and user
 ---
 
 ### Posisi 1: Nata Code
-* **Jabatan**: `Frontend Developer & Creative Technologist`
-* **Nama Perusahaan / Klien**: `Nata Code`
-* **Bidang Usaha**: `Pengembangan Perangkat Lunak & Agensi Digital Kreatif`
-* **Status Kerja**: `Pekerja Lepas (Freelance) / Proyek`
+* **Jabatan**: `Lead Developer & Founder` (atau `Full-Stack Developer`)
+* **Nama Perusahaan / Studio**: `Nata Code`
+* **Bidang Usaha**: `Pengembangan Perangkat Lunak & Studio Web Mandiri`
+* **Status Kerja**: `Wirausaha Mandiri / Studio Lepas (Self-Employed)`
 * **Periode**: `Januari 2026 – Sekarang`
 * **Lokasi**: `Semarang, Jawa Tengah (Remote / Hybrid)`
 * **Pilihan A (Format Naratif Singkat — Cocok untuk Form Kemnaker)**:
 ```text
-Bertanggung jawab atas rekayasa antarmuka (frontend) dan CMS untuk agensi digital Nata Code. Membangun aplikasi web modern berbasis React dan Inertia.js yang cepat tanpa reload halaman, menerapkan animasi interaktif berbasis GSAP dan efek kanvas prosedural yang ringan di berbagai spesifikasi ponsel, serta menyusun sistem katalog produk dan layanan yang dinamis dan mudah dikelola.
+Menginisiasi dan mengelola studio pengembangan perangkat lunak mandiri (Nata Code) untuk melayani pembuatan aplikasi web dan produk digital klien. Bertanggung jawab penuh atas rekayasa antarmuka (frontend) menggunakan React dan Inertia.js yang cepat tanpa reload halaman, perancangan sistem CMS katalog dan penawaran layanan, serta eksplorasi teknologi visual kreatif seperti animasi interaktif GSAP dan efek kanvas prosedural yang ringan di berbagai spesifikasi ponsel.
 ```
 * **Pilihan B (Format Rincian Modul)**:
 ```text
-Mengembangkan platform web interaktif dan CMS untuk Nata Code bersama tim kreatif:
-• Mengembangkan antarmuka single-page application (SPA) berbasis React 18, Inertia.js 2.0, dan Tailwind CSS.
+Menginisiasi dan mengembangkan platform web studio perangkat lunak independen (Nata Code):
+• Membangun arsitektur web modern single-page application (SPA) berbasis React 18, Inertia.js 2.0, dan Tailwind CSS.
 • Menerapkan sistem animasi interaktif menggunakan GSAP (ScrollTrigger & Parallax) yang mulus di peramban.
 • Membangun efek visual kanvas prosedural dengan penyesuaian otomatis terhadap kemampuan perangkat pengguna agar tetap ringan.
 • Merancang CMS katalog produk dan portofolio dengan dukungan tema gelap/terang dan mode luring (offline PWA).
