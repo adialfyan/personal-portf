@@ -1,24 +1,24 @@
 # 💼 Profil LinkedIn — Adi Alfian Hafis
 > Panduan lengkap salin-tempel (copy-paste) untuk profil LinkedIn profesional.  
-> Nada penulisan: **Humble, grounded, dan fokus pada pembuktian teknis riil**.
+> Nada penulisan: **Humble, grounded, fresh graduate berbobot teknis riil**.
 
 ---
 
 ## 1. 🎯 HEADLINE (Pilih Salah Satu)
 
-### Opsi 1: All-Rounder (Rekomendasi Utama — Humble & Berisi)
+### Opsi 1: Fresh Graduate + All-Rounder (Rekomendasi Utama — Sangat Humble & Dilirik Recruiter)
 ```text
-Full-Stack Developer & Creative Technologist | Building Web Applications, Financial Systems & Interactive Experiences (Laravel, React, Inertia, PostgreSQL)
+Fresh Graduate Full-Stack Developer & Creative Technologist | Building Web Applications, Financial Tools & Interactive Systems (Laravel, React, PostgreSQL)
 ```
 
-### Opsi 2: Systems & Tools Focus (Fokus Backend / Internal Tools)
+### Opsi 2: Software Engineering & Systems Focus (Fokus Web & Backend)
 ```text
-Full-Stack Developer | Web Systems, Industrial Tools & Financial Dashboards (Laravel, Vue/React, PostgreSQL, Docker)
+Junior Full-Stack Software Engineer | Laravel, React, Inertia.js & PostgreSQL | Passionate in Systems Engineering, Clean Architecture & Web Tools
 ```
 
-### Opsi 3: Frontend & Motion Focus (Fokus UI/UX & Interaktivitas)
+### Opsi 3: Creative Tech & Frontend Motion (Fokus UI/UX & Interaktivitas)
 ```text
-Frontend & Creative Developer | Interactive Web Experiences & Clean UI Systems (React, GSAP, WebGL, Tailwind CSS)
+Web Developer & Creative Technologist | Next.js, Canvas API, WebGL & Motion Physics | Exploring the Intersection of Math, Design & Code
 ```
 
 ---
@@ -29,36 +29,37 @@ Frontend & Creative Developer | Interactive Web Experiences & Clean UI Systems (
 * **Location**: `Semarang, Central Java, Indonesia`
 * **Industry**: `Software Development` (atau `Technology, Information and Internet`)
 * **Custom URL**: `linkedin.com/in/adialfianhafis`
-* **Website Link (di Header Profil)**: Link ke portofolio kamu
+* **Website Link (di Header Profil)**: `https://adiallllllll.vercel.app`
 
 ---
 
-## 3. 📝 ABOUT SECTION (Ringkasan Profil — Grounded & Profesional)
+## 3. 📝 ABOUT SECTION (Ringkasan Profil — Humble & Otentik)
 
 ```text
-I am a full-stack developer and creative technologist who focuses on building reliable web applications, internal tools, and interactive digital experiences.
+Hello! I am a fresh graduate software engineer and full-stack developer who enjoys building reliable web applications, internal tools, and interactive digital experiments.
 
-Over the past few years, I have built and shipped practical web software across financial systems, fabrication operations, and digital agencies:
+During my studies and through independent freelance work, I have focused on solving real operational problems with clean code and solid architectural fundamentals:
 
-• Financial Tools & Payments: Developed SIMMAN E-Budgeting, integrating direct Host-to-Host (H2H) Virtual Account banking webhooks that eliminated manual teller payment checks and enforced institutional budget limits programmatically.
-• Manufacturing & Operations: Built Acrylico ERP, replacing paper job-tickets with live shop floor workstation Kanban queues and on-device facial recognition clock-in (<400ms verification) that keeps worker data completely private.
-• Creative Technology & Web Experiences: Built Nata Code's agency platform, combining WebGL GLSL shaders, Locomotive Scroll v5, GSAP physics, and custom Bezier curve page transitions with 60fps performance across different device tiers.
-• Distributed Ledger & Research: Worked on a laboratory asset provenance testbed using Hyperledger Fabric 2.5 with multi-organization Raft consensus and Go chaincodes.
+• Financial Systems & Payments: Built SIMMAN E-Budgeting, integrating direct Host-to-Host (H2H) Virtual Account banking webhooks that eliminated manual teller verification and programmatically locked division budget limits.
+• Operations & Workstations: Engineered Acrylico ERP, replacing paper job-tickets with live shop floor Kanban queues and client-side face recognition attendance (<400ms verification) that keeps employee biometric data completely on-device.
+• Creative Computing & Math Simulation: Built an autonomous 60fps ASCII Nishikigoi Pond in pure TypeScript and Canvas API, solving Reynolds flocking boids, 20-node kinematic spine undulation waves, and spatial hash grid partitioning with zero external libraries.
+• Interactive Web & Design Systems: Developed Nata Code's agency web platform using Laravel 13, Inertia.js 2.0, React, and custom procedural GLSL shaders optimized for 60fps across low-end and high-end hardware tiers.
+• Distributed Systems & Research: Researched laboratory asset provenance using Hyperledger Fabric 2.5 with dual-host Raft consensus and Go microservice chaincodes.
 
-Whether designing reliable backend logic, normalized database schemas, or tactile frontends, I care about solid engineering fundamentals, clean code, and making software that is intuitive and pleasant to use.
+I enjoy digging into both sides of software engineering: deterministic backend business logic with relational databases, and high-performance interactive interfaces that feel tactile and responsive.
 
 Core Stack:
-• Backend: Laravel, PHP 8+, PostgreSQL, MySQL, Redis, Go, Docker, REST & Webhook APIs
-• Frontend & Motion: React, Vue 3, Inertia.js, TypeScript, Tailwind CSS, GSAP, Locomotive Scroll, WebGL/GLSL, Framer Motion
-• Methodologies: System Design, Multi-Tenant Architecture, Edge ML Biometrics, Relational Data Modeling
+• Backend: Laravel, PHP 8+, PostgreSQL, MySQL, Redis, Go, Docker, REST & Webhooks
+• Frontend & Motion: React, Vue 3, Inertia.js, TypeScript, Tailwind CSS, Canvas API, GSAP, WebGL/GLSL
+• Concepts: System Design, Relational Data Modeling, Kinematic Physics Algorithms, Client-Side Biometrics
 
-Always open to full-stack engineering roles, freelance collaborations, and interesting software projects.
-Reach me directly at: adialfianhafiz@gmail.com
+Currently open for full-time junior/associate software engineering opportunities, freelance projects, and tech collaborations!
+Let's connect or drop me an email at: adialfianhafiz@gmail.com
 ```
 
 ---
 
-## 4. 🏢 EXPERIENCE (Pengalaman Kerja)
+## 4. 🏢 EXPERIENCE (Pengalaman Kerja — Freelance & Kontrak Proyek)
 
 ### Posisi 1: Nata Code
 * **Title**: `Full-Stack Developer & Creative Technologist`
@@ -142,41 +143,104 @@ Key Technical Highlights:
 
 ---
 
-## 5. 🌟 FEATURED SECTION (Item Unggulan)
+## 5. 🛠️ SECTION PROJECTS (Proyek Pilihan di LinkedIn)
 
-Tambahkan 4 tautan ini pada bagian **Featured** LinkedIn:
+*(Di LinkedIn, klik **Add profile section** → **Additional** → **Add project**)*
 
-1. **Nata Code — Interactive Agency Platform**
-   * **Title**: `Nata Code — Interactive Agency Platform & Motion Design System`
-   * **Description**: `Contemporary agency platform featuring GSAP ScrollTrigger, Locomotive Scroll v5, custom GLSL shader backgrounds, and Bezier curve page transitions.`
-   * **Link**: Link ke studi kasus portofolio `/work/natacode` (atau domain live)
+### Project 1: ASCII Nishikigoi Pond — Autonomous Creative Computing
+* **Project Name**: `ASCII Nishikigoi Pond (Generative Canvas Simulation)`
+* **Associated With**: *(Bisa dikosongkan atau pilih Personal Project)*
+* **Dates**: `2026`
+* **Project URL**: `https://adiallllllll.vercel.app/work/ascii-koi`
+* **Description**:
+```text
+Engineered an autonomous, zero-dependency living Japanese koi sanctuary running in monospace ASCII characters on an HTML5 Canvas at locked 60fps.
 
-2. **SIMMAN E-Budgeting Case Study**
-   * **Title**: `SIMMAN E-Budgeting — Financial Management & H2H Banking Clearing`
-   * **Description**: `Centralized financial system handling direct H2H Virtual Account banking clearing, automated ledger reconciliation, and strict division RKA expenditure locks.`
-   * **Link**: Link ke studi kasus portofolio `/work/simman-e-budgeting`
-
-3. **Acrylico Manufacturing ERP**
-   * **Title**: `Acrylico ERP — Workshop Queue & On-Device Face Biometrics`
-   * **Description**: `Custom operational system orchestrating real-time shop floor workstation queues and privacy-first edge facial biometrics attendance (<400ms verification).`
-   * **Link**: Link ke studi kasus portofolio `/work/acrylico-app`
-
-4. **Personal Portfolio & Case Studies**
-   * **Title**: `Adi Alfian Hafis — Selected Works & Engineering Portfolio`
-   * **Description**: `Curated software engineering case studies across financial systems, fabrication tools, distributed ledgers, and creative computing.`
-   * **Link**: URL portofolio personal
+Technical Highlights:
+• Implemented Reynolds Flocking algorithm (Alignment, Cohesion, Separation) across 5 species of background school fish (Sardine, Anchovy, Silverside, Mackerel, Goby).
+• Designed 20-node articulated kinematic spine physics using sinusoidal phase propagation to render natural fish body undulations and pectoral fin dynamics.
+• Replaced brute-force O(N^2) neighbor checks with a Spatial Hash Grid partitioning bucket system, allowing 150+ interactive agents to run in under 2ms per frame.
+• Developed procedural procedural patterns for 5 authentic Nishikigoi breeds (Kohaku, Tancho, Butterfly, Benigoi, Orange) and interactive pointer ripple/flee dynamics.
+• Mapped luminance levels to a curated monospace character ramp simulating Japanese calligraphy Sumi-e watercolor dissipation without oval halos.
+```
+* **Skills**: `TypeScript`, `HTML5 Canvas API`, `Generative Math & Physics`, `Algorithm Optimization`
 
 ---
 
-## 6. 🏷️ SKILLS & ENDORSEMENTS
+### Project 2: SIMMAN E-Budgeting — Centralized Financial System
+* **Project Name**: `SIMMAN E-Budgeting & H2H Banking Clearing`
+* **Associated With**: `MAN 1 Kota Semarang`
+* **Dates**: `Mar 2025 – Oct 2025`
+* **Project URL**: `https://adiallllllll.vercel.app/work/simman-e-budgeting`
+* **Description**:
+```text
+Centralized institutional financial management platform handling student education fee invoices, Host-to-Host (H2H) Virtual Account banking clearing, and strict division expenditure locks under a real-time general ledger.
+```
+* **Skills**: `Laravel`, `PostgreSQL`, `Redis`, `Bank H2H API`, `Docker`
+
+---
+
+### Project 3: Nata Code Agency Platform
+* **Project Name**: `Nata Code — Interactive Web Experience & CMS`
+* **Associated With**: `Nata Code`
+* **Dates**: `2026`
+* **Project URL**: `https://adiallllllll.vercel.app/work/natacode`
+* **Description**:
+```text
+Interactive digital product agency platform built on Laravel 13 and Inertia 2.0 with custom GLSL simplex noise shaders, branchless Bayer matrix dithering, and hardware tier profiling maintaining 60fps.
+```
+* **Skills**: `React.js`, `Laravel`, `Inertia.js`, `GSAP`, `WebGL / GLSL`
+
+---
+
+### Project 4: Acrylico ERP — Manufacturing Operating System
+* **Project Name**: `Acrylico ERP — Industrial Workshop Queue & On-Device AI Biometrics`
+* **Associated With**: `Acrylico Industrial Fabrication`
+* **Dates**: `2026`
+* **Project URL**: `https://adiallllllll.vercel.app/work/acrylico-app`
+* **Description**:
+```text
+Industrial resource planning tool combining real-time shop floor workstation Kanban queues, progressive down payment invoicing, and edge facial recognition clock-in (<400ms verification).
+```
+* **Skills**: `Vue.js`, `Inertia.js`, `Laravel`, `TensorFlow / Face-API`, `Playwright`
+
+---
+
+## 6. 🌟 FEATURED SECTION (Tautan Unggulan)
+
+Tambahkan tautan ini pada bagian **Featured** profil LinkedIn:
+
+1. **ASCII Nishikigoi Pond (Live Artifact)**
+   * **Title**: `ASCII Nishikigoi Pond — 60fps Procedural Simulation`
+   * **Description**: `Interactive generative ecosystem rendered strictly in monospace ASCII characters using Reynolds boids and kinematic spine waves.`
+   * **Link**: `https://adiallllllll.vercel.app/shelf#ascii-aquarium`
+
+2. **SIMMAN E-Budgeting Case Study**
+   * **Title**: `SIMMAN E-Budgeting — Financial Management & H2H Banking Clearing`
+   * **Description**: `Case study on building Host-to-Host Virtual Account banking reconciliation and division spending limits.`
+   * **Link**: `https://adiallllllll.vercel.app/work/simman-e-budgeting`
+
+3. **Nata Code Digital Agency**
+   * **Title**: `Nata Code — Interactive Agency Platform & Motion Design System`
+   * **Description**: `Case study on building high-performance kinetic interfaces with GLSL shaders and Inertia.js SPA routing.`
+   * **Link**: `https://adiallllllll.vercel.app/work/natacode`
+
+4. **Engineering Portfolio Monograph**
+   * **Title**: `Adi Alfian Hafis — Selected Works & Engineering Portfolio`
+   * **Description**: `Explore all software engineering case studies, systems architecture, and live artifacts.`
+   * **Link**: `https://adiallllllll.vercel.app`
+
+---
+
+## 7. 🏷️ TOP SKILLS & ENDORSEMENTS
 
 ### Top 3 Pinned Skills (Paling Atas):
 1. **Full-Stack Development**
-2. **Software Architecture**
+2. **Software Engineering**
 3. **Laravel**
 
-### Core Skills Rekomendasi:
-* **Backend**: `PostgreSQL`, `MySQL`, `Redis`, `REST APIs`, `System Design`, `Docker`
-* **Frontend**: `React.js`, `Vue.js`, `Inertia.js`, `TypeScript`, `Tailwind CSS`
-* **Creative Tech & Motion**: `GSAP (GreenSock)`, `Locomotive Scroll`, `WebGL / GLSL`
-* **Emerging Tech**: `Hyperledger Fabric`, `Edge AI Biometrics`
+### 15 Core Skills:
+* **Languages & Core**: `TypeScript`, `JavaScript`, `PHP`, `SQL`, `Go (Golang)`
+* **Frameworks & Web**: `React.js`, `Inertia.js`, `Vue.js`, `Next.js`, `Tailwind CSS`
+* **Databases & DevOps**: `PostgreSQL`, `MySQL`, `Redis`, `Docker`, `Git`
+* **Creative & Math**: `HTML5 Canvas`, `GSAP (GreenSock)`, `WebGL`
