@@ -184,16 +184,19 @@ export default async function WritingDetailPage({ params }: PageProps) {
 
           {/* Academic Publication Callout (For Peer-Reviewed Research) */}
           {slug === "securing-educational-financial-data-hybrid-blockchain" && (
-            <div className="mt-12 p-6 sm:p-8 bg-[#fafafa] border border-border/80 max-w-3xl flex flex-col gap-5">
+            <div className="mt-12 p-6 sm:p-8 bg-gradient-to-b from-white via-neutral-50/70 to-neutral-100/40 border border-neutral-300/80 rounded-[4px] shadow-[inset_0_1px_0_rgba(255,255,255,1),0_2px_6px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.03)] max-w-3xl flex flex-col gap-6">
               <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono uppercase tracking-[0.16em] text-muted">
-                <span>Peer-Reviewed Academic Publication</span>
-                <span className="inline-flex items-center px-2.5 py-0.5 bg-black text-white text-[10px] tracking-wider font-sans font-medium rounded-full">
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" aria-hidden="true" />
+                  <span>Peer-Reviewed Academic Publication</span>
+                </span>
+                <span className="inline-flex items-center px-2.5 py-1 bg-neutral-900 text-white text-[10px] tracking-wider font-sans font-medium rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_1px_2px_rgba(0,0,0,0.15)]">
                   SINTA 2 Accredited
                 </span>
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-foreground">
+                <p className="text-base font-semibold text-foreground tracking-tight">
                   Journal of Information Systems and Informatics (JournalISI)
                 </p>
                 <p className="text-xs text-muted mt-1 leading-relaxed">
@@ -204,33 +207,33 @@ export default async function WritingDetailPage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border/60">
+              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-neutral-200/80">
                 <a
                   href="https://journal-isi.org/index.php/isi/article/view/1719/933"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white text-xs font-medium tracking-[0.12em] uppercase hover:bg-neutral-800 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] bg-neutral-900 text-white text-xs font-medium tracking-[0.14em] uppercase border border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.15)] hover:bg-neutral-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_4px_8px_rgba(0,0,0,0.18)] active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-all cursor-pointer group"
                 >
                   <span>Download Official PDF</span>
-                  <span className="text-[10px]">&nearr;</span>
+                  <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
                 </a>
                 <a
                   href="https://doi.org/10.63158/journalisi.v8i4.1719"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-border text-foreground text-xs font-medium tracking-[0.12em] uppercase hover:bg-neutral-50 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] bg-white text-foreground text-xs font-medium tracking-[0.14em] uppercase border border-neutral-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_3px_rgba(0,0,0,0.06)] hover:bg-neutral-50 hover:border-neutral-400 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] transition-all cursor-pointer group"
                 >
                   <span>View via DOI</span>
-                  <span className="text-[10px]">&nearr;</span>
+                  <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
                 </a>
                 <a
                   href="https://sinta.kemdiktisaintek.go.id/journals/profile/7045"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 text-xs text-muted hover:text-foreground transition-colors tracking-wider uppercase text-[11px]"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-[3px] border border-neutral-200 bg-neutral-50/80 text-muted hover:text-foreground hover:bg-neutral-100 hover:border-neutral-300 active:translate-y-[1px] transition-all text-xs font-medium tracking-[0.12em] uppercase group"
                 >
                   <span>SINTA 2 Index</span>
-                  <span className="text-[10px]">&nearr;</span>
+                  <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>

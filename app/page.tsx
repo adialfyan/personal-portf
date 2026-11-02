@@ -20,9 +20,9 @@ import { getSiteUrl } from "@/lib/site";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Full-stack Developer — Portfolio",
+  title: "Frontend & Full-stack Developer — Portfolio",
   description:
-    "Selected work, background, and contact of a full-stack developer building thoughtful web products.",
+    "Selected work, background, and contact of a frontend-focused full-stack developer building tactile, responsive digital experiences.",
   alternates: {
     canonical: "/",
   },
@@ -37,40 +37,40 @@ interface CapabilityItem {
 
 const CAPABILITIES: CapabilityItem[] = [
   {
-    id: "product-dev",
+    id: "frontend-arch",
     number: "01",
-    title: "Product Development",
-    description: "End-to-end execution from technical specifications to production-ready architecture.",
+    title: "Interactive Frontend",
+    description: "Component-driven architecture in React, Next.js, and TypeScript with fluid layout and tactile UI states.",
   },
   {
-    id: "frontend-eng",
+    id: "motion-physics",
     number: "02",
-    title: "Frontend Engineering",
-    description: "Fluid tactile interactions, robust component systems, and modern Next.js foundations.",
+    title: "Kinetic Motion & Physics",
+    description: "Procedural shaders, canvas simulations (60fps), GSAP timelines, and tactile viewport micro-interactions.",
   },
   {
-    id: "backend-systems",
+    id: "fullstack-systems",
     number: "03",
-    title: "Backend Systems",
-    description: "Deterministic business logic, transactional data pipelines, and high-concurrency APIs.",
+    title: "Full-Stack Architecture",
+    description: "End-to-end web architectures powered by Laravel, Inertia.js, and RESTful APIs connecting client to server.",
   },
   {
-    id: "database-design",
+    id: "creative-tech",
     number: "04",
-    title: "Database Design",
-    description: "Normalized relational schemas, ACID integrity guarantees, and optimized query plans.",
+    title: "Creative Technology",
+    description: "Experimental canvas rendering, procedural visual generation, and mathematical animation physics.",
   },
   {
-    id: "interface-impl",
+    id: "interface-polish",
     number: "05",
-    title: "Interface Implementation",
-    description: "Editorial typographic hierarchy, precision micro-details, and seamless accessibility.",
+    title: "Interface Craft & Polish",
+    description: "Editorial typographic hierarchy, precision micro-details, semantic structure, and zero design debt.",
   },
   {
-    id: "deployment-maintenance",
+    id: "performance-testing",
     number: "06",
-    title: "Deployment & Maintenance",
-    description: "Continuous integration pipelines, automated environment hygiene, and deep telemetry.",
+    title: "Testing & Systems Reliability",
+    description: "Playwright end-to-end automation, client-side biometrics, and multi-device tier profiling.",
   },
 ];
 
@@ -120,7 +120,7 @@ export default async function Home() {
                 className="text-xs font-medium tracking-[0.2em] uppercase text-muted mb-6"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Full-Stack Developer &bull; Portfolio
+                Frontend &amp; Full-Stack Developer &bull; Portfolio
               </p>
               <h1
                 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-normal tracking-[-0.02em] leading-[1.04] text-foreground text-balance"
@@ -128,11 +128,11 @@ export default async function Home() {
               >
                 Building{" "}
                 <MorphText
-                  words={["practical", "reliable", "resilient", "responsive"]}
+                  words={["tactile", "responsive", "interactive", "resilient"]}
                   intensity={12}
                   className="font-normal italic"
                 />{" "}
-                web applications and enterprise systems.
+                web applications and digital experiences.
               </h1>
             </div>
 
@@ -150,10 +150,10 @@ export default async function Home() {
                   </p>
                   <div className="space-y-4 text-lg sm:text-xl md:text-2xl font-normal leading-relaxed text-foreground/90 max-w-2xl">
                     <p>
-                      Full-stack developer building practical web applications, financial tools, and internal systems.
+                      Frontend-focused full-stack developer crafting responsive, tactile web applications and creative digital systems.
                     </p>
                     <p className="text-base sm:text-lg text-muted font-normal leading-relaxed">
-                      Working across backend architecture, relational databases, and responsive frontends. Learn more about my engineering background, production systems (SIMMAN, Acrylico, Nata Code), and core capabilities.
+                      Specializing in modern React, Next.js, and kinetic motion physics—backed by dependable Laravel and relational database foundations. Learn more about my engineering background, production systems (Nata Code, Acrylico, SIMMAN), and core capabilities.
                     </p>
                   </div>
 

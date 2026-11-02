@@ -32,39 +32,39 @@ interface DisciplineItem {
 const DISCIPLINES: DisciplineItem[] = [
   {
     number: "01",
-    title: "Product Development",
+    title: "Interactive Frontend",
     description:
-      "End-to-end execution from functional requirements and domain modeling to production deployment.",
+      "Responsive user interfaces, clean component structures, and fluid interactions using React, Next.js, and TypeScript.",
   },
   {
     number: "02",
-    title: "Frontend Engineering",
+    title: "Kinetic Motion & Physics",
     description:
-      "Responsive user interfaces, clean component structures, and fluid interactions using React, Vue, and Next.js.",
+      "Procedural shaders, canvas simulations (60fps), GSAP timelines, and tactile viewport micro-interactions.",
   },
   {
     number: "03",
-    title: "Backend Systems",
+    title: "Full-Stack Architecture",
     description:
-      "Business logic, transactional data processing, bank webhook integrations, and RESTful APIs in Laravel and Go.",
+      "End-to-end web architectures powered by Laravel, Inertia.js, and RESTful APIs connecting client to server.",
   },
   {
     number: "04",
-    title: "Database Design",
+    title: "Creative Technology",
     description:
-      "Normalized relational schemas in PostgreSQL and MySQL with ACID transaction integrity and query optimization.",
+      "Experimental canvas rendering, procedural visual generation, and mathematical animation physics.",
   },
   {
     number: "05",
-    title: "Interface Implementation",
+    title: "Interface Craft & Polish",
     description:
-      "Clear typographic hierarchy, accessible semantic layouts, and thoughtful micro-interactions.",
+      "Clear typographic hierarchy, accessible semantic layouts, and precision tactile micro-interactions.",
   },
   {
     number: "06",
-    title: "Deployment & Operations",
+    title: "Testing & Systems Reliability",
     description:
-      "CI/CD pipelines, automated backups, environment maintenance, and application performance monitoring.",
+      "Playwright end-to-end automation, client-side biometrics, CI/CD pipelines, and multi-device tier profiling.",
   },
 ];
 
@@ -75,40 +75,41 @@ interface CoreTechGroup {
 
 const CORE_REPERTOIRE: CoreTechGroup[] = [
   {
-    category: "Backend & Systems",
+    category: "Frontend & Motion",
+    skills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Inertia.js",
+      "Tailwind CSS",
+      "GSAP",
+      "Canvas API",
+      "WebGL / GLSL",
+      "Vue 3",
+    ],
+  },
+  {
+    category: "Full-Stack & Backend",
     skills: [
       "Laravel",
       "PHP 8+",
       "PostgreSQL",
       "MySQL",
       "Redis",
+      "REST & Webhook APIs",
       "Go",
       "Docker",
-      "REST & Webhook APIs",
-    ],
-  },
-  {
-    category: "Frontend & UI",
-    skills: [
-      "React",
-      "Vue 3",
-      "Inertia.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "GSAP",
-      "WebGL / GLSL",
-      "Next.js",
     ],
   },
   {
     category: "Architecture & Tools",
     skills: [
-      "Multi-Tenant Architecture",
+      "Tactile UI Design",
       "On-Device Biometrics",
       "Relational Data Modeling",
       "Playwright Testing",
       "Git & GitHub Actions",
-      "Linux Server Management",
+      "Linux VPS Management",
     ],
   },
 ];
@@ -222,10 +223,10 @@ export default async function AboutPage() {
               className="max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-normal tracking-[-0.02em] leading-[1.04] text-foreground text-balance"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Full-stack developer building practical web software &amp; internal tools.
+              Frontend &amp; full-stack developer building responsive web products &amp; tactile experiences.
             </h1>
             <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted font-normal leading-relaxed text-balance">
-              Working across backend logic, relational databases, and responsive frontends to build software that solves operational workflows.
+              Working across modern React component architectures, kinetic motion physics, and dependable Laravel backend foundations.
             </p>
           </div>
         </section>
@@ -239,7 +240,7 @@ export default async function AboutPage() {
               <MagazinePortrait
                 src={portraitUrl}
                 alt={name}
-                caption="Full-stack developer building web applications, internal tools, and database systems."
+                caption="Frontend & full-stack developer building tactile web applications and creative digital systems."
                 credit="PHOTOGRAPHY &bull; EDITORIAL ARCHIVE"
               />
 
@@ -259,10 +260,10 @@ export default async function AboutPage() {
               <Reveal>
                 <MagazineDropCap letter="I">
                   <p className="text-lg sm:text-xl font-normal leading-relaxed text-foreground">
-                    am a full-stack developer who builds web applications, business systems, and internal operational tools. Over the past few years, I have developed software across education finance, manufacturing fabrication, and client digital platforms.
+                    am a frontend-focused full-stack developer who builds tactile web applications, interactive creative experiences, and dependable digital systems. Over the past few years, I have developed software across client digital platforms, manufacturing fabrication, and education finance.
                   </p>
                   <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted font-normal">
-                    My work centers on building straightforward, dependable systems: relational database structures that keep records consistent, backend services that process transactions cleanly, and user interfaces that are fast and intuitive to use.
+                    My work centers on building polished, responsive systems: modern React component structures that feel tactile and fluid, kinetic motion systems that run at locked frame rates, and solid backend services that keep records consistent.
                   </p>
                 </MagazineDropCap>
               </Reveal>
