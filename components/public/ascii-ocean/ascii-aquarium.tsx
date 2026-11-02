@@ -20,7 +20,13 @@ export function AsciiAquarium() {
   const [inView, setInView] = useState(false);
 
   const [activeVariety, setActiveVariety] = useState<KoiKind | "all">("all");
+  const varietyRef = useRef(activeVariety);
   const [isPaused, setIsPaused] = useState(false);
+
+  // Sync varietyRef outside render
+  useEffect(() => {
+    varietyRef.current = activeVariety;
+  }, [activeVariety]);
 
   // Lazy-mount: Only instantiate canvas engine when within 350px of viewport
   useEffect(() => {
@@ -49,8 +55,8 @@ export function AsciiAquarium() {
       if (!active || !canvasRef.current) return;
       engine = new EngineClass(canvasRef.current);
       engineRef.current = engine;
-      if (activeVariety !== "all") {
-        engine.setVariety(activeVariety);
+      if (varietyRef.current !== "all") {
+        engine.setVariety(varietyRef.current);
       }
     });
 

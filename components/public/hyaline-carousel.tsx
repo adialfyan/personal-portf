@@ -63,7 +63,7 @@ export function HyalineCarousel({
     return Math.min(Math.max(n * 2, 12), 24);
   }, [n]);
 
-  // Handle ResizeObserver
+  // Handle ResizeObserver & Visibility Observer
   useEffect(() => {
     const el = rootRef.current;
     if (!el) return;
@@ -100,6 +100,7 @@ export function HyalineCarousel({
     const state = stateRef.current;
 
     const loop = (now: number) => {
+      // Exactly ONE requestAnimationFrame scheduled per tick
       state.raf = requestAnimationFrame(loop);
       if (!state.isVisible) return;
 
@@ -158,8 +159,6 @@ export function HyalineCarousel({
         el.style.zIndex = String(Math.round(1000 - z + (isHovered ? 400 : 0)));
         el.style.pointerEvents = alpha > 0.4 ? "auto" : "none";
       }
-
-      state.raf = requestAnimationFrame(loop);
     };
 
     state.raf = requestAnimationFrame(loop);
@@ -215,7 +214,13 @@ export function HyalineCarousel({
     stateRef.current.target += clamp(delta * 0.003, -1.5, 1.5);
   };
 
-  if (n === 0) return null;
+  if (n === 0) {
+    return (
+      <div className="w-full py-16 flex items-center justify-center text-muted text-xs uppercase tracking-widest border border-dashed border-border rounded-[3px]">
+        No cultural items found under this filter
+      </div>
+    );
+  }
 
   const currentActive = items[activeItemIndex] || items[0];
 
@@ -332,7 +337,7 @@ export function HyalineCarousel({
       <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-6">
         <div className="flex items-center gap-3">
           <span className="text-xs font-mono tracking-widest uppercase text-muted">
-            {String(activeItemIndex + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}
+            {String(activeItemIndex + 1).padStart(2, "0")} • {String(n).padStart(2, "0")}
           </span>
           <span className="text-xs text-muted">&bull;</span>
           <h4

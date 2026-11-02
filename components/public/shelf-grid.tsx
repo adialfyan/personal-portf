@@ -133,7 +133,7 @@ export function ShelfGrid({ items }: ShelfGridProps) {
       </div>
 
       {viewMode === "3d" ? (
-        <HyalineCarousel items={filteredItems} path="rise" />
+        <HyalineCarousel key={activeFilter} items={filteredItems} path="rise" />
       ) : viewMode === "gallery" ? (
         <CulturalShelfShowcase items={filteredItems} />
       ) : (
