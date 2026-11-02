@@ -53,19 +53,74 @@ I care deeply about UI polish, state management, component reusability, and user
 
 ---
 
-## 2. 🏢 PENGALAMAN KERJA (Work Experience)
+## 2. 🏢 PENGALAMAN KERJA (Work Experience di Kemnaker)
 
-### Posisi 1: CV Nastiti Utama Mandiri (Timnas Production)
+> **Catatan Pengisian di Kemnaker**: Jika kolom deskripsi pekerjaan di Kemnaker menggabungkan baris, kamu bisa menyalin versi **Paragraf Singkat** agar tampil rapi tanpa tanda baca berantakan.
+
+---
+
+### Posisi 1: Nata Code
+* **Jabatan**: `Frontend Developer & Creative Technologist`
+* **Nama Perusahaan / Klien**: `Nata Code`
+* **Bidang Usaha**: `Pengembangan Perangkat Lunak & Agensi Digital Kreatif`
+* **Status Kerja**: `Pekerja Lepas (Freelance) / Proyek`
+* **Periode**: `Januari 2026 – Sekarang`
+* **Lokasi**: `Semarang, Jawa Tengah (Remote / Hybrid)`
+* **Pilihan A (Format Naratif Singkat — Cocok untuk Form Kemnaker)**:
+```text
+Bertanggung jawab atas rekayasa antarmuka (frontend) dan CMS untuk agensi digital Nata Code. Membangun aplikasi web modern berbasis React dan Inertia.js yang cepat tanpa reload halaman, menerapkan animasi interaktif berbasis GSAP dan efek kanvas prosedural yang ringan di berbagai spesifikasi ponsel, serta menyusun sistem katalog produk dan layanan yang dinamis dan mudah dikelola.
+```
+* **Pilihan B (Format Rincian Modul)**:
+```text
+Mengembangkan platform web interaktif dan CMS untuk Nata Code bersama tim kreatif:
+• Mengembangkan antarmuka single-page application (SPA) berbasis React 18, Inertia.js 2.0, dan Tailwind CSS.
+• Menerapkan sistem animasi interaktif menggunakan GSAP (ScrollTrigger & Parallax) yang mulus di peramban.
+• Membangun efek visual kanvas prosedural dengan penyesuaian otomatis terhadap kemampuan perangkat pengguna agar tetap ringan.
+• Merancang CMS katalog produk dan portofolio dengan dukungan tema gelap/terang dan mode luring (offline PWA).
+
+Teknologi: React.js, Tailwind CSS, Inertia.js, Laravel, GSAP, Canvas API, Vite.
+```
+
+---
+
+### Posisi 2: Acrylico Industrial Fabrication
+* **Jabatan**: `Full-Stack Developer`
+* **Nama Perusahaan / Klien**: `Acrylico Industrial Fabrication`
+* **Bidang Usaha**: `Fabrikasi Akrilik & Manufaktur Komersial`
+* **Status Kerja**: `Pekerja Lepas (Freelance) / Proyek`
+* **Periode**: `2026`
+* **Lokasi**: `Semarang, Jawa Tengah`
+* **Pilihan A (Format Naratif Singkat — Cocok untuk Form Kemnaker)**:
+```text
+Merancang dan membangun sistem operasional bengkel fabrikasi akrilik (Acrylico ERP). Mengembangkan antarmuka antrean stasiun kerja digital secara real-time untuk menggantikan surat perintah kerja manual, mengintegrasikan sistem verifikasi presensi wajah langsung di peramban tanpa mengirim data biometrik keluar perangkat karyawan, serta mengotomatisasi alur pembuatan invoice dan penagihan bertahap.
+```
+* **Pilihan B (Format Rincian Modul)**:
+```text
+Membangun sistem operasional terintegrasi Acrylico ERP dari tahap desain basis data hingga antarmuka pengguna:
+• Membangun antarmuka papan antrean kerja bengkel (Kanban display) untuk memantau alur potong CNC, tekuk, perakitan, dan QC.
+• Mengintegrasikan verifikasi presensi wajah instan di sisi klien (browser) untuk menjaga privasi data biometrik pekerja.
+• Merancang modul penagihan transaksi bertahap mulai dari penawaran harga, uang muka, hingga pelunasan tagihan.
+• Menyusun pengujian otomatis alur antarmuka pengguna menggunakan Playwright E2E testing.
+
+Teknologi: Vue.js, Inertia.js, Laravel, MySQL, TensorFlow/Face-API, Playwright, Tailwind CSS.
+```
+
+---
+
+### Posisi 3: CV Nastiti Utama Mandiri (Timnas Production)
 * **Jabatan**: `Full-Stack Software Engineer`
 * **Nama Perusahaan**: `CV Nastiti Utama Mandiri`
 * **Bidang Usaha**: `Aktivitas Produksi, Event Organizer & Manajemen Tenaga Promosi (SPG)`
 * **Status Kerja**: `Kontrak / Freelance`
 * **Periode**: `Januari 2026 – Maret 2026`
 * **Lokasi**: `Mangunharjo, Tembalang, Kota Semarang, Jawa Tengah`
-* **Deskripsi Pekerjaan**:
+* **Pilihan A (Format Naratif Singkat — Cocok untuk Form Kemnaker)**:
+```text
+Membangun sistem operasional Timnas Production ERP untuk manajemen kampanye promosi dan koordinasi tim lapangan. Mengembangkan modul perhitungan margin keuntungan proyek dengan formula fee dinamis, mengintegrasikan pemetaan lokasi berbasis GPS Leaflet untuk pemantauan presensi dan titik kegiatan, serta membuat alur verifikasi dokumentasi kerja lapangan yang aman dari manipulasi data.
+```
+* **Pilihan B (Format Rincian Modul)**:
 ```text
 Mengerjakan sistem operasional internal (Timnas Production ERP) bersama tim kecil, dengan tanggung jawab pada modul-modul berikut:
-
 • Modul perhitungan margin proyek, mendukung dua formula fee (potongan dan markup) agar laporan laba proyek lebih mudah dibaca.
 • Halaman peta berbasis Leaflet untuk melihat titik presensi tim lapangan dan lokasi proyek.
 • Modul unggah dokumentasi sebelum/sesudah pekerjaan, dengan kompresi gambar di sisi browser agar unggahan lebih ringan.
@@ -76,17 +131,20 @@ Teknologi: Laravel, Inertia.js, React.js, Leaflet, MySQL, Tailwind CSS, Git.
 
 ---
 
-### Posisi 2: MAN 1 Kota Semarang (SIMMAN E-Budgeting)
+### Posisi 4: MAN 1 Kota Semarang (SIMMAN E-Budgeting)
 * **Jabatan**: `Full-Stack Software Engineer`
 * **Nama Instansi**: `MAN 1 Kota Semarang`
 * **Bidang Usaha**: `Pendidikan Menengah Negeri / Instansi Pemerintah`
 * **Status Kerja**: `Kontrak Kerja / Pengembang Sistem`
 * **Periode**: `Maret 2025 – September 2026`
 * **Lokasi**: `Pedurungan Kidul, Pedurungan, Kota Semarang, Jawa Tengah`
-* **Deskripsi Pekerjaan**:
+* **Pilihan A (Format Naratif Singkat — Cocok untuk Form Kemnaker)**:
+```text
+Mengembangkan sistem operasional keuangan madrasah terpadu (SIMMAN E-Budgeting). Mengintegrasikan pembayaran siswa berbasis Virtual Account perbankan melalui webhook otomatis langsung ke buku besar kas umum, membangun pembatasan anggaran pengeluaran divisi agar tidak melampaui pagu RKA, serta menyusun generator laporan keuangan audit berkala berformat PDF dan Excel.
+```
+* **Pilihan B (Format Rincian Modul)**:
 ```text
 Terlibat sebagai pengembang sistem keuangan madrasah (SIMMAN E-Budgeting) sejak masa penyusunan hingga masa pemeliharaan:
-
 • Mengembangkan integrasi Virtual Account dengan bank rekanan melalui webhook, sehingga pembayaran siswa tercatat otomatis ke buku besar tanpa input manual.
 • Membangun pembatasan anggaran per divisi berdasarkan RKA, agar pengeluaran tidak melebihi pagu yang sudah disetujui.
 • Membuat rekap harian yang membandingkan mutasi internal dengan data bank untuk membantu pengecekan selisih.
