@@ -182,6 +182,60 @@ export default async function WritingDetailPage({ params }: PageProps) {
             </div>
           </div>
 
+          {/* Academic Publication Callout (For Peer-Reviewed Research) */}
+          {slug === "securing-educational-financial-data-hybrid-blockchain" && (
+            <div className="mt-12 p-6 sm:p-8 bg-[#fafafa] border border-border/80 max-w-3xl flex flex-col gap-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono uppercase tracking-[0.16em] text-muted">
+                <span>Peer-Reviewed Academic Publication</span>
+                <span className="inline-flex items-center px-2.5 py-0.5 bg-black text-white text-[10px] tracking-wider font-sans font-medium rounded-full">
+                  SINTA 2 Accredited
+                </span>
+              </div>
+
+              <div>
+                <p className="text-sm font-semibold text-foreground">
+                  Journal of Information Systems and Informatics (JournalISI)
+                </p>
+                <p className="text-xs text-muted mt-1 leading-relaxed">
+                  Vol. 8, No. 4, August 2026, pp. 4159–4183 &bull; ISSN 2656-4882 &bull; Indexed in SINTA 2, DOAJ, Crossref, Dimensions, BASE
+                </p>
+                <p className="text-xs text-muted mt-1">
+                  Authors: Adi Alfian Hafis, Soiful Hadi &bull; Universitas Semarang
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border/60">
+                <a
+                  href="https://journal-isi.org/index.php/isi/article/view/1719/933"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white text-xs font-medium tracking-[0.12em] uppercase hover:bg-neutral-800 transition-colors"
+                >
+                  <span>Download Official PDF</span>
+                  <span className="text-[10px]">&nearr;</span>
+                </a>
+                <a
+                  href="https://doi.org/10.63158/journalisi.v8i4.1719"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-border text-foreground text-xs font-medium tracking-[0.12em] uppercase hover:bg-neutral-50 transition-colors"
+                >
+                  <span>View via DOI</span>
+                  <span className="text-[10px]">&nearr;</span>
+                </a>
+                <a
+                  href="https://sinta.kemdiktisaintek.go.id/journals/profile/7045"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 text-xs text-muted hover:text-foreground transition-colors tracking-wider uppercase text-[11px]"
+                >
+                  <span>SINTA 2 Index</span>
+                  <span className="text-[10px]">&nearr;</span>
+                </a>
+              </div>
+            </div>
+          )}
+
           {/* Article Markdown Body */}
           <div className="mt-16 pt-12 border-t border-border/60 max-w-3xl">
             <MarkdownRenderer content={writing.content} />
