@@ -40,7 +40,7 @@ const DISCIPLINES: DisciplineItem[] = [
     number: "02",
     title: "Kinetic Motion & Physics",
     description:
-      "Procedural shaders, canvas simulations (60fps), GSAP timelines, and tactile viewport micro-interactions.",
+      "Procedural shaders, canvas simulations, GSAP timelines, and tactile viewport micro-interactions.",
   },
   {
     number: "03",
@@ -263,7 +263,7 @@ export default async function AboutPage() {
                     am a frontend-focused full-stack developer who builds tactile web applications, interactive creative experiences, and dependable digital systems. Over the past few years, I have developed software across client digital platforms, manufacturing fabrication, and education finance.
                   </p>
                   <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted font-normal">
-                    My work centers on building polished, responsive systems: modern React component structures that feel tactile and fluid, kinetic motion systems that run at locked frame rates, and solid backend services that keep records consistent.
+                    My work centers on building polished, responsive systems: modern React component structures that feel tactile and fluid, kinetic motion systems that stay smooth under load, and solid backend services that keep records consistent.
                   </p>
                 </MagazineDropCap>
               </Reveal>
@@ -290,7 +290,7 @@ export default async function AboutPage() {
                       <span>Manufacturing &amp; Edge Biometrics</span>
                     </div>
                     <p className="text-xs sm:text-sm leading-relaxed text-muted font-normal">
-                      For Acrylico, a commercial fabrication workshop, I built Acrylico ERP to replace paper job tickets with a live workstation queue across cutting, bending, assembly, and quality control stations. To handle worker attendance tracking quickly while keeping biometric data private, I added on-device face recognition that processes check-ins directly in the browser in under 400 milliseconds, without uploading camera feeds to external cloud servers.
+                      For Acrylico, a commercial fabrication workshop, I built Acrylico ERP to replace paper job tickets with a live workstation queue across cutting, bending, assembly, and quality control stations. To handle worker attendance tracking quickly while keeping biometric data private, I added on-device face recognition that verifies check-ins directly inside the browser, without uploading camera feeds to external cloud servers.
                     </p>
                   </div>
                 </div>

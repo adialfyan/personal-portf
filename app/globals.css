@@ -177,6 +177,44 @@ html.lenis body {
   color: rgba(10, 10, 10, 0.85);
 }
 
+/* Long-form reading on phones: drop body size, keep wide tables and URLs inside the viewport */
+.editorial-content p,
+.editorial-content li,
+.editorial-content blockquote {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .editorial-content p,
+  .editorial-content ul,
+  .editorial-content ol {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .editorial-content h2 {
+    margin-top: 2.5rem;
+  }
+
+  .editorial-content blockquote {
+    font-size: 1.1rem;
+    padding-left: 1rem;
+  }
+
+  .editorial-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.85rem;
+  }
+
+  .editorial-content th,
+  .editorial-content td {
+    padding: 0.6rem 0.75rem;
+    white-space: nowrap;
+  }
+}
+
 
 /*
   Segue: Sprite Noise (sprite: pattern: noise, seed: 7, scale: 4, jitter: 0.06, dither: 0, angle: 0, cells: 24, frames: 16)

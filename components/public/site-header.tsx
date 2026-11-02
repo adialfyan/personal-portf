@@ -105,7 +105,7 @@ export function SiteHeader() {
         role="dialog"
         aria-modal="true"
         aria-label="Site navigation"
-        className={`fixed inset-0 z-50 flex flex-col justify-between bg-background p-6 sm:p-10 md:hidden overflow-hidden transition-all duration-300 ease-out ${
+        className={`fixed inset-0 z-50 flex flex-col justify-between bg-background p-6 sm:p-10 md:hidden overflow-y-auto transition-all duration-300 ease-out ${
           isOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none -translate-y-4"
@@ -138,7 +138,7 @@ export function SiteHeader() {
         {/* Main Navigation Links with Sequential Staggered Styling */}
         <nav
           aria-label="Mobile Navigation"
-          className="relative z-10 my-auto py-8 flex flex-col gap-5 sm:gap-6"
+          className="relative z-10 my-auto py-6 sm:py-8 flex flex-col gap-4 sm:gap-6"
         >
           {NAV_LINKS.map((item) => (
             <Link
@@ -148,7 +148,7 @@ export function SiteHeader() {
               className="group flex items-baseline justify-between border-b border-border/50 pb-3"
             >
               <span
-                className="text-3xl sm:text-4xl font-normal tracking-tight text-foreground group-hover:text-muted transition-colors"
+                className="text-2xl sm:text-4xl font-normal tracking-tight text-foreground group-hover:text-muted transition-colors"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {item.label}
@@ -162,7 +162,7 @@ export function SiteHeader() {
 
         {/* Drawer Footer Metadata */}
         <div className="relative z-10 pt-4 pb-6 sm:pb-4 border-t border-border flex items-center justify-between text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
-          <span>Full-Stack Developer</span>
+          <span>Frontend &amp; Full-Stack Developer</span>
           <span>Portfolio</span>
         </div>
       </div>

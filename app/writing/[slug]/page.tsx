@@ -134,7 +134,7 @@ export default async function WritingDetailPage({ params }: PageProps) {
       <SiteHeader />
 
       <main id="main-content" className="flex-1">
-        <article className="mx-auto max-w-[1440px] px-6 pt-12 pb-24 md:px-10 md:pt-20 md:pb-32">
+        <article className="mx-auto max-w-[1440px] px-5 pt-10 pb-20 sm:px-6 sm:pt-14 md:px-10 md:pt-20 md:pb-32">
           
           {/* Breadcrumb & Metadata Header */}
           <div className="max-w-4xl">
@@ -212,7 +212,7 @@ export default async function WritingDetailPage({ params }: PageProps) {
                   href="https://journal-isi.org/index.php/isi/article/view/1719/933"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] bg-neutral-900 text-white text-xs font-medium tracking-[0.14em] uppercase border border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.15)] hover:bg-neutral-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_4px_8px_rgba(0,0,0,0.18)] active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-all cursor-pointer group"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-[3px] bg-neutral-900 text-white text-xs font-medium tracking-[0.14em] uppercase border border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.15)] hover:bg-neutral-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_4px_8px_rgba(0,0,0,0.18)] active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-all cursor-pointer group"
                 >
                   <span>Download Official PDF</span>
                   <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
@@ -221,7 +221,7 @@ export default async function WritingDetailPage({ params }: PageProps) {
                   href="https://doi.org/10.63158/journalisi.v8i4.1719"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] bg-white text-foreground text-xs font-medium tracking-[0.14em] uppercase border border-neutral-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_3px_rgba(0,0,0,0.06)] hover:bg-neutral-50 hover:border-neutral-400 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] transition-all cursor-pointer group"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-[3px] bg-white text-foreground text-xs font-medium tracking-[0.14em] uppercase border border-neutral-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_3px_rgba(0,0,0,0.06)] hover:bg-neutral-50 hover:border-neutral-400 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] transition-all cursor-pointer group"
                 >
                   <span>View via DOI</span>
                   <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>

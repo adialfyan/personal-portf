@@ -46,7 +46,7 @@ const CAPABILITIES: CapabilityItem[] = [
     id: "motion-physics",
     number: "02",
     title: "Kinetic Motion & Physics",
-    description: "Procedural shaders, canvas simulations (60fps), GSAP timelines, and tactile viewport micro-interactions.",
+    description: "Procedural shaders, canvas simulations, GSAP timelines, and tactile viewport micro-interactions.",
   },
   {
     id: "fullstack-systems",
@@ -82,7 +82,7 @@ export default async function Home() {
 
   const name = profile?.full_name || "Adi Alfian Hafis";
   const title =
-    profile?.professional_title || "Full-Stack Developer";
+    profile?.professional_title || "Frontend & Full-Stack Developer";
   const bio =
     profile?.short_intro ||
     "Building web applications, enterprise systems, and digital tools with a focus on clean architecture and reliable engineering.";

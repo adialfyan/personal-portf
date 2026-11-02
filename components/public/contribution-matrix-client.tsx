@@ -51,10 +51,10 @@ export function ContributionMatrixClient({
   };
 
   return (
-    <div className="relative border border-border bg-white p-6 sm:p-8 mb-10 overflow-hidden">
+    <div className="relative border border-border bg-white p-4 sm:p-8 mb-10 overflow-hidden">
       {/* Editorial Watermark & Top Metadata Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-border/60 mb-6">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-border/60 mb-5 sm:mb-6">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <span className="text-[10px] font-mono tracking-[0.25em] text-foreground font-semibold uppercase">
             CHRONICLE &bull; 38-WEEK LOG
           </span>
@@ -65,7 +65,7 @@ export function ContributionMatrixClient({
         </div>
 
         {/* Dynamic Telemetry / Hover Inspection Tooltip */}
-        <div className="h-6 flex items-center">
+        <div className="min-h-6 flex flex-wrap items-center gap-y-1">
           {activeCell ? (
             <div className="flex items-center gap-2 text-xs font-mono tracking-wider animate-in fade-in duration-150">
               <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
@@ -92,18 +92,18 @@ export function ContributionMatrixClient({
 
       {/* Grid Canvas with Day Legend */}
       <div className="overflow-x-auto pb-2 -mx-2 px-2 scrollbar-none">
-        <div className="min-w-[700px] flex gap-3">
+        <div className="min-w-[420px] sm:min-w-[700px] flex gap-2 sm:gap-3">
           {/* Day of Week Label Strip */}
-          <div className="flex flex-col justify-between py-[3px] text-[8px] font-mono tracking-widest text-muted/80 uppercase select-none shrink-0 w-6">
+          <div className="flex flex-col justify-between py-[3px] text-[8px] font-mono tracking-widest text-muted/80 uppercase select-none shrink-0 w-5 sm:w-6">
             <span>MON</span>
             <span>WED</span>
             <span>FRI</span>
           </div>
 
           {/* Matrix Columns */}
-          <div className="flex gap-[3.5px] py-1 flex-1">
+          <div className="flex gap-[2.5px] sm:gap-[3.5px] py-1 flex-1">
             {weeks.map((week, wIdx) => (
-              <div key={wIdx} className="flex flex-col gap-[3.5px] shrink-0">
+              <div key={wIdx} className="flex flex-col gap-[2.5px] sm:gap-[3.5px] shrink-0">
                 {week.map((day, dIdx) => {
                   const isHovered = activeCell?.date === day.date;
                   return (
@@ -113,7 +113,7 @@ export function ContributionMatrixClient({
                       onPointerLeave={() => {
                         if (activeCell?.date === day.date) setActiveCell(null);
                       }}
-                      className={`w-[12px] h-[12px] rounded-[1.5px] border cursor-crosshair transition-all duration-200 ease-out ${getCellShade(
+                      className={`w-[8px] h-[8px] sm:w-[12px] sm:h-[12px] rounded-[1.5px] border cursor-crosshair transition-all duration-200 ease-out ${getCellShade(
                         day.level
                       )} ${
                         isHovered
@@ -130,9 +130,9 @@ export function ContributionMatrixClient({
       </div>
 
       {/* Quiet Architectural Bottom Micro-Rule */}
-      <div className="mt-5 pt-3 border-t border-neutral-100 flex items-center justify-between text-[9px] font-mono tracking-[0.2em] uppercase text-muted/70">
+      <div className="mt-5 pt-3 border-t border-neutral-100 flex items-center justify-between gap-4 text-[9px] font-mono tracking-[0.2em] uppercase text-muted/70">
         <span>SOURCE: GITHUB EVENT STREAM</span>
-        <span>PULSE CADENCE &bull; MONOCHROME INK</span>
+        <span className="hidden sm:inline">PULSE CADENCE &bull; MONOCHROME INK</span>
       </div>
     </div>
   );
