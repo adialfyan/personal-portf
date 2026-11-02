@@ -12,13 +12,13 @@
 ### Versi Bahasa Indonesia (untuk portal Kemnaker)
 
 ```text
-Lulusan Teknik Informatika Universitas Semarang dengan fokus utama pada rekayasa antarmuka (Frontend Development) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack (Laravel, PostgreSQL, REST API). Saya senang merancang antarmuka web yang interaktif, responsif, dan berkinerja tinggi (60fps), ditopang arsitektur backend yang kokoh dan tertata.
+Lulusan Teknik Informatika Universitas Semarang dengan fokus utama pada rekayasa antarmuka (Frontend Development) berbasis React, TypeScript, dan Next.js, didukung kemampuan Full-Stack (Laravel, PostgreSQL, REST API). Saya senang merancang antarmuka web yang interaktif, rapi, dan responsif, ditopang arsitektur backend yang andal dan tertata.
 
 Selama kuliah dan mengerjakan proyek lepas, saya:
-• Mengembangkan antarmuka interaktif dan CMS Nata Code menggunakan React 18, Inertia.js 2.0, dan Tailwind CSS. Mengintegrasikan motion GSAP, shader prosedural GLSL, dan profiling kemampuan perangkat (useDeviceTier) agar visual interaktif tetap stabil 60fps di perangkat seluler kelas menengah/bawah.
-• Membangun antarmuka dashboard operasional dan antrean stasiun kerja Acrylico ERP dengan Vue dan Inertia, mengintegrasikan verifikasi presensi wajah langsung di browser (<400ms) tanpa mengirim data biometrik ke server, serta menguji alur pengguna dengan Playwright E2E.
+• Mengembangkan antarmuka interaktif dan CMS Nata Code menggunakan React 18, Inertia.js 2.0, dan Tailwind CSS. Mengintegrasikan animasi GSAP, visual kanvas prosedural, dan penyesuaian kemampuan perangkat agar halaman tetap ringan dan mulus di berbagai ponsel.
+• Membangun antarmuka dashboard operasional dan antrean stasiun kerja Acrylico ERP dengan Vue dan Inertia, mengintegrasikan verifikasi presensi wajah instan langsung di peramban tanpa mengirim data biometrik karyawan keluar perangkat, serta menguji alur pengguna dengan Playwright E2E.
 • Merancang antarmuka portal keuangan dan tata letak SIMMAN E-Budgeting untuk menyederhanakan alur transaksi sekolah yang rumit menjadi mudah digunakan staf, terhubung ke backend Laravel, PostgreSQL, dan webhook kliring Virtual Account bank.
-• Mengembangkan simulasi kolam koi ASCII 60fps murni TypeScript dan Canvas API (algoritma boids dan kinematic spine wave di bawah 2ms/frame), serta menyelesaikan skripsi riset integritas data menggunakan Hyperledger Fabric 2.5 dan Go.
+• Mengembangkan simulasi interaktif kolam koi ASCII berbasis TypeScript dan Canvas API dengan simulasi kawanan alami dan fisika gelombang tubuh ikan, serta menyelesaikan skripsi penelitian tentang pengamanan integritas data keuangan institusi pendidikan dari manipulasi internal menggunakan jejak audit kriptografis (hybrid blockchain & Merkle Tree).
 
 Keahlian utama:
 • Frontend: React.js, TypeScript/JavaScript, Next.js, Inertia.js, Vue.js, Tailwind CSS, HTML5 Canvas API, GSAP
@@ -34,20 +34,20 @@ Saya memiliki kepekaan pada detail tampilan (UI/UX), terbiasa menulis kode kompo
 ### English version (LinkedIn / job portals)
 
 ```text
-Computer Science graduate from Universitas Semarang specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, high-performance, and responsive user interfaces backed by dependable systems architecture.
+Computer Science graduate from Universitas Semarang specializing in modern frontend engineering (React, TypeScript, Next.js) with solid full-stack capabilities (Laravel, PostgreSQL, REST APIs). I enjoy building polished, responsive, and intuitive user interfaces backed by dependable systems architecture.
 
 During my studies and project work, I:
-• Built Nata Code's agency web experience and CMS using React 18, Inertia.js 2.0, and Tailwind CSS. Implemented smooth GSAP viewport motions, procedural GLSL background shaders, and device-tier profiling (useDeviceTier) to keep heavy interactive elements at a locked 60fps across low-end mobile devices.
-• Engineered responsive workstation queue boards and operator dashboards for Acrylico ERP using Vue and Inertia. Integrated in-browser client-side facial biometrics (<400ms inference) keeping employee vectors on-device, verified through automated Playwright end-to-end tests.
-• Designed user-friendly transaction portals and financial reporting layouts for SIMMAN E-Budgeting, simplifying complex multi-tier institutional workflows connected to Laravel, PostgreSQL, and real-time bank Virtual Account clearing webhooks.
-• Built an autonomous 60fps Japanese koi pond simulation in plain TypeScript and HTML5 Canvas API (Reynolds flocking boids, 20-node kinematic spine waves, <2ms frame times), alongside an undergraduate research thesis on distributed provenance using Hyperledger Fabric 2.5 and Go.
+• Built Nata Code's agency web experience and CMS using React 18, Inertia.js 2.0, and Tailwind CSS. Implemented smooth GSAP viewport motion, procedural canvas shaders, and device-tier profiling to keep interactive animations lightweight and fluid across all mobile devices.
+• Engineered responsive workstation queue boards and operator dashboards for Acrylico ERP using Vue and Inertia. Integrated instant client-side facial recognition directly in the browser—keeping employee biometric data securely on-device—verified through automated Playwright end-to-end tests.
+• Designed user-friendly transaction portals and financial reporting layouts for SIMMAN E-Budgeting, simplifying complex institutional budgeting workflows connected to Laravel, PostgreSQL, and real-time bank Virtual Account clearing webhooks.
+• Built an interactive Japanese koi pond simulation in plain TypeScript and HTML5 Canvas API featuring natural flocking behavior and mathematical spine wave physics, alongside an undergraduate research thesis on securing educational financial data against internal tampering using cryptographic audit trails and hybrid blockchain.
 
 Core skills:
 • Frontend: React.js, TypeScript/JavaScript, Next.js, Inertia.js, Vue.js, Tailwind CSS, Canvas API, GSAP
 • Backend & Databases: Laravel (PHP 8+), PostgreSQL, MySQL, Redis, REST APIs & Webhooks
 • Tools & Workflow: Git, Docker, Linux VPS, Playwright, Vite
 
-I care deeply about UI polish, state management, component reusability, and frontend performance while understanding how data flows across the entire stack. I am currently seeking an entry-level Frontend Developer or Full-Stack Developer position where I can craft engaging web products and grow alongside experienced engineering teams.
+I care deeply about UI polish, state management, component reusability, and user experience while understanding how data flows across the entire stack. I am currently seeking an entry-level Frontend Developer or Full-Stack Developer position where I can craft engaging web products and grow alongside experienced engineering teams.
 
 📍 Semarang, Indonesia | Open to remote and relocation
 📩 adialfianhafiz@gmail.com | 🔗 github.com/adialfyan · adiallllllll.vercel.app
