@@ -72,7 +72,7 @@ export function CulturalShelfShowcase({
                         <span className="h-1.5 w-2.5 rounded-[1px] bg-neutral-900 border border-neutral-700/60" />
                         <span className="h-1.5 w-2.5 rounded-[1px] bg-neutral-900 border border-neutral-700/60" />
                       </div>
-                      <span className="text-[8px] font-mono tracking-widest text-neutral-500 uppercase">
+                      <span className="text-[8px] font-medium tracking-widest text-neutral-500 uppercase tabular-nums">
                         KODAK 5219
                       </span>
                       <div className="flex items-center gap-1.5">
@@ -102,7 +102,7 @@ export function CulturalShelfShowcase({
                         <span className="h-1.5 w-2.5 rounded-[1px] bg-neutral-900 border border-neutral-700/60" />
                         <span className="h-1.5 w-2.5 rounded-[1px] bg-neutral-900 border border-neutral-700/60" />
                       </div>
-                      <span className="text-[8px] font-mono tracking-widest text-amber-500/80 uppercase">
+                      <span className="text-[8px] font-medium tracking-widest text-amber-500/80 uppercase tabular-nums">
                         35MM • 24A
                       </span>
                       <div className="flex items-center gap-1.5">

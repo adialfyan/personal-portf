@@ -1,5 +1,6 @@
 import { BouncyLine } from "@/components/public/bouncy-line";
 import { CulturalShelfShowcase } from "@/components/public/cultural-shelf-showcase";
+import { HyalineCarousel } from "@/components/public/hyaline-carousel";
 import type { ShelfItem, ShelfMediaType } from "@/lib/queries/types";
 
 interface ShelfCatalogueProps {
@@ -68,10 +69,26 @@ export function ShelfCatalogue({ items }: ShelfCatalogueProps) {
 
   return (
     <div>
+      {/* ——— The Reel ——— */}
+      <div className="border-b border-border pb-10 md:pb-12">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h2
+            className="text-[11px] font-medium tracking-[0.2em] uppercase text-foreground"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            The Reel
+          </h2>
+          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-muted">
+            Drag or use the arrows
+          </span>
+        </div>
+        <HyalineCarousel items={items} className="mt-4" />
+      </div>
+
       {/* ——— Quick Jump ——— */}
       <nav
         aria-label="Shelf sections"
-        className="flex flex-wrap items-center gap-2 border-b border-border pb-6"
+        className="mt-10 flex flex-wrap items-center gap-2"
       >
         {sections.map((section) => (
           <a
