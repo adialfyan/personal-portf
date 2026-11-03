@@ -222,8 +222,8 @@ export function ContactForm() {
           <span>{status === "sending" ? "Sending…" : "Send message"}</span>
           <span aria-hidden="true">&#8599;</span>
         </button>
-        <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-muted/70">
-          Name, email and message required
+        <span className="text-xs text-muted/70 font-normal">
+          Name, email and message are required.
         </span>
       </div>
     </form>

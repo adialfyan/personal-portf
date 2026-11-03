@@ -176,18 +176,9 @@ export default async function ContactPage() {
             {/* Right Wing (7 Columns): Form Plate */}
             <div className="lg:col-span-7">
               <div className="border border-border bg-gradient-to-b from-white via-neutral-50/60 to-neutral-100/40 p-6 sm:p-8 rounded-[4px] shadow-[inset_0_1px_0_rgba(255,255,255,1),0_2px_6px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.03)]">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-foreground">
-                    Inquiry Form
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-[3px] border border-neutral-200/90 bg-white px-2.5 py-1 text-[10px] font-medium tracking-[0.16em] uppercase text-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.95)]">
-                    <span
-                      aria-hidden="true"
-                      className="h-1.5 w-1.5 rounded-[1px] bg-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
-                    />
-                    <span>Encrypted in transit</span>
-                  </span>
-                </div>
+                <span className="block text-[11px] font-semibold tracking-[0.2em] uppercase text-foreground">
+                  Inquiry Form
+                </span>
 
                 <BouncyLine className="my-5" />
 
