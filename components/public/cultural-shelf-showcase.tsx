@@ -219,6 +219,12 @@ export function CulturalShelfShowcase({
                   {item.year ? ` \u2022 ${item.year}` : ""}
                 </p>
 
+                {item.notes && (
+                  <p className="mt-3 text-xs leading-relaxed text-muted/80 font-normal line-clamp-2">
+                    {item.notes}
+                  </p>
+                )}
+
                 {item.external_url && (
                   <a
                     href={item.external_url}
