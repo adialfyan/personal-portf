@@ -80,7 +80,7 @@ export default async function ShelfPage() {
         </section>
 
         {/* ——— Sectioned Catalogue ——— */}
-        <section className="py-16 md:py-24">
+        <section className="py-12 md:py-16">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <ShelfCatalogue items={items} />
           </div>

@@ -70,7 +70,7 @@ export function ShelfCatalogue({ items }: ShelfCatalogueProps) {
   return (
     <div>
       {/* ——— The Reel ——— */}
-      <div className="border-b border-border pb-10 md:pb-12">
+      <div className="border-b border-border pb-8 md:pb-10">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h2
             className="text-[11px] font-medium tracking-[0.2em] uppercase text-foreground"
@@ -88,7 +88,7 @@ export function ShelfCatalogue({ items }: ShelfCatalogueProps) {
       {/* ——— Quick Jump ——— */}
       <nav
         aria-label="Shelf sections"
-        className="mt-10 flex flex-wrap items-center gap-2"
+        className="mt-8 flex flex-wrap items-center gap-2"
       >
         {sections.map((section) => (
           <a
@@ -105,7 +105,7 @@ export function ShelfCatalogue({ items }: ShelfCatalogueProps) {
       </nav>
 
       {/* ——— Sections ——— */}
-      <div className="space-y-20 pt-14 md:space-y-28 md:pt-20">
+      <div className="space-y-14 pt-10 md:space-y-20 md:pt-14">
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="scroll-mt-28">
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
@@ -132,7 +132,7 @@ export function ShelfCatalogue({ items }: ShelfCatalogueProps) {
               {section.blurb}
             </p>
 
-            <BouncyLine className="mt-6 mb-10" />
+            <BouncyLine className="mt-5 mb-8" />
 
             <CulturalShelfShowcase
               items={section.entries}

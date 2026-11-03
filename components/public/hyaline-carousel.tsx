@@ -225,18 +225,20 @@ export function HyalineCarousel({
   const currentActive = items[activeItemIndex] || items[0];
 
   return (
-    <div
-      className={`relative w-full select-none overflow-hidden ${className}`}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-      onWheel={handleWheel}
-    >
+    <div className={`w-full ${className}`}>
+      {/* Drag surface — controls live outside it so links stay plain links */}
+      <div
+        className="relative w-full select-none overflow-hidden"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onWheel={handleWheel}
+      >
       {/* 3D Perspective Stage with Perimeter Vignette Dissolve */}
       <div
         ref={rootRef}
-        className="relative w-full h-[440px] sm:h-[560px] md:h-[620px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative w-full h-[320px] sm:h-[420px] md:h-[480px] flex items-center justify-center cursor-grab active:cursor-grabbing"
         style={{
           perspective: `${perspective * fit}px`,
           perspectiveOrigin: "50% 50%",
@@ -330,17 +332,17 @@ export function HyalineCarousel({
             ].join(", "),
           }}
         />
+        </div>
       </div>
 
       {/* Editorial Control & Currently Active Item Details */}
-      <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-6">
-        <div className="flex items-center gap-3">
+      <div className="mt-2 flex flex-col items-center justify-between gap-4 border-t border-border pt-5 sm:flex-row">
+        <div className="flex w-full min-w-0 items-center gap-3 sm:w-auto">
           <span className="text-xs tabular-nums tracking-[0.18em] uppercase text-muted">
             {String(activeItemIndex + 1).padStart(2, "0")} • {String(n).padStart(2, "0")}
           </span>
-          <span className="text-xs text-muted">&bull;</span>
           <h4
-            className="text-base sm:text-lg font-normal text-foreground"
+            className="min-w-0 truncate text-base font-normal text-foreground sm:text-lg"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {currentActive.title} <span className="text-muted text-sm font-sans">({currentActive.creator}, {currentActive.year})</span>
