@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/public/json-ld";
 import { SiteHeader } from "@/components/public/site-header";
 import { SiteFooter } from "@/components/public/site-footer";
-import { ShelfGrid } from "@/components/public/shelf-grid";
+import { ShelfCatalogue } from "@/components/public/shelf-catalogue";
 import { AsciiAquarium } from "@/components/public/ascii-ocean/ascii-aquarium";
 import {
   getShelfItems,
@@ -16,21 +16,21 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Shelf — Cinema, Records & Digital Artifacts",
   description:
-    "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
+    "A shelf of films, records, and books kept as reference, with an interactive artifact built for the page.",
   alternates: {
     canonical: "/shelf",
   },
   openGraph: {
     title: "Shelf — Cinema, Records & Digital Artifacts",
     description:
-      "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
+      "A shelf of films, records, and books kept as reference, with an interactive artifact built for the page.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Shelf — Cinema, Records & Digital Artifacts",
     description:
-      "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
+      "A shelf of films, records, and books kept as reference, with an interactive artifact built for the page.",
   },
 };
 
@@ -49,7 +49,7 @@ export default async function ShelfPage() {
           "@type": "CollectionPage",
           name: "Shelf — Cinema, Records & Digital Artifacts",
           description:
-            "A ledger of cinematic works, analog recordings, foundational literature, and interactive computational artifacts.",
+            "A shelf of films, records, and books kept as reference, with an interactive artifact built for the page.",
           url: `${siteUrl}/shelf`,
         }}
       />
@@ -72,15 +72,17 @@ export default async function ShelfPage() {
               Cinema, sound recordings &amp; digital artifacts.
             </h1>
             <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted font-normal leading-relaxed text-balance">
-              A ledger of cinematic works, analog recordings, and foundational literature, alongside interactive computational artifacts. Exploring aesthetics, human psychology, and durable craft.
+              A working shelf of films, records, and books — kept as reference
+              rather than review, alongside an interactive artifact built for
+              this page.
             </p>
           </div>
         </section>
 
-        {/* ——— Shelf Ledger & Filter ——— */}
+        {/* ——— Sectioned Catalogue ——— */}
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
-            <ShelfGrid items={items} />
+            <ShelfCatalogue items={items} />
           </div>
         </section>
 

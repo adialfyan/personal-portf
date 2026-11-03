@@ -6,11 +6,37 @@ import type { ShelfItem } from "@/lib/queries/types";
 export interface CulturalShelfShowcaseProps {
   items: ShelfItem[];
   className?: string;
+  columns?: 2 | 3 | 4;
+}
+
+const COLUMNS_CLASS: Record<2 | 3 | 4, string> = {
+  2: "lg:grid-cols-2",
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-4",
+};
+
+/** Link label from the host, so it never advertises the wrong service. */
+function sourceLabel(url: string | null): string {
+  if (!url) return "Reference";
+  let host = "";
+  try {
+    host = new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "Reference";
+  }
+  if (host.includes("letterboxd")) return "Letterboxd";
+  if (host.includes("bandcamp")) return "Bandcamp";
+  if (host.includes("spotify")) return "Spotify";
+  if (host.includes("apple.com")) return "Apple Music";
+  if (host.includes("goodreads")) return "Goodreads";
+  if (host.includes("youtube")) return "YouTube";
+  return host;
 }
 
 export function CulturalShelfShowcase({
   items,
   className = "",
+  columns = 4,
 }: CulturalShelfShowcaseProps) {
   if (!items || items.length === 0) {
     return null;
@@ -18,7 +44,9 @@ export function CulturalShelfShowcase({
 
   return (
     <div className={`w-full ${className}`}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+      <div
+        className={`grid grid-cols-1 sm:grid-cols-2 ${COLUMNS_CLASS[columns]} gap-8 md:gap-10`}
+      >
         {items.map((item, index) => {
           const isFilm = item.media_type === "film";
           const isMusic = item.media_type === "music";
@@ -164,51 +192,42 @@ export function CulturalShelfShowcase({
               </div>
 
               {/* ——— Monograph Metadata & Source Link ——— */}
-              <div className="pt-2 border-t border-border">
-                <div className="flex items-baseline justify-between gap-2 mb-1.5">
+              <div className="pt-3 border-t border-border">
+                <div className="flex items-baseline justify-between gap-2">
                   <span
-                    className="text-xs text-muted/70 font-normal"
+                    className="text-xs text-muted/70 font-normal tabular-nums"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {itemNumber}
                   </span>
-                  <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted">
-                    {item.media_type}
-                  </span>
+                  {item.is_favorite && (
+                    <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted">
+                      Essential
+                    </span>
+                  )}
                 </div>
 
                 <h3
-                  className="text-xl sm:text-2xl font-normal tracking-tight text-foreground line-clamp-1 mb-1"
+                  className="mt-1.5 text-xl sm:text-2xl font-normal tracking-tight text-foreground line-clamp-2"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-muted font-normal mb-3">
-                  {item.creator} {item.year ? `(${item.year})` : ""}
+                <p className="mt-1 text-xs text-muted font-normal">
+                  {item.creator}
+                  {item.year ? ` \u2022 ${item.year}` : ""}
                 </p>
-
-                {item.notes && (
-                  <p className="text-xs text-muted/80 italic font-normal line-clamp-2 leading-relaxed mb-4">
-                    &ldquo;{item.notes}&rdquo;
-                  </p>
-                )}
 
                 {item.external_url && (
                   <a
                     href={item.external_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.18em] uppercase text-foreground hover:underline transition-colors"
+                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.18em] uppercase text-foreground underline-offset-4 hover:underline transition-colors"
                   >
-                    <span>
-                      {isFilm
-                        ? "Letterboxd"
-                        : isMusic
-                          ? "Spotify"
-                          : "Reference"}
-                    </span>
-                    <span aria-hidden="true">↗</span>
+                    <span>{sourceLabel(item.external_url)}</span>
+                    <span aria-hidden="true">&#8599;</span>
                   </a>
                 )}
               </div>
