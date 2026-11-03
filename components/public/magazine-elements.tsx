@@ -66,7 +66,7 @@ export function MagazinePortrait({
 
   return (
     <figure className={`relative flex flex-col ${className}`}>
-      {/* Top Editorial Folio Tag for Figure with Tactile Pill Badge and Toggle Button */}
+      {/* Top Editorial Folio Tag for Figure with Pill Badge and Toggle Button */}
       <div className="mb-3 flex items-center justify-between gap-2">
         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase rounded-[3px] border border-neutral-200/90 bg-white text-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.95)]">
           <span className="w-1.5 h-1.5 rounded-[1px] bg-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]" />

@@ -107,7 +107,7 @@ Code pushes pass through automated linting, test suites, and Dockerized build ru
 Integrated client-side face detection using 128-dimensional facial embedding vectors. Verifies worker attendance within 400ms entirely in-browser, guaranteeing privacy and offline resilience.
 
 02. Shop Floor Command Center
-Live tactile television display and operator ticket queues tracking cutting, laser engraving, assembly, and QC inspection in real-time.
+Live workshop display boards and operator ticket queues tracking cutting, laser engraving, assembly, and QC inspection in real-time.
 
 03. Progressive Down Payment & Billing Ledger
 Two-phase down payment verification system synchronizing quotation generation, purchase orders, material procurement costs, and final balance invoices.
@@ -121,7 +121,7 @@ Automated headless browser test suites validating worker biometric recognition, 
 02. Real-time shop floor visibility cutting order turnaround delays across production workstations.
 03. Seamless financial synchronization between sales deposits and floor material disbursements.`,
     reflection:
-      "Blending edge machine learning into enterprise web applications requires careful balancing of client-side performance, model bundle sizes, and reliable fallback states. The result is a tactile, instantaneous operational tool for factory workers.",
+      "Blending edge machine learning into enterprise web applications requires careful balancing of client-side performance, model bundle sizes, and reliable fallback states. The result is a fast, reliable operational tool for factory workers.",
     published_at: "2025-03-01T00:00:00Z",
     technologies: [
       { id: "tech-vue", name: "Vue 3", slug: "vue" },
@@ -154,7 +154,7 @@ Automated headless browser test suites validating worker biometric recognition, 
     title: "Nata Code Digital Agency",
     slug: "natacode",
     summary:
-      "Creative software house and digital agency platform engineered with Laravel 13, Inertia.js 2.0, custom GPU GLSL shaders, and tactile Locomotive Scroll motion physics.",
+      "Creative software house and digital agency platform engineered with Laravel 13, Inertia.js 2.0, custom GPU GLSL shaders, and smooth Locomotive Scroll motion physics.",
     project_type: "Creative Tech & Agency Platform",
     role: "Lead Creative Technologist & UI/UX Architect",
     client: "Nata Code Agency",
@@ -217,7 +217,7 @@ Database-driven content management console for agency service offerings, portfol
         id: "media-natacode-01",
         project_id: "proj-06-natacode",
         image_path: "/projects/natacode-services.png",
-        caption: "Interactive digital solutions directory featuring animated accordion drawers and tactile micro-states.",
+        caption: "Interactive digital solutions directory featuring animated accordion drawers and polished micro-states.",
         sort_order: 1,
       },
       {

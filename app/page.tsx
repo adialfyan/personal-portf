@@ -22,7 +22,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Frontend & Full-stack Developer — Portfolio",
   description:
-    "Selected work, background, and contact of a frontend-focused full-stack developer building tactile, responsive digital experiences.",
+    "Selected work, background, and contact of a full-stack developer building reliable, responsive digital experiences and web systems.",
   alternates: {
     canonical: "/",
   },
@@ -40,13 +40,13 @@ const CAPABILITIES: CapabilityItem[] = [
     id: "frontend-arch",
     number: "01",
     title: "Interactive Frontend",
-    description: "Component-driven architecture in React, Next.js, and TypeScript with fluid layout and tactile UI states.",
+    description: "Component-driven architecture in React, Next.js, and TypeScript with fluid layout and clean UI states.",
   },
   {
     id: "motion-physics",
     number: "02",
     title: "Kinetic Motion & Physics",
-    description: "Procedural shaders, canvas simulations, GSAP timelines, and tactile viewport micro-interactions.",
+    description: "Procedural shaders, canvas simulations, GSAP timelines, and smooth viewport micro-interactions.",
   },
   {
     id: "fullstack-systems",
@@ -128,7 +128,7 @@ export default async function Home() {
               >
                 Building{" "}
                 <MorphText
-                  words={["tactile", "responsive", "interactive", "resilient"]}
+                  words={["reliable", "responsive", "interactive", "resilient"]}
                   intensity={12}
                   className="font-normal italic"
                 />{" "}
@@ -150,14 +150,14 @@ export default async function Home() {
                   </p>
                   <div className="space-y-4 text-lg sm:text-xl md:text-2xl font-normal leading-relaxed text-foreground/90 max-w-2xl">
                     <p>
-                      Frontend-focused full-stack developer crafting responsive, tactile web applications and creative digital systems.
+                      Full-stack developer crafting responsive web applications, robust digital tools, and creative systems.
                     </p>
                     <p className="text-base sm:text-lg text-muted font-normal leading-relaxed">
                       Specializing in modern React, Next.js, and kinetic motion physics—backed by dependable Laravel and relational database foundations. Learn more about my engineering background, production systems (Nata Code, Acrylico, SIMMAN), and core capabilities.
                     </p>
                   </div>
 
-                  {/* Tactile Button linking directly to /about */}
+                  {/* Button linking directly to /about */}
                   <div className="mt-8">
                     <Link
                       href="/about"

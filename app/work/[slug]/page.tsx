@@ -536,7 +536,7 @@ export default async function ProjectPage({
           </section>
         )}
 
-        {/* Tactile GSAP Interactive String Divider */}
+        {/* Interactive String Divider */}
         <BouncyLine />
 
         {/* ——— Grand Awwwards Next Project Transition Portal ——— */}

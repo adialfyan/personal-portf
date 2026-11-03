@@ -40,7 +40,7 @@ const DISCIPLINES: DisciplineItem[] = [
     number: "02",
     title: "Kinetic Motion & Physics",
     description:
-      "Procedural shaders, canvas simulations, GSAP timelines, and tactile viewport micro-interactions.",
+      "Procedural shaders, canvas simulations, GSAP timelines, and smooth viewport micro-interactions.",
   },
   {
     number: "03",
@@ -58,7 +58,7 @@ const DISCIPLINES: DisciplineItem[] = [
     number: "05",
     title: "Interface Craft & Polish",
     description:
-      "Clear typographic hierarchy, accessible semantic layouts, and precision tactile micro-interactions.",
+      "Clear typographic hierarchy, accessible semantic layouts, and thoughtful micro-interactions.",
   },
   {
     number: "06",
@@ -104,7 +104,7 @@ const CORE_REPERTOIRE: CoreTechGroup[] = [
   {
     category: "Architecture & Tools",
     skills: [
-      "Tactile UI Design",
+      "UI/UX Architecture",
       "On-Device Biometrics",
       "Relational Data Modeling",
       "Playwright Testing",
@@ -223,7 +223,7 @@ export default async function AboutPage() {
               className="max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-normal tracking-[-0.02em] leading-[1.04] text-foreground text-balance"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Frontend &amp; full-stack developer building responsive web products &amp; tactile experiences.
+              Frontend &amp; full-stack developer building responsive web products &amp; reliable digital systems.
             </h1>
             <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted font-normal leading-relaxed text-balance">
               Working across modern React component architectures, kinetic motion physics, and dependable Laravel backend foundations.
@@ -236,11 +236,11 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Wing (5 Columns): Portrait + Technical Dossier Table */}
             <div className="lg:col-span-5 space-y-8">
-              {/* Portrait with Tactile Toggle Button & Margin Credit */}
+              {/* Portrait with Toggle Button & Margin Credit */}
               <MagazinePortrait
                 src={portraitUrl}
                 alt={name}
-                caption="Frontend & full-stack developer building tactile web applications and creative digital systems."
+                caption="Frontend & full-stack developer building responsive web applications and reliable digital systems."
                 credit="PHOTOGRAPHY &bull; EDITORIAL ARCHIVE"
               />
 
@@ -260,10 +260,10 @@ export default async function AboutPage() {
               <Reveal>
                 <MagazineDropCap letter="I">
                   <p className="text-lg sm:text-xl font-normal leading-relaxed text-foreground">
-                    am a frontend-focused full-stack developer who builds tactile web applications, interactive creative experiences, and dependable digital systems. Over the past few years, I have developed software across client digital platforms, manufacturing fabrication, and education finance.
+                    am a full-stack developer who builds responsive web applications, interactive digital experiences, and dependable production systems. Over the past few years, I have developed software across client digital platforms, manufacturing fabrication, and education finance.
                   </p>
                   <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted font-normal">
-                    My work centers on building polished, responsive systems: modern React component structures that feel tactile and fluid, kinetic motion systems that stay smooth under load, and solid backend services that keep records consistent.
+                    My work centers on building polished, responsive systems: modern React component structures that feel natural and fluid, kinetic motion systems that stay smooth under load, and solid backend services that keep records consistent.
                   </p>
                 </MagazineDropCap>
               </Reveal>
@@ -321,7 +321,7 @@ export default async function AboutPage() {
                 </div>
               </div>
 
-              {/* Bottom Balanced Ledger: Case Studies with Tactile Buttons (Fills Bottom Void) */}
+              {/* Bottom Balanced Ledger: Case Studies */}
               <div className="border border-border p-6 bg-surface/40 rounded-[2px]">
                 <div className="flex items-center justify-between pb-3.5 border-b border-border/70 mb-4">
                   <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-foreground">
@@ -456,7 +456,7 @@ export default async function AboutPage() {
 
         <BouncyLine className="w-full" />
 
-        {/* ——— Colophon & Inquiries with Tactile Buttons ——— */}
+        {/* ——— Colophon & Inquiries ——— */}
         <section className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-20">
           <div className="border border-border p-8 md:p-12 bg-surface/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="max-w-2xl space-y-3">

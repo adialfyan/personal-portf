@@ -62,7 +62,7 @@ export default async function WritingPage() {
           </div>
         </section>
 
-        {/* ——— Articles List with 3D Tactile Category Filtering ——— */}
+        {/* ——— Articles List with Category Filtering ——— */}
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10">
             <WritingsFilterList writings={writings} />

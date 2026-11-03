@@ -48,7 +48,7 @@ export function WritingsFilterList({ writings }: WritingsFilterListProps) {
 
   return (
     <div>
-      {/* 3D Tactile Category Filter Tabs */}
+      {/* Category Filter Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6 mb-10">
         <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
           {filters.map((filter) => {
