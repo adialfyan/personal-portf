@@ -102,22 +102,42 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" aria-live="polite" className="border border-border p-8">
+      <div
+        role="status"
+        aria-live="polite"
+        className="border border-border bg-white p-6 sm:p-8"
+      >
+        <div className="flex items-center justify-between gap-3 border-b border-border/70 pb-3 text-[11px] font-semibold tracking-[0.2em] uppercase">
+          <span className="text-foreground">Received &bull; Confirmation</span>
+          <span className="text-muted font-normal">Thank You</span>
+        </div>
         <p
-          className="text-3xl tracking-tight"
+          className="mt-5 text-2xl sm:text-3xl tracking-tight text-foreground"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Message received.
         </p>
-        <p className="mt-3 leading-relaxed text-muted">
-          Thanks for reaching out — I&apos;ll get back to you soon.
+        <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted font-normal">
+          Thanks for reaching out. I read every message personally and will
+          reply to the address you provided.
         </p>
+        <button
+          type="button"
+          onClick={() => setStatus("idle")}
+          className="mt-6 inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-xs font-medium tracking-[0.16em] uppercase text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
+        >
+          <span>Write another message</span>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
       </div>
     );
   }
 
   const inputClass =
-    "w-full border border-border bg-transparent px-4 py-3 text-base leading-relaxed outline-none placeholder:text-muted focus:border-accent";
+    "w-full rounded-[3px] border border-neutral-300/80 bg-white px-3.5 py-3 text-sm sm:text-base leading-relaxed text-foreground outline-none placeholder:text-muted/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)] transition-colors focus:border-neutral-900 focus:ring-2 focus:ring-neutral-900/10";
+
+  const labelClass =
+    "mb-2 block text-[11px] font-medium tracking-[0.18em] uppercase text-muted";
 
   return (
     <form
@@ -127,9 +147,7 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-2 block text-xs font-medium tracking-[0.2em] uppercase text-muted">
-            Name
-          </span>
+          <span className={labelClass}>Name</span>
           <input
             name="name"
             required
@@ -141,9 +159,7 @@ export function ContactForm() {
           />
         </label>
         <label className="block">
-          <span className="mb-2 block text-xs font-medium tracking-[0.2em] uppercase text-muted">
-            Email
-          </span>
+          <span className={labelClass}>Email</span>
           <input
             name="email"
             type="email"
@@ -156,8 +172,8 @@ export function ContactForm() {
         </label>
       </div>
       <label className="block">
-        <span className="mb-2 block text-xs font-medium tracking-[0.2em] uppercase text-muted">
-          Subject <span className="opacity-60">(optional)</span>
+        <span className={labelClass}>
+          Subject <span className="normal-case tracking-normal text-muted/60">(optional)</span>
         </span>
         <input
           name="subject"
@@ -167,9 +183,7 @@ export function ContactForm() {
         />
       </label>
       <label className="block">
-        <span className="mb-2 block text-xs font-medium tracking-[0.2em] uppercase text-muted">
-          Message
-        </span>
+        <span className={labelClass}>Message</span>
         <textarea
           name="message"
           required
@@ -191,18 +205,27 @@ export function ContactForm() {
       />
       {TURNSTILE_SITE_KEY && <div ref={widgetRef} className="pt-1" />}
       {status === "error" && error && (
-        <p role="alert" className="text-sm text-accent">
+        <p
+          role="alert"
+          className="border-l-2 border-foreground pl-3 text-sm leading-relaxed text-foreground"
+        >
           {error}
         </p>
       )}
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="inline-flex items-center justify-center gap-2.5 rounded-[3px] border border-black bg-[#0a0a0a] px-8 py-4 text-xs font-medium tracking-[0.2em] uppercase text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.24),0_1px_0_#000] hover:bg-neutral-900 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)] disabled:opacity-50 transition-all cursor-pointer"
-      >
-        <span className="w-2 h-2 rounded-[1.5px] bg-white border border-white/80 shadow-[0_0_4px_rgba(255,255,255,0.9)]" />
-        <span>{status === "sending" ? "Sending…" : "Send message ↗"}</span>
-      </button>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-1">
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-[3px] border border-black bg-[#0a0a0a] px-6 py-3.5 text-xs font-medium tracking-[0.2em] uppercase text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.24),0_1px_0_#000] hover:bg-neutral-900 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)] disabled:opacity-50 transition-all cursor-pointer"
+        >
+          <span className="w-2 h-2 rounded-[1.5px] bg-white border border-white/80 shadow-[0_0_4px_rgba(255,255,255,0.9)]" />
+          <span>{status === "sending" ? "Sending…" : "Send message"}</span>
+          <span aria-hidden="true">&#8599;</span>
+        </button>
+        <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-muted/70">
+          Name, email and message required
+        </span>
+      </div>
     </form>
   );
 }
