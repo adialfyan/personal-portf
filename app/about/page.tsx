@@ -189,7 +189,7 @@ export default async function AboutPage() {
       label: "Curriculum Vitae",
       value: (
         <a href={profile?.resume_url || "/cv"} className="hover:underline transition-all">
-          Curriculum Vitae ↗
+          View document ↗
         </a>
       ),
     },
