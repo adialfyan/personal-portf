@@ -185,24 +185,14 @@ export default async function AboutPage() {
         "adialfianhafiz@gmail.com"
       ),
     },
-    ...(profile?.resume_url
-      ? [
-          {
-            label: "Curriculum Vitae",
-            value: (
-              <a
-                href={profile.resume_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-medium tracking-[0.14em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] transition-all cursor-pointer"
-              >
-                <span>Download PDF</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
-            ),
-          },
-        ]
-      : []),
+    {
+      label: "Curriculum Vitae",
+      value: (
+        <a href={profile?.resume_url || "/cv"} className="hover:underline transition-all">
+          Curriculum Vitae ↗
+        </a>
+      ),
+    },
   ];
 
   return (
@@ -490,6 +480,13 @@ export default async function AboutPage() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-medium tracking-[0.2em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
               >
                 View Selected Work
+              </Link>
+              <Link
+                href={profile?.resume_url || "/cv"}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-medium tracking-[0.2em] uppercase rounded-[3px] border border-neutral-300/80 bg-neutral-50/90 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-100 hover:border-neutral-400/90 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all cursor-pointer"
+              >
+                <span>Curriculum Vitae</span>
+                <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>

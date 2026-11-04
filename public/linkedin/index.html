@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Header Preview — Adi Alfian Hafis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f7f7f8;
+      color: #0a0a0a;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 40px 24px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 20px;
+    }
+
+    .title-group h1 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #0a0a0a;
+    }
+
+    .title-group p {
+      font-size: 13px;
+      color: #737373;
+      margin-top: 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      border: 1px solid #0a0a0a;
+    }
+
+    .btn-primary:hover {
+      background-color: #262626;
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: #0a0a0a;
+      border: 1px solid #d4d4d4;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Preview Card Area */
+    .preview-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      margin-bottom: 36px;
+    }
+
+    .preview-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .badge {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #737373;
+      font-weight: 500;
+    }
+
+    .toggle-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .toggle-btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid #d4d4d4;
+      background: #ffffff;
+      color: #525252;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .toggle-btn.active {
+      background: #0a0a0a;
+      color: #ffffff;
+      border-color: #0a0a0a;
+    }
+
+    .banner-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1584 / 396;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .banner-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Simulated LinkedIn Avatar Overlays */
+    .avatar-overlay {
+      position: absolute;
+      display: none;
+      border-radius: 50%;
+      border: 4px solid #ffffff;
+      background: #171717;
+      color: #ffffff;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+
+    /* Desktop LinkedIn Avatar */
+    .avatar-desktop {
+      left: 3.2%;
+      bottom: -22%;
+      width: 13.8%;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Mobile LinkedIn Avatar */
+    .avatar-mobile {
+      left: 4.5%;
+      bottom: -28%;
+      width: 19%;
+      aspect-ratio: 1 / 1;
+    }
+
+    .avatar-overlay.visible {
+      display: flex;
+    }
+
+    /* Specification Grid */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .spec-item {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .spec-item h3 {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #737373;
+      margin-bottom: 8px;
+    }
+
+    .spec-item p {
+      font-size: 14px;
+      color: #262626;
+      line-height: 1.6;
+    }
+
+    .spec-item code {
+      font-family: inherit;
+      background: #f4f4f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-group">
+        <h1>LinkedIn Header Blueprint</h1>
+        <p>Full-Stack Software Engineer • 1-Bit Dither Terrain • Safe Zone Compliant</p>
+      </div>
+      <div class="actions">
+        <a href="header.svg" download="linkedin-header-adi-alfian.svg" class="btn btn-secondary">Download SVG</a>
+        <a href="header.png" download="linkedin-header-1x.png" class="btn btn-secondary">Download PNG (1x)</a>
+        <a href="header-2x.png" download="linkedin-header-retina-2x.png" class="btn btn-primary">Download PNG (2x Retina)</a>
+      </div>
+    </header>
+
+    <div class="preview-card">
+      <div class="preview-toolbar">
+        <span class="badge">Live Visual Preview — 1584 × 396 PX</span>
+        <div class="toggle-group">
+          <button type="button" class="toggle-btn" id="btn-desktop" onclick="toggleAvatar('desktop')">Desktop Avatar Simulation</button>
+          <button type="button" class="toggle-btn" id="btn-mobile" onclick="toggleAvatar('mobile')">Mobile Avatar Simulation</button>
+        </div>
+      </div>
+
+      <div class="banner-wrapper">
+        <img src="header.svg" alt="LinkedIn Header Preview — Adi Alfian Hafis">
+        
+        <div id="overlay-desktop" class="avatar-overlay avatar-desktop">
+          <span>Avatar<br>(Desktop)</span>
+        </div>
+
+        <div id="overlay-mobile" class="avatar-overlay avatar-mobile">
+          <span>Avatar<br>(Mobile)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <h3>Typography System</h3>
+        <p><strong>Display:</strong> Newsreader (Editorial Serif, 56px)<br>
+        <strong>Interface:</strong> Geist Sans (500 weight, 13–20px)<br>
+        Strict two-font system with zero font clutter.</p>
+      </div>
+
+      <div class="spec-item">
+        <h3>1-Bit Creative Tech Accent</h3>
+        <p>Algorithmic multi-harmonic terrain wave quantized using an <strong>8×8 Bayer matrix</strong> dithering field. Dissolves naturally into the white canvas with zero abrupt rectangular borders.</p>
+      </div>
+
+      <div class="spec-item">
+        <h3>Avatar Safe Zone</h3>
+        <p>Content anchors cleanly at <code>x = 380px</code>, completely clearing the LinkedIn profile picture on both desktop and mobile viewports.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleAvatar(mode) {
+      const desktop = document.getElementById('overlay-desktop');
+      const mobile = document.getElementById('overlay-mobile');
+      const btnDesktop = document.getElementById('btn-desktop');
+      const btnMobile = document.getElementById('btn-mobile');
+
+      if (mode === 'desktop') {
+        const isVisible = desktop.classList.contains('visible');
+        desktop.classList.toggle('visible', !isVisible);
+        mobile.classList.remove('visible');
+        btnDesktop.classList.toggle('active', !isVisible);
+        btnMobile.classList.remove('active');
+      } else {
+        const isVisible = mobile.classList.contains('visible');
+        mobile.classList.toggle('visible', !isVisible);
+        desktop.classList.remove('visible');
+        btnMobile.classList.toggle('active', !isVisible);
+        btnDesktop.classList.remove('active');
+      }
+    }
+  </script>
+</body>
+</html>

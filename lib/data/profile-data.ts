@@ -13,7 +13,7 @@ export const DEFAULT_PROFILE: Profile = {
   available_for_work: true,
   availability_text: "Available for work",
   email: "adialfianhafiz@gmail.com",
-  resume_url: null,
+  resume_url: "/cv",
   portrait_path: "/portrait.jpg",
   updated_at: new Date().toISOString(),
 };

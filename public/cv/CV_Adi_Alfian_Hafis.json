@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Adi Alfian Hafis",
+    "label": "Full-Stack Software Engineer",
+    "email": "adialfianhafiz@gmail.com",
+    "url": "https://adiallllllll.vercel.app",
+    "summary": "Results-driven Full-Stack Software Engineer and Computer Science graduate (GPA 3.97/4.00) with proven experience building high-reliability web applications, operational ERPs, and distributed services. Architected institutional financial systems processing bank Virtual Account webhooks with 100% automated ledger reconciliation, and engineered client-side AI biometrics with sub-400ms execution. Proficient in TypeScript, React, Next.js, Laravel, and PostgreSQL.",
+    "location": {
+      "city": "Semarang",
+      "region": "Central Java",
+      "countryCode": "ID"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "adialfianhafis",
+        "url": "https://www.linkedin.com/in/adialfianhafis"
+      },
+      {
+        "network": "GitHub",
+        "username": "adialfyan",
+        "url": "https://github.com/adialfyan"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "MAN 1 Kota Semarang",
+      "position": "Full-Stack Software Engineer",
+      "startDate": "2025-03-01",
+      "endDate": "2026-09-30",
+      "summary": "Architected and deployed SIMMAN E-Budgeting, an institutional financial ERP managing tuition collections and departmental budgets across thousands of students.",
+      "highlights": [
+        "Integrated direct Host-to-Host (H2H) banking webhook pipelines, automating 100% of student Virtual Account (VA) payment reconciliation directly into the general ledger without manual intervention.",
+        "Engineered automated RKA budgeting engine that programmatically enforced hard-locks on departmental spending ceilings, eliminating operational over-expenditures.",
+        "Developed automated bank reconciliation pipeline balancing internal ledger records against daily bank mutation statements, accelerating month-end audit closings from days to instant queries.",
+        "Automated multi-tier PDF and Excel financial audit reports with programmatic validation and hierarchical digital approval workflows."
+      ]
+    },
+    {
+      "name": "Acrylico Industrial Fabrication",
+      "position": "Full-Stack Developer",
+      "startDate": "2026-01-01",
+      "summary": "Engineered custom Acrylico ERP to digitize manufacturing workflows, replacing legacy paper job-tickets with real-time operational boards.",
+      "highlights": [
+        "Implemented edge facial recognition clock-in utilizing @vladmandic/face-api (128-d tensor embeddings), verifying worker attendance in under 400ms entirely client-side without streaming sensitive biometrics to external clouds.",
+        "Built interactive shop floor Kanban ticket boards providing real-time production telemetry across cutting, bending, engraving, and QC workstations.",
+        "Architected progressive billing engine synchronizing quotations, purchase orders, material costs, and down-payment status transitions.",
+        "Authored automated end-to-end test suites using Playwright, validating authentication, attendance biometrics, and invoice states on every release."
+      ]
+    },
+    {
+      "name": "CV Nastiti Utama Mandiri (Timnas Production)",
+      "position": "Full-Stack Software Engineer",
+      "startDate": "2026-01-01",
+      "endDate": "2026-03-31",
+      "summary": "Co-developed Timnas Production ERP, a centralized operations management platform for regional event campaigns and field personnel.",
+      "highlights": [
+        "Designed dynamic profit margin calculation engine supporting dual management fee formulas (deduction and markup), accelerating financial report generation from weeks to real-time.",
+        "Implemented geospatial Leaflet GPS mapping for live field team dispatching, site location tracking, and attendance verification across Central Java.",
+        "Built structured before/after photo inspection pipeline with client-side image compression, reducing upload bandwidth while ensuring tamper-resistant site logs.",
+        "Configured granular role-based access control (RBAC) using Spatie Laravel Permission, isolating Super Admin, Finance, PM, and Field Staff consoles."
+      ]
+    },
+    {
+      "name": "Nata Code Digital Agency",
+      "position": "Lead Full-Stack Developer",
+      "startDate": "2026-01-01",
+      "summary": "Founded and engineered Nata Code, an independent software house platform delivering modern web experiences and bespoke client solutions.",
+      "highlights": [
+        "Architected hybrid SPA application using React 18, Inertia.js 2.0, and Laravel 13, eliminating full-page reload latencies and reducing route transition delays to zero.",
+        "Developed dynamic hardware tier profiling engine (useDeviceTier) assessing device RAM and concurrency to scale animation budgets, sustaining locked 60fps motion across mobile devices.",
+        "Engineered modular SaaS service catalog and case-study CMS with instant live search and dark/light mode persistence."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universitas Semarang (USM)",
+      "area": "Computer Science (Teknik Informatika)",
+      "studyType": "Bachelor of Computer Science (S1)",
+      "score": "3.97",
+      "courses": [
+        "Thesis: Securing Educational Institutional Financial Integrity Against Internal Tampering Using Cryptographic Audit Trails and Hybrid Blockchain Architecture"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "MLOps: A Multiple Case Study in Industry",
+      "issuer": "LPKL FTIK Universitas Semarang",
+      "date": "2026-10-29",
+      "url": "http://sipkol.usm.ac.id/view/sertifikat-pelatihan/J0000209/5708"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "keywords": ["TypeScript", "JavaScript", "PHP", "SQL", "HTML5", "CSS3", "Go"]
+    },
+    {
+      "name": "Frontend",
+      "keywords": ["React.js", "Next.js", "Inertia.js", "Vue.js", "Tailwind CSS", "Canvas API", "GSAP"]
+    },
+    {
+      "name": "Backend",
+      "keywords": ["Laravel", "Node.js", "RESTful APIs", "Webhooks", "Redis", "Spatie RBAC"]
+    },
+    {
+      "name": "Databases & Storage",
+      "keywords": ["PostgreSQL", "MySQL", "Database Indexing", "Relational Modeling"]
+    },
+    {
+      "name": "DevOps & Testing",
+      "keywords": ["Git", "Docker", "Linux VPS", "Playwright", "CI/CD Actions", "Vite"]
+    }
+  ]
+}
