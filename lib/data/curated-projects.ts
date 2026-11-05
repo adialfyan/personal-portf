@@ -16,7 +16,7 @@ export const CURATED_PROJECTS: ProjectDetail[] = [
     is_featured: true,
     sort_order: 1,
     cover_image_path: "/projects/simman-dashboard.jpg",
-    live_url: null,
+    live_url: "https://man1kotasemarang.sch.id/sim/",
     repository_url: "https://github.com/adialfyan/keuanganman",
     overview:
       "SIMMAN E-Budgeting is a centralized financial operating system engineered for MAN 1 Kota Semarang. It unifies high-throughput student education fee transactions, automated Host-to-Host (H2H) banking Virtual Account reconciliation, and rigorous division-level budget allocations under a single real-time general ledger.",
@@ -92,7 +92,7 @@ Code pushes pass through automated linting, test suites, and Dockerized build ru
     is_featured: true,
     sort_order: 2,
     cover_image_path: "/projects/acrylico-workshop-screen.png",
-    live_url: null,
+    live_url: "https://acrylico.id/",
     repository_url: "https://github.com/adialfyan/acrylic-erp",
     overview:
       "Acrylico ERP is a custom industrial operating system built for commercial acrylic fabrication. It orchestrates real-time workstation ticket queues, operator milestone tracking, on-device AI face recognition attendance, and progressive project invoice reconciliation.",
@@ -164,7 +164,7 @@ Automated headless browser test suites validating worker biometric recognition, 
     is_featured: true,
     sort_order: 3,
     cover_image_path: "/projects/natacode-hero.png",
-    live_url: null,
+    live_url: "https://natacode.id/",
     repository_url: "https://github.com/adialfyan/natacode",
     overview:
       "Nata Code is a contemporary software house and digital product agency platform built on international creative engineering standards (Cuberto × Locomotive × Basic Agency). It features hybrid SPA architecture with zero-delay routing, custom procedural GLSL shaders, and hardware-adaptive 60fps motion choreography.",
