@@ -23,6 +23,9 @@ import {
 
 export const revalidate = 60;
 
+const LIVE_LINK =
+  "group inline-flex items-center gap-2 px-6 py-3.5 text-xs font-medium tracking-[0.2em] uppercase rounded-[3px] border border-neutral-900 bg-[#0a0a0a] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_2px_4px_rgba(0,0,0,0.12)] hover:bg-neutral-800 active:translate-y-[1px] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-all cursor-pointer";
+
 export async function generateStaticParams() {
   const slugs = await getPublishedProjectSlugs();
   return slugs.map((slug) => ({ slug }));
@@ -167,6 +170,38 @@ export default async function ProjectPage({
             </p>
           )}
 
+          {project.live_url &&
+            (project.live_url.startsWith("/") ? (
+              <div className="mt-8">
+                <Link href={project.live_url} className={LIVE_LINK}>
+                  <span>View Live Project</span>
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    ↗
+                  </span>
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-8">
+                <a
+                  href={project.live_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={LIVE_LINK}
+                >
+                  <span>View Live Project</span>
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    ↗
+                  </span>
+                </a>
+              </div>
+            ))}
+
           {/* Architectural Spec Plate */}
           <div className="mt-8 sm:mt-12 border-y border-border py-6 sm:py-8">
             <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 sm:gap-8 text-xs uppercase tracking-[0.2em]">
@@ -194,25 +229,10 @@ export default async function ProjectPage({
                   </dd>
                 </div>
               )}
-              {(project.live_url ||
-                project.repository_url ||
-                project.links.length > 0) && (
+              {(project.repository_url || project.links.length > 0) && (
                 <div>
                   <dt className="text-muted font-medium text-[11px] sm:text-xs">Links</dt>
                   <dd className="mt-2 flex flex-col gap-2 font-normal normal-case tracking-normal text-sm">
-                    {project.live_url && (
-                      <a
-                        href={project.live_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1.5 text-foreground hover:underline"
-                      >
-                        <span>Live deployment</span>
-                        <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                          ↗
-                        </span>
-                      </a>
-                    )}
                     {project.repository_url && (
                       <a
                         href={project.repository_url}
