@@ -252,6 +252,8 @@ export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) 
                 alt={p.title}
                 fill
                 sizes="320px"
+                loading="eager"
+                fetchPriority="low"
                 className={`object-cover filter grayscale contrast-125 transition-opacity duration-300 ${
                   hoveredIndex === i ? "opacity-100" : "opacity-0"
                 }`}
