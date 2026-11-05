@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BouncyLine } from "@/components/public/bouncy-line";
 import { JsonLd } from "@/components/public/json-ld";
+import { ProjectFrame } from "@/components/public/project-frame";
 import { Reveal } from "@/components/public/reveal";
 import { SiteFooter } from "@/components/public/site-footer";
 import { SiteHeader } from "@/components/public/site-header";
@@ -84,6 +84,14 @@ export default async function ProjectPage({
   );
 
   const siteUrl = getSiteUrl();
+  const siteHost = new URL(siteUrl).hostname;
+  const frameLabel = !project.live_url
+    ? "Private deployment"
+    : project.live_url.startsWith("/")
+      ? siteHost === "localhost"
+        ? "On this site"
+        : siteHost
+      : new URL(project.live_url).hostname;
   const technicalHighlights = parseTechnicalHighlights(
     project.technical_decisions,
   );
@@ -271,23 +279,20 @@ export default async function ProjectPage({
         {coverUrl && (
           <section className="mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10">
             <Reveal>
-              <div className="group relative overflow-hidden border border-border bg-[#fafafa]">
-                <div className="relative w-full overflow-hidden">
-                  <Image
-                    src={coverUrl}
-                    alt={project.title}
-                    width={1800}
-                    height={1125}
-                    className="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.012]"
-                    sizes="(max-width: 1440px) 100vw, 1440px"
-                    priority
-                  />
-                </div>
-                <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border px-4 py-2.5 sm:px-5 sm:py-3 text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
-                  <span>Plate 01 — Overview</span>
-                  <span className="truncate max-w-[200px] sm:max-w-none">{project.title}</span>
-                </div>
-              </div>
+              <ProjectFrame
+                src={coverUrl}
+                alt={project.title}
+                label={frameLabel}
+                priority
+                footer={
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border px-4 py-2.5 sm:px-5 sm:py-3 text-[11px] font-medium tracking-[0.2em] uppercase text-muted">
+                    <span>Plate 01 — Overview</span>
+                    <span className="truncate max-w-[200px] sm:max-w-none">
+                      {project.title}
+                    </span>
+                  </div>
+                }
+              />
             </Reveal>
           </section>
         )}
@@ -452,18 +457,11 @@ export default async function ProjectPage({
                     const plateNumber = String(idx + 2).padStart(2, "0");
                     return (
                       <figure key={m.id} className="group">
-                        <div className="relative overflow-hidden border border-border bg-[#fafafa]">
-                          <div className="relative w-full overflow-hidden">
-                            <Image
-                              src={url}
-                              alt={m.caption ?? project.title}
-                              width={1800}
-                              height={1125}
-                              className="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.012]"
-                              sizes="(max-width: 1440px) 100vw, 1440px"
-                            />
-                          </div>
-                        </div>
+                        <ProjectFrame
+                          src={url}
+                          alt={m.caption ?? project.title}
+                          label={frameLabel}
+                        />
                         {m.caption && (
                           <figcaption className="mt-3 sm:mt-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-4 border-b border-border pb-3 sm:pb-4 text-xs tracking-normal text-muted">
                             <span className="font-medium uppercase tracking-[0.2em] text-foreground shrink-0">
