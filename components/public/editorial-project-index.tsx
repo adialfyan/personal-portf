@@ -29,7 +29,6 @@ const BESPOKE_SECONDARY_TEXTS: Record<string, string> = {
 export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mobileExpandedIndex, setMobileExpandedIndex] = useState<number | null>(null);
-  const [isDesktopActive, setIsDesktopActive] = useState(false);
 
   // Single shared lightweight SVG filter refs for optimal GPU performance
   const displacementRef = useRef<SVGFEDisplacementMapElement | null>(null);
@@ -211,9 +210,6 @@ export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) 
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDesktopActive) {
-      setIsDesktopActive(true);
-    }
     if (!xToRef.current || !yToRef.current) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const cursorX = e.clientX - rect.left;
@@ -248,21 +244,20 @@ export function EditorialProjectIndex({ projects }: EditorialProjectIndexProps) 
         style={{ willChange: "transform, opacity" }}
       >
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
-          {isDesktopActive &&
-            projects.map((p, i) =>
-              p.cover_image_path ? (
-                <Image
-                  key={p.id || p.slug}
-                  src={p.cover_image_path}
-                  alt={p.title}
-                  fill
-                  sizes="320px"
-                  className={`object-cover filter grayscale contrast-125 transition-opacity duration-300 ${
-                    hoveredIndex === i ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              ) : null
-            )}
+          {projects.map((p, i) =>
+            p.cover_image_path ? (
+              <Image
+                key={p.id || p.slug}
+                src={p.cover_image_path}
+                alt={p.title}
+                fill
+                sizes="320px"
+                className={`object-cover filter grayscale contrast-125 transition-opacity duration-300 ${
+                  hoveredIndex === i ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ) : null
+          )}
         </div>
         {hoveredIndex !== null && projects[hoveredIndex] && (
           <div className="px-4 py-3 border-t border-border bg-background">
