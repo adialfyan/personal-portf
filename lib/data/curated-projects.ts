@@ -92,7 +92,7 @@ Code pushes pass through automated linting, test suites, and Dockerized build ru
     is_featured: true,
     sort_order: 2,
     cover_image_path: "/projects/acrylico-workshop-screen.png",
-    live_url: "https://acrylico.id/",
+    live_url: "https://acrylico.id/login",
     repository_url: "https://github.com/adialfyan/acrylic-erp",
     overview:
       "Acrylico ERP is a custom industrial operating system built for commercial acrylic fabrication. It orchestrates real-time workstation ticket queues, operator milestone tracking, on-device AI face recognition attendance, and progressive project invoice reconciliation.",
